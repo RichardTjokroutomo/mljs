@@ -1,0 +1,28 @@
+{
+  "name": "mljs",
+  "version": "1.0.0",
+  "description": "A JS library to run ML tasks on browser",
+  "main": "index.ts",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RichardTjokroutomo/mljs.git"
+  },
+  "author": "Richard Tjokroutomo",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/RichardTjokroutomo/mljs/issues"
+  },
+  "homepage": "https://github.com/RichardTjokroutomo/mljs#readme",
+  "dependencies": {
+    "@techstark/opencv-js": "^4.12.0-release.1",
+    "onnxruntime-web": "^1.26.0"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.3"
+  }
+}
