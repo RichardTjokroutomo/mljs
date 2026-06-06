@@ -11,9 +11,13 @@ export class DepthEstimation implements BaseModel {
         this.ort_session = await ort.InferenceSession.create(model_path, options);
     }
 
-    public preprocess(input: HTMLCanvasElement, width: number, height: number): ort.Tensor{
+    public preprocess(input: Array<HTMLCanvasElement>, width: number, height: number): Array<ort.Tensor>{
+        if (input.length == 0){
+            throw new Error("input array is empty, can't preprocess image for depth estimation!");
+        }
+
         // local vars
-        const img_src = cv.imread(input);
+        const img_src = cv.imread(input[0]);
         let img_dst = new cv.Mat();
 
         // populate cv mat
@@ -39,7 +43,7 @@ export class DepthEstimation implements BaseModel {
         d_img.delete();
 
         // create ort tensor & return
-        return new ort.Tensor("float32", img_flat, [1, 3, width, height])
+        return [new ort.Tensor("float32", img_flat, [1, 3, width, height])];
     }
 
     public async run_inference(input_tensors: Array<ort.Tensor>): Promise<ort.Tensor> {
@@ -50,7 +54,7 @@ export class DepthEstimation implements BaseModel {
         if (input_tensors.length == 0) {
             throw new Error("input_tensors array is empty, can't perform depth estimation!");
         }
-        const feeds = {"l_x_": input_tensors[0]};
+        const feeds = {"l_x_": input_tensors[0]}; // the name of input node of DA_v2.
         let result = await this.ort_session.run(feeds);
         return result["select_36"]; // the name of output node of DA_v2
     }
@@ -112,5 +116,41 @@ export class DepthEstimation implements BaseModel {
 
         ctx.putImageData(image_data, 0, 0);
         return canvas;
+    }
+
+    // input_image: (1, 4, W, H). mask: (1, 1, W, H). output: (1, 4, W, H) 
+    public segment_into_layers(input_image: ort.Tensor, depth_map: ort.Tensor, width: number, height: number, num_layers: number): Array<ort.Tensor>{
+
+        let layers: Array<ort.Tensor> = [];
+        const band_size = 256 / num_layers;
+
+        // FIXME: this operation is expensive. O(width * height * num_layers). This can be reduced to O(width * height)
+        for (let layer = 0; layer < num_layers; layer++) {
+            const layer_min_val = Math.floor(layer * band_size);
+            const layer_max_val = (layer === num_layers - 1) ? 255 : Math.floor((layer + 1) * band_size) - 1; // if last layer, then upper bound is 255
+
+            let layer_pixels: Float32Array = new Float32Array(4 * width * height);
+            for (let i = 0; i < width * height; i++) {
+                const j = i * 4;
+                const depth = depth_map.data[i] as number;
+                if (depth >= layer_min_val && depth <= layer_max_val) {
+                    layer_pixels[0 * width * height + i] = input_image.data[0 * width * height + i] as number;
+                    layer_pixels[1 * width * height + i] = input_image.data[1 * width * height + i] as number;
+                    layer_pixels[2 * width * height + i] = input_image.data[2 * width * height + i] as number;
+                    layer_pixels[3 * width * height + i] = input_image.data[3 * width * height + i] as number;
+                } else { // TODO: else block is bad for GPUs (bc of exec_mask). will it be better if we initialize all arrays as 0.0?
+                    layer_pixels[0 * width * height + i] = 0.0;
+                    layer_pixels[1 * width * height + i] = 0.0;
+                    layer_pixels[2 * width * height + i] = 0.0;
+                    layer_pixels[3 * width * height + i] = 0.0;
+                }
+            }
+
+            const ort_layer = new ort.Tensor("float32", layer_pixels, [1, 4, width, height])
+
+            layers.push(ort_layer);
+        }
+
+        return layers;
     }
 }
