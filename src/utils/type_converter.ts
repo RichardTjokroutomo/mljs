@@ -96,8 +96,24 @@ export function ort_tensor_to_html_image(tensor: ort.Tensor): HTMLImageElement {
 }
 
 export function ort_tensor_to_cv_mat(tensor: ort.Tensor): cv.Mat {
-    const canvas = ort_tensor_to_html_canvas(tensor);
-    return html_canvas_to_cv_mat(canvas);
+    const dims = tensor.dims;
+    if (dims.length !== 4 || dims[0] !== 1 || dims[1] !== 3) {
+        throw new Error("expected tensor shape [1, 3, H, W]");
+    }
+    const [, , height, width] = dims;
+    const mat = new cv.Mat(height, width, cv.CV_32FC4);
+    const tensor_data = tensor.data as Float32Array;
+    const mat_data = mat.data as unknown as Float32Array;
+    for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+            const pixel_idx = (y * width + x) * 4;
+            for (let c = 0; c < 3; c++) {
+                mat_data[pixel_idx + c] = tensor_data[c * height * width + y * width + x]!;
+            }
+            mat_data[pixel_idx + 3] = 1.0;
+        }
+    }
+    return mat;
 }
 
 // TODO: from cv mat

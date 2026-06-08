@@ -59,10 +59,10 @@ export class DepthEstimation implements BaseModel {
         return result["select_36"]; // the name of output node of DA_v2
     }
 
-    public postprocess(input: ort.Tensor, width: number, height: number): HTMLCanvasElement {
+    public postprocess(input: Array<ort.Tensor>, width: number, height: number): HTMLCanvasElement {
         // extract float32 data from the ort tensor
-        const data = input.data as Float32Array;
-        const shape = input.dims;
+        const data = input[0].data as Float32Array;
+        const shape = input[0].dims;
 
         // determine spatial dimensions from shape (e.g., [1, 1, H, W] or [1, H, W])
         let out_h: number, out_w: number;
@@ -118,37 +118,42 @@ export class DepthEstimation implements BaseModel {
         return canvas;
     }
 
-    // input_image: (1, 4, W, H). mask: (1, 1, W, H). output: (1, 4, W, H) 
-    public segment_into_layers(input_image: ort.Tensor, depth_map: ort.Tensor, width: number, height: number, num_layers: number): Array<ort.Tensor>{
+    public segment_into_layers(input_image: HTMLCanvasElement, depth_map: HTMLCanvasElement, width: number, height: number, num_layers: number): Array<HTMLCanvasElement>{
+        const input_ctx = input_image.getContext("2d")!;
+        const input_data = input_ctx.getImageData(0, 0, width, height);
+        const depth_ctx = depth_map.getContext("2d")!;
+        const depth_data = depth_ctx.getImageData(0, 0, width, height);
 
-        let layers: Array<ort.Tensor> = [];
+        const layers = [];
         const band_size = 256 / num_layers;
 
-        // FIXME: this operation is expensive. O(width * height * num_layers). This can be reduced to O(width * height)
         for (let layer = 0; layer < num_layers; layer++) {
-            const layer_min_val = Math.floor(layer * band_size);
-            const layer_max_val = (layer === num_layers - 1) ? 255 : Math.floor((layer + 1) * band_size) - 1; // if last layer, then upper bound is 255
+            const minDepth = Math.floor(layer * band_size);
+            const maxDepth = (layer === num_layers - 1) ? 255 : Math.floor((layer + 1) * band_size) - 1;
 
-            let layer_pixels: Float32Array = new Float32Array(4 * width * height);
-            for (let i = 0; i < width * height; i++) {
+            const canvas = document.createElement("canvas");
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext("2d")!;
+            const imageData = ctx.createImageData(width, height);
+            const pixels = imageData.data;
+
+            for (let i: number = 0; i < width * height; i++) {
                 const j = i * 4;
-                const depth = depth_map.data[i] as number;
-                if (depth >= layer_min_val && depth <= layer_max_val) {
-                    layer_pixels[0 * width * height + i] = input_image.data[0 * width * height + i] as number;
-                    layer_pixels[1 * width * height + i] = input_image.data[1 * width * height + i] as number;
-                    layer_pixels[2 * width * height + i] = input_image.data[2 * width * height + i] as number;
-                    layer_pixels[3 * width * height + i] = input_image.data[3 * width * height + i] as number;
-                } else { // TODO: else block is bad for GPUs (bc of exec_mask). will it be better if we initialize all arrays as 0.0?
-                    layer_pixels[0 * width * height + i] = 0.0;
-                    layer_pixels[1 * width * height + i] = 0.0;
-                    layer_pixels[2 * width * height + i] = 0.0;
-                    layer_pixels[3 * width * height + i] = 0.0;
+                const depth = depth_data.data[j]; // R channel of grayscale depth
+                if (depth >= minDepth && depth <= maxDepth) {
+                    pixels[j]     = input_data.data[j];
+                    pixels[j + 1] = input_data.data[j + 1];
+                    pixels[j + 2] = input_data.data[j + 2];
+                    pixels[j + 3] = 255;
+                } else {
+                    pixels[j + 3] = 0; // transparent
                 }
             }
 
-            const ort_layer = new ort.Tensor("float32", layer_pixels, [1, 4, width, height])
+            ctx.putImageData(imageData, 0, 0);
 
-            layers.push(ort_layer);
+            layers.push(canvas);
         }
 
         return layers;

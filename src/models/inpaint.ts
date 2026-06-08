@@ -1,6 +1,7 @@
 import type { BaseModel } from "./base-model.ts";
 import * as cv from "@techstark/opencv-js";
 import * as ort from "onnxruntime-web/all";
+import { ort_tensor_to_html_canvas } from "../utils/type_converter.ts";
 
 export class Inpaint implements BaseModel {
     ort_session: ort.InferenceSession | null = null;
@@ -21,10 +22,11 @@ export class Inpaint implements BaseModel {
 
         // 2. preprocess mask
         const processed_mask = this.preprocess_mask(input[1], width, height);
-        const inverted_mask = this.invert_tensor(processed_mask);
+        const processed_current_layer = this.preprocess_mask(input[2], width, height);
+        // const inverted_mask = this.invert_tensor(processed_mask);
 
         // return!
-        return [processed_input_image, inverted_mask];
+        return [processed_input_image, processed_mask, processed_current_layer];
     }
 
     public async run_inference(input_tensors: Array<ort.Tensor>): Promise<ort.Tensor> {
@@ -42,8 +44,32 @@ export class Inpaint implements BaseModel {
         return result["result"];
     }
 
-    public postprocess(input: ort.Tensor, width: number, height: number): HTMLCanvasElement {
-        // TODO
+    public postprocess(inputs: Array<ort.Tensor>, width: number, height: number): HTMLCanvasElement {
+        // convert inputs[0] to canvas
+        let input_canvas: HTMLCanvasElement = ort_tensor_to_html_canvas(inputs[0]);
+
+        // combine mask 1 & 2
+        const combined_mask: ort.Tensor = this.create_crop_mask(inputs[1], inputs[2]);
+
+        // read pixel data from the inpainted result canvas (512x512)
+        const ctx = input_canvas.getContext("2d")!;
+        const imageData = ctx.getImageData(0, 0, width, height);
+        const pixels = imageData.data;
+
+        const mask_data = combined_mask.data; // float32 in [0, 1]
+
+        for (let i = 0; i < width * height; i++) {
+            const keep = mask_data[i] as number; // smooth transition at crop boundary
+            const j = i * 4;
+            pixels[j]     = Math.round(pixels[j]     * keep); // set value to 0 if the coord doesn't overlap with the combined mask
+            pixels[j + 1] = Math.round(pixels[j + 1] * keep);
+            pixels[j + 2] = Math.round(pixels[j + 2] * keep);
+            pixels[j + 3] = Math.round(pixels[j + 3] * keep);
+        }
+
+        ctx.putImageData(imageData, 0, 0);
+        return input_canvas;
+
     }
     
     private preprocess_image(input: HTMLCanvasElement, width: number, height: number): ort.Tensor {
@@ -69,6 +95,7 @@ export class Inpaint implements BaseModel {
         return new ort.Tensor("float32", img_flat, [1, 3, width, height]);
     }
 
+    // FIXME: perf is bad for this function. Improve this later.
     private preprocess_mask(input: HTMLCanvasElement, width: number, height: number): ort.Tensor {
         const W = input.width;
         const H = input.height;
@@ -110,7 +137,7 @@ export class Inpaint implements BaseModel {
         return new ort.Tensor("float32", normalized, [1, 1, width, height]);
     }
 
-    private invert_tensor(tensor: ort.Tensor): ort.Tensor {
+    public invert_tensor(tensor: ort.Tensor): ort.Tensor {
         const n = tensor.data.length;
         const isFloat = tensor.type === "float32";
         let inverted;
@@ -129,4 +156,38 @@ export class Inpaint implements BaseModel {
 
         return new ort.Tensor(tensor.type, inverted, tensor.dims);
     }
+
+    private create_crop_mask(mask_a: ort.Tensor, mask_b: ort.Tensor): ort.Tensor {
+        const SZ = 512;
+
+        // combine both binary masks (1 if either has content)
+        const combined = new Uint8Array(SZ * SZ);
+        for (let i = 0; i < SZ * SZ; i++) {
+            combined[i] = (mask_a.data[i] as number > 0 || mask_b.data[i] as number > 0) ? 255 : 0;
+        }
+
+        const mat = new cv.Mat(SZ, SZ, cv.CV_8UC1);
+        mat.data.set(combined);
+
+        // dilate to push the crop boundary outward
+        const kernel = cv.Mat.ones(7, 7, cv.CV_8U);
+        const dilated = new cv.Mat();
+        cv.dilate(mat, dilated, kernel);
+        kernel.delete();
+        mat.delete();
+
+        // blur for smooth alpha transition at outer edge
+        const blurred = new cv.Mat();
+        cv.GaussianBlur(dilated, blurred, new cv.Size(1, 1), 10);
+        dilated.delete();
+
+        const feathered = new Float32Array(SZ * SZ);
+        for (let i = 0; i < SZ * SZ; i++) {
+            feathered[i] = blurred.data[i] / 255;
+        }
+        blurred.delete();
+
+        return new ort.Tensor("float32", feathered, [1, 1, SZ, SZ]);
+    }
+    
 }

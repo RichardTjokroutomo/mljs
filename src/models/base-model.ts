@@ -13,5 +13,5 @@ export interface BaseModel {
     run_inference(input_tensors: Array<ort.Tensor>): Promise<ort.Tensor>;
 
     // TODO: instead of array, better make them hashmap.
-    postprocess(input: ort.Tensor, width: number, height: number): HTMLCanvasElement;
+    postprocess(input: Array<ort.Tensor>, width: number, height: number): HTMLCanvasElement;
 }
