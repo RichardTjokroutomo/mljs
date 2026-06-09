@@ -1,5 +1,5 @@
 {
-  "name": "mljs",
+  "name": "@rtjkro/mljs",
   "version": "1.0.0",
   "description": "A JS library to run ML tasks on browser",
   "main": "index.ts",
