@@ -2,6 +2,7 @@ import type { BaseModel } from "./base-model.ts";
 import cvModule from "@techstark/opencv-js";
 import * as ort from "onnxruntime-web";
 import { ort_tensor_to_html_canvas } from "../utils/type_converter.ts";
+import { resize_html_canvas, resize_canvas_native } from "../utils/html_canvas_manipulator.ts";
 
 const cv = (cvModule as any).default ?? cvModule; // Handle both default and named exports from OpenCV.js
 
@@ -73,6 +74,39 @@ export class Inpaint implements BaseModel {
         return input_canvas;
 
     }
+
+    public combine_inpainted_layer_with_original(inpainted_layer: HTMLCanvasElement, original_image: HTMLCanvasElement): HTMLCanvasElement {
+        const inpainted_ctx = inpainted_layer.getContext("2d")!;
+        const original_ctx = original_image.getContext("2d")!;
+
+        const inpainted_data = inpainted_ctx.getImageData(0, 0, inpainted_layer.width, inpainted_layer.height);
+        const original_data = original_ctx.getImageData(0, 0, original_image.width, original_image.height);
+
+        const inpainted_pixels = inpainted_data.data;
+        const original_pixels = original_data.data;
+
+        for (let i: number = 0; i < inpainted_layer.width * inpainted_layer.height; i++) {
+            const j = i * 4;
+            if (inpainted_pixels[j + 3] > 0  && original_pixels[j+3] > 0) { // if inpainted pixel is not transparent, replace the original pixel with the inpainted pixel
+                if (true) {
+                    inpainted_pixels[j] = original_pixels[j];
+                    inpainted_pixels[j + 1] = original_pixels[j + 1];
+                    inpainted_pixels[j + 2] = original_pixels[j + 2];
+                } else { // if it is near the boundary, blend the inpainted pixel with the original pixel for smooth transition
+                    inpainted_pixels[j] = Math.round((1*inpainted_pixels[j] + 0.0*original_pixels[j]));
+                    inpainted_pixels[j + 1] = Math.round((1*inpainted_pixels[j + 1] + 0.0*original_pixels[j + 1]));
+                    inpainted_pixels[j + 2] = Math.round((1*inpainted_pixels[j + 2] + 0.0*original_pixels[j + 2]));
+                }
+            }
+        }
+
+        inpainted_ctx.putImageData(inpainted_data, 0, 0);
+        return inpainted_layer;
+    }
+
+    private current_coord_is_near_boundary() {
+
+    }
     
     private preprocess_image(input: HTMLCanvasElement, width: number, height: number): ort.Tensor {
         const HW = width * height;
@@ -101,7 +135,7 @@ export class Inpaint implements BaseModel {
     }
 
     // FIXME: perf is bad for this function. Improve this later.
-    private preprocess_mask(input: HTMLCanvasElement, width: number, height: number): ort.Tensor {
+    public preprocess_mask(input: HTMLCanvasElement, width: number, height: number): ort.Tensor {
         // resize input to target dimensions
         const resized = document.createElement("canvas");
         resized.width = width;
@@ -147,9 +181,9 @@ export class Inpaint implements BaseModel {
         const SZ = 512;
 
         // combine both binary masks (1 if either has content)
-        const combined = new Uint8Array(SZ * SZ);
+        const combined = new Float32Array(SZ * SZ);
         for (let i = 0; i < SZ * SZ; i++) {
-            combined[i] = (mask_a.data[i] as number > 0 || mask_b.data[i] as number > 0) ? 255 : 0;
+            combined[i] = (mask_a.data[i] as number > 0 || mask_b.data[i] as number > 0) ? 1 : 0;
         }
 
         const mat = new cv.Mat(SZ, SZ, cv.CV_8UC1);
@@ -169,7 +203,7 @@ export class Inpaint implements BaseModel {
 
         const feathered = new Float32Array(SZ * SZ);
         for (let i = 0; i < SZ * SZ; i++) {
-            feathered[i] = blurred.data[i] / 255;
+            feathered[i] = blurred.data[i];
         }
         blurred.delete();
 

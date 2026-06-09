@@ -3,8 +3,8 @@ import { DepthEstimation } from "../models/depth-estimation.ts";
 import { Inpaint } from "../models/inpaint.ts";
 import { Animation } from "../ui/animation.ts";
 import * as ort from "onnxruntime-web/all";
-import {html_image_to_html_canvas, html_canvas_to_html_image} from "../utils/type_converter.ts";
-import { resize_html_canvas } from "../utils/html_canvas_manipulator.ts";
+import {html_image_to_html_canvas, html_canvas_to_html_image, ort_tensor_to_html_canvas} from "../utils/type_converter.ts";
+import { resize_html_canvas, resize_canvas_native } from "../utils/html_canvas_manipulator.ts";
 
 const cv = (cvModule as any).default ?? cvModule; // Handle both default and named exports from OpenCV.js
 
@@ -66,6 +66,7 @@ export class SpatialScene {
         const target_img: HTMLImageElement = input_container.children[0] as HTMLImageElement;
 
         // 2. convert image to canvas
+        const target_canvas_unchanged: HTMLCanvasElement = html_image_to_html_canvas(target_img);
         let target_canvas: HTMLCanvasElement = html_image_to_html_canvas(target_img);
 
         // 3. perform depth estimation
@@ -76,21 +77,31 @@ export class SpatialScene {
             DEPTH_ESTIMATION_INPUT_HEIGHT
         );
         const depth_estimation_result: ort.Tensor = await this.depth_estimator.run_inference(depth_estimation_input);
-        const processed_depth_estimation_result: HTMLCanvasElement = this.depth_estimator.postprocess(
+        let processed_depth_estimation_result: HTMLCanvasElement = this.depth_estimator.postprocess(
             [depth_estimation_result], 
             DEPTH_ESTIMATION_INPUT_WIDTH, 
             DEPTH_ESTIMATION_INPUT_HEIGHT
-        ); // TODO: dim should be the original dim
+        );
+
+        processed_depth_estimation_result = resize_html_canvas(processed_depth_estimation_result, target_img.naturalWidth, target_img.naturalHeight);
         
         // 4. segment image into layers
-
+        target_canvas = resize_html_canvas(target_canvas, target_img.naturalWidth, target_img.naturalHeight);
         const layers: Array<HTMLCanvasElement> = this.depth_estimator.segment_into_layers(
-            target_canvas, 
+            target_canvas_unchanged, 
             processed_depth_estimation_result, 
-            DEPTH_ESTIMATION_INPUT_WIDTH, 
-            DEPTH_ESTIMATION_INPUT_HEIGHT, 
+            target_img.naturalWidth, 
+            target_img.naturalHeight, 
             num_layers
-        ); // TODO: dim should be the original dim
+        );
+
+        // TODO: remove this once debugging is complete.
+        // for (let i = 0; i < layers.length; i++) {
+        //     const lnk = document.createElement("a");
+        //     lnk.download = `t_layer_${i}.png`;
+        //     lnk.href = layers[i].toDataURL("image/png");
+        //     lnk.click();
+        // }
 
         // 5. inpaint each layer
         let inpainted_layers: Array<HTMLCanvasElement> = [];
@@ -105,11 +116,58 @@ export class SpatialScene {
                 const inverted_mask: ort.Tensor = this.inpainter.invert_tensor(inpainter_inputs[1]);
 
                 const inpainted_result: ort.Tensor = await this.inpainter.run_inference([inpainter_inputs[0], inverted_mask]);
+
+                // TODO: remove this once debugging is complete.
+                // const i_data = inpainted_result.data as Uint8Array;
+                // const i_dims = inpainted_result.dims;
+                // const i_h = i_dims[2];
+                // const i_w = i_dims[3];
+                // const i_canvas = document.createElement("canvas");
+                // i_canvas.width = i_w;
+                // i_canvas.height = i_h;
+                // const i_ctx = i_canvas.getContext("2d")!;
+                // const i_img_data = i_ctx.createImageData(i_w, i_h);
+                // const i_pixels = i_img_data.data;
+                // for (let iy = 0; iy < i_h; iy++) {
+                //     for (let ix = 0; ix < i_w; ix++) {
+                //         const pi = (iy * i_w + ix) * 4;
+                //         i_pixels[pi]     = i_data[0 * i_h * i_w + iy * i_w + ix];
+                //         i_pixels[pi + 1] = i_data[1 * i_h * i_w + iy * i_w + ix];
+                //         i_pixels[pi + 2] = i_data[2 * i_h * i_w + iy * i_w + ix];
+                //         i_pixels[pi + 3] = 255;
+                //     }
+                // }
+                // i_ctx.putImageData(i_img_data, 0, 0);
+                // const inpainted_lnk = document.createElement("a");
+                // inpainted_lnk.download = `inpainted_layer_${i}.png`;
+                // inpainted_lnk.href = i_canvas.toDataURL("image/png");
+                // inpainted_lnk.click();
                 
+                let inpainted_result_canvas: HTMLCanvasElement = ort_tensor_to_html_canvas(inpainted_result);
+                inpainted_result_canvas = resize_html_canvas(inpainted_result_canvas, target_img.naturalWidth, target_img.naturalHeight);
+
+                // TODO: remove this once debugging is complete.
+                const lnk = document.createElement("a");
+                lnk.download = `inpainted_canvas_layer_${i}.png`;
+                lnk.href = inpainted_result_canvas.toDataURL("image/png");
+                lnk.click();
+
+                const layer_i_mask: ort.Tensor = this.inpainter.preprocess_mask(layers[i], target_img.naturalWidth, target_img.naturalHeight);
+                const layer_i_plus_one_mask: ort.Tensor = this.inpainter.preprocess_mask(last_inpainted_layer, target_img.naturalWidth, target_img.naturalHeight);
                 const processed_inpainted_result: HTMLCanvasElement = this.inpainter.postprocess([inpainted_result, inpainter_inputs[1], inpainter_inputs[2]], INPAINT_INPUT_WIDTH, INPAINT_INPUT_HEIGHT);
-                inpainted_layers.push(processed_inpainted_result);
+                let resized_processed_inpainted_result: HTMLCanvasElement = resize_html_canvas(processed_inpainted_result, target_img.naturalWidth, target_img.naturalHeight);
+                const final_res: HTMLCanvasElement = this.inpainter.combine_inpainted_layer_with_original(resized_processed_inpainted_result, layers[i]);
+                inpainted_layers.push(final_res);
 
             }
+        }
+
+        // TODO: remove this once debugging is complete.
+        for (let i = 0; i < inpainted_layers.length; i++) {
+            const lnk = document.createElement("a");
+            lnk.download = `u_inpainted_${i}.png`;
+            lnk.href = inpainted_layers[i].toDataURL("image/png");
+            lnk.click();
         }
 
         // 6. convert each canvas back to image & add effects
