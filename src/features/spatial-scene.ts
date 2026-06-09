@@ -4,6 +4,7 @@ import { Inpaint } from "../models/inpaint.ts";
 import { Animation } from "../ui/animation.ts";
 import * as ort from "onnxruntime-web/all";
 import {html_image_to_html_canvas, html_canvas_to_html_image} from "../utils/type_converter.ts";
+import { resize_html_canvas } from "../utils/html_canvas_manipulator.ts";
 
 const cv = (cvModule as any).default ?? cvModule; // Handle both default and named exports from OpenCV.js
 
@@ -48,7 +49,12 @@ export class SpatialScene {
 
     // TODO: for now, client JS will call this code. but in the future, make this private and declare a wrapper function.
     public async convert_single_image(input_container: HTMLDivElement, num_layers: number){
-        const TOTAL_TIME_0 = Date.now();
+        // 0. local vars
+        const DEPTH_ESTIMATION_INPUT_WIDTH = 518; // DA_v2's input width
+        const DEPTH_ESTIMATION_INPUT_HEIGHT = 518;
+        const INPAINT_INPUT_WIDTH = 512; // MI-GAN's input width
+        const INPAINT_INPUT_HEIGHT = 512;
+
         // 1. rule check & obtain image element
         if ((input_container.childElementCount != 1) || 
         (input_container.children[0].tagName != "IMG"))
@@ -60,31 +66,47 @@ export class SpatialScene {
         const target_img: HTMLImageElement = input_container.children[0] as HTMLImageElement;
 
         // 2. convert image to canvas
-        const target_canvas: HTMLCanvasElement = html_image_to_html_canvas(target_img);
+        let target_canvas: HTMLCanvasElement = html_image_to_html_canvas(target_img);
 
         // 3. perform depth estimation
-        const depth_estimation_input: Array<ort.Tensor> = this.depth_estimator.preprocess([target_canvas], 518, 518);
+        target_canvas = resize_html_canvas(target_canvas, DEPTH_ESTIMATION_INPUT_WIDTH, DEPTH_ESTIMATION_INPUT_HEIGHT);
+        const depth_estimation_input: Array<ort.Tensor> = this.depth_estimator.preprocess(
+            [target_canvas], 
+            DEPTH_ESTIMATION_INPUT_WIDTH, 
+            DEPTH_ESTIMATION_INPUT_HEIGHT
+        );
         const depth_estimation_result: ort.Tensor = await this.depth_estimator.run_inference(depth_estimation_input);
-        const processed_depth_estimation_result: HTMLCanvasElement = this.depth_estimator.postprocess([depth_estimation_result], 518, 518); // TODO: dim should be the original dim
+        const processed_depth_estimation_result: HTMLCanvasElement = this.depth_estimator.postprocess(
+            [depth_estimation_result], 
+            DEPTH_ESTIMATION_INPUT_WIDTH, 
+            DEPTH_ESTIMATION_INPUT_HEIGHT
+        ); // TODO: dim should be the original dim
         
         // 4. segment image into layers
 
-        const layers: Array<HTMLCanvasElement> = this.depth_estimator.segment_into_layers(target_canvas, processed_depth_estimation_result, 518, 518, num_layers); // TODO: dim should be the original dim
+        const layers: Array<HTMLCanvasElement> = this.depth_estimator.segment_into_layers(
+            target_canvas, 
+            processed_depth_estimation_result, 
+            DEPTH_ESTIMATION_INPUT_WIDTH, 
+            DEPTH_ESTIMATION_INPUT_HEIGHT, 
+            num_layers
+        ); // TODO: dim should be the original dim
 
         // 5. inpaint each layer
         let inpainted_layers: Array<HTMLCanvasElement> = [];
+        target_canvas = resize_html_canvas(target_canvas, INPAINT_INPUT_WIDTH, INPAINT_INPUT_HEIGHT);
         for (let i: number = num_layers-1; i >= 0; i--){
             if (i == num_layers-1){
                 inpainted_layers.push(layers[i]);
             } else {
                 const last_inpainted_layer: HTMLCanvasElement = inpainted_layers[inpainted_layers.length - 1];
                 
-                const inpainter_inputs: Array<ort.Tensor> = this.inpainter.preprocess([target_canvas, last_inpainted_layer, layers[i]], 512, 512);
+                const inpainter_inputs: Array<ort.Tensor> = this.inpainter.preprocess([target_canvas, last_inpainted_layer, layers[i]], INPAINT_INPUT_WIDTH, INPAINT_INPUT_HEIGHT);
                 const inverted_mask: ort.Tensor = this.inpainter.invert_tensor(inpainter_inputs[1]);
 
                 const inpainted_result: ort.Tensor = await this.inpainter.run_inference([inpainter_inputs[0], inverted_mask]);
                 
-                const processed_inpainted_result: HTMLCanvasElement = this.inpainter.postprocess([inpainted_result, inpainter_inputs[1], inpainter_inputs[2]], 512, 512);
+                const processed_inpainted_result: HTMLCanvasElement = this.inpainter.postprocess([inpainted_result, inpainter_inputs[1], inpainter_inputs[2]], INPAINT_INPUT_WIDTH, INPAINT_INPUT_HEIGHT);
                 inpainted_layers.push(processed_inpainted_result);
 
             }
@@ -92,7 +114,7 @@ export class SpatialScene {
 
         // 6. convert each canvas back to image & add effects
         let inpainted_images: Array<HTMLImageElement> = [];
-        const parallax_factors = [0.055, 0.065, 0.075, 0.08]; // TODO: make this user argument.
+        const parallax_factors = [0.055, 0.065, 0.075, 0.09]; // TODO: make this user argument.
         for (let i: number = 0; i < inpainted_layers.length; i++){
             let image_layer = html_canvas_to_html_image(inpainted_layers[i]);
 

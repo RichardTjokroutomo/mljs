@@ -48,11 +48,11 @@ var require_opencv = __commonJS({
         root.cv = factory();
       }
     })(exports2, function() {
-      var cv5 = (function() {
+      var cv6 = (function() {
         var _scriptDir = typeof document !== "undefined" && document.currentScript ? document.currentScript.src : void 0;
-        return (function(cv6) {
-          cv6 = cv6 || {};
-          var Module2 = typeof cv6 !== "undefined" ? cv6 : {};
+        return (function(cv7) {
+          cv7 = cv7 || {};
+          var Module2 = typeof cv7 !== "undefined" ? cv7 : {};
           var moduleOverrides = {};
           var key;
           for (key in Module2) {
@@ -7523,8 +7523,8 @@ var require_opencv = __commonJS({
           if (typeof Module2.FS === "undefined" && typeof FS !== "undefined") {
             Module2.FS = FS;
           }
-          if (typeof cv6 === "undefined") {
-            var cv6 = Module2;
+          if (typeof cv7 === "undefined") {
+            var cv7 = Module2;
           }
           Module2["imread"] = function(imageSource) {
             var img = null;
@@ -7548,7 +7548,7 @@ var require_opencv = __commonJS({
               throw new Error("Please input the valid canvas or img id.");
             }
             var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            return cv6.matFromImageData(imgData);
+            return cv7.matFromImageData(imgData);
           };
           Module2["imshow"] = function(canvasSource, mat) {
             var canvas = null;
@@ -7560,22 +7560,22 @@ var require_opencv = __commonJS({
             if (!(canvas instanceof HTMLCanvasElement)) {
               throw new Error("Please input the valid canvas element or id.");
             }
-            if (!(mat instanceof cv6.Mat)) {
+            if (!(mat instanceof cv7.Mat)) {
               throw new Error("Please input the valid cv.Mat instance.");
             }
-            var img = new cv6.Mat();
+            var img = new cv7.Mat();
             var depth = mat.type() % 8;
-            var scale = depth <= cv6.CV_8S ? 1 : depth <= cv6.CV_32S ? 1 / 256 : 255;
-            var shift = depth === cv6.CV_8S || depth === cv6.CV_16S ? 128 : 0;
-            mat.convertTo(img, cv6.CV_8U, scale, shift);
+            var scale = depth <= cv7.CV_8S ? 1 : depth <= cv7.CV_32S ? 1 / 256 : 255;
+            var shift = depth === cv7.CV_8S || depth === cv7.CV_16S ? 128 : 0;
+            mat.convertTo(img, cv7.CV_8U, scale, shift);
             switch (img.type()) {
-              case cv6.CV_8UC1:
-                cv6.cvtColor(img, img, cv6.COLOR_GRAY2RGBA);
+              case cv7.CV_8UC1:
+                cv7.cvtColor(img, img, cv7.COLOR_GRAY2RGBA);
                 break;
-              case cv6.CV_8UC3:
-                cv6.cvtColor(img, img, cv6.COLOR_RGB2RGBA);
+              case cv7.CV_8UC3:
+                cv7.cvtColor(img, img, cv7.COLOR_RGB2RGBA);
                 break;
-              case cv6.CV_8UC4:
+              case cv7.CV_8UC4:
                 break;
               default:
                 throw new Error("Bad number of channels (Source image must have 1, 3 or 4 channels)");
@@ -7604,10 +7604,10 @@ var require_opencv = __commonJS({
             var ctx = canvas.getContext("2d");
             this.video = video;
             this.read = function(frame) {
-              if (!(frame instanceof cv6.Mat)) {
+              if (!(frame instanceof cv7.Mat)) {
                 throw new Error("Please input the valid cv.Mat instance.");
               }
-              if (frame.type() !== cv6.CV_8UC4) {
+              if (frame.type() !== cv7.CV_8UC4) {
                 throw new Error("Bad type of input mat: the type should be cv.CV_8UC4.");
               }
               if (frame.cols !== video.width || frame.rows !== video.height) {
@@ -7772,61 +7772,61 @@ var require_opencv = __commonJS({
           }
           Module2["TermCriteria"] = TermCriteria;
           Module2["matFromArray"] = function(rows, cols, type, array) {
-            var mat = new cv6.Mat(rows, cols, type);
+            var mat = new cv7.Mat(rows, cols, type);
             switch (type) {
-              case cv6.CV_8U:
-              case cv6.CV_8UC1:
-              case cv6.CV_8UC2:
-              case cv6.CV_8UC3:
-              case cv6.CV_8UC4: {
+              case cv7.CV_8U:
+              case cv7.CV_8UC1:
+              case cv7.CV_8UC2:
+              case cv7.CV_8UC3:
+              case cv7.CV_8UC4: {
                 mat.data.set(array);
                 break;
               }
-              case cv6.CV_8S:
-              case cv6.CV_8SC1:
-              case cv6.CV_8SC2:
-              case cv6.CV_8SC3:
-              case cv6.CV_8SC4: {
+              case cv7.CV_8S:
+              case cv7.CV_8SC1:
+              case cv7.CV_8SC2:
+              case cv7.CV_8SC3:
+              case cv7.CV_8SC4: {
                 mat.data8S.set(array);
                 break;
               }
-              case cv6.CV_16U:
-              case cv6.CV_16UC1:
-              case cv6.CV_16UC2:
-              case cv6.CV_16UC3:
-              case cv6.CV_16UC4: {
+              case cv7.CV_16U:
+              case cv7.CV_16UC1:
+              case cv7.CV_16UC2:
+              case cv7.CV_16UC3:
+              case cv7.CV_16UC4: {
                 mat.data16U.set(array);
                 break;
               }
-              case cv6.CV_16S:
-              case cv6.CV_16SC1:
-              case cv6.CV_16SC2:
-              case cv6.CV_16SC3:
-              case cv6.CV_16SC4: {
+              case cv7.CV_16S:
+              case cv7.CV_16SC1:
+              case cv7.CV_16SC2:
+              case cv7.CV_16SC3:
+              case cv7.CV_16SC4: {
                 mat.data16S.set(array);
                 break;
               }
-              case cv6.CV_32S:
-              case cv6.CV_32SC1:
-              case cv6.CV_32SC2:
-              case cv6.CV_32SC3:
-              case cv6.CV_32SC4: {
+              case cv7.CV_32S:
+              case cv7.CV_32SC1:
+              case cv7.CV_32SC2:
+              case cv7.CV_32SC3:
+              case cv7.CV_32SC4: {
                 mat.data32S.set(array);
                 break;
               }
-              case cv6.CV_32F:
-              case cv6.CV_32FC1:
-              case cv6.CV_32FC2:
-              case cv6.CV_32FC3:
-              case cv6.CV_32FC4: {
+              case cv7.CV_32F:
+              case cv7.CV_32FC1:
+              case cv7.CV_32FC2:
+              case cv7.CV_32FC3:
+              case cv7.CV_32FC4: {
                 mat.data32F.set(array);
                 break;
               }
-              case cv6.CV_64F:
-              case cv6.CV_64FC1:
-              case cv6.CV_64FC2:
-              case cv6.CV_64FC3:
-              case cv6.CV_64FC4: {
+              case cv7.CV_64F:
+              case cv7.CV_64FC1:
+              case cv7.CV_64FC2:
+              case cv7.CV_64FC3:
+              case cv7.CV_64FC4: {
                 mat.data64F.set(array);
                 break;
               }
@@ -7837,24 +7837,24 @@ var require_opencv = __commonJS({
             return mat;
           };
           Module2["matFromImageData"] = function(imageData) {
-            var mat = new cv6.Mat(imageData.height, imageData.width, cv6.CV_8UC4);
+            var mat = new cv7.Mat(imageData.height, imageData.width, cv7.CV_8UC4);
             mat.data.set(imageData.data);
             return mat;
           };
-          return cv6;
+          return cv7;
         });
       })();
       if (typeof exports2 === "object" && typeof module2 === "object")
-        module2.exports = cv5;
+        module2.exports = cv6;
       else if (typeof define === "function" && define["amd"])
         define([], function() {
-          return cv5;
+          return cv6;
         });
       else if (typeof exports2 === "object")
-        exports2["cv"] = cv5;
+        exports2["cv"] = cv6;
       if (typeof Module === "undefined")
         var Module = {};
-      return cv5(Module);
+      return cv6(Module);
     });
   }
 });
@@ -18510,7 +18510,7 @@ var DepthEstimation = class {
 };
 
 // src/features/spatial-scene.ts
-var import_opencv_js2 = __toESM(require_opencv(), 1);
+var import_opencv_js3 = __toESM(require_opencv(), 1);
 
 // src/models/inpaint.ts
 var import_opencv_js = __toESM(require_opencv(), 1);
@@ -42652,8 +42652,24 @@ var Animation = class {
   }
 };
 
-// src/features/spatial-scene.ts
+// src/utils/html_canvas_manipulator.ts
+var import_opencv_js2 = __toESM(require_opencv(), 1);
 var cv4 = import_opencv_js2.default.default ?? import_opencv_js2.default;
+function resize_html_canvas(canvas, width, height) {
+  const src = cv4.imread(canvas);
+  const dst = new cv4.Mat();
+  cv4.resize(src, dst, new cv4.Size(width, height), 0, 0, cv4.INTER_LINEAR);
+  src.delete();
+  const out = document.createElement("canvas");
+  out.width = width;
+  out.height = height;
+  cv4.imshow(out, dst);
+  dst.delete();
+  return out;
+}
+
+// src/features/spatial-scene.ts
+var cv5 = import_opencv_js3.default.default ?? import_opencv_js3.default;
 var SpatialScene = class {
   depth_estimator;
   inpainter;
@@ -42664,9 +42680,6 @@ var SpatialScene = class {
     this.animation = new Animation();
   }
   async initialize_sessions(depth_estimation_path, inpaint_path) {
-    console.log("Initializing sessions with model paths:", depth_estimation_path, inpaint_path);
-    const res = await fetch(depth_estimation_path);
-    console.log("Fetched depth estimation model, response:", res);
     const depth_estimation_res = await fetch(depth_estimation_path);
     const depth_estimation_array_buffer = await depth_estimation_res.arrayBuffer();
     const depth_estimation_uint8_array = new Uint8Array(depth_estimation_array_buffer);
@@ -42685,62 +42698,59 @@ var SpatialScene = class {
   }
   // TODO: for now, client JS will call this code. but in the future, make this private and declare a wrapper function.
   async convert_single_image(input_container, num_layers) {
-    const TOTAL_TIME_0 = Date.now();
+    const DEPTH_ESTIMATION_INPUT_WIDTH = 518;
+    const DEPTH_ESTIMATION_INPUT_HEIGHT = 518;
+    const INPAINT_INPUT_WIDTH = 512;
+    const INPAINT_INPUT_HEIGHT = 512;
     if (input_container.childElementCount != 1 || input_container.children[0].tagName != "IMG") {
       console.log("cannot apply spatial scene!");
       return;
     }
     const target_img = input_container.children[0];
-    console.log("step 1 done!");
-    const target_canvas = html_image_to_html_canvas(target_img);
-    console.log("step 2 done!");
-    const DA_1 = Date.now();
-    const depth_estimation_input = this.depth_estimator.preprocess([target_canvas], 518, 518);
-    const DA_2 = Date.now();
+    let target_canvas = html_image_to_html_canvas(target_img);
+    target_canvas = resize_html_canvas(target_canvas, DEPTH_ESTIMATION_INPUT_WIDTH, DEPTH_ESTIMATION_INPUT_HEIGHT);
+    const depth_estimation_input = this.depth_estimator.preprocess(
+      [target_canvas],
+      DEPTH_ESTIMATION_INPUT_WIDTH,
+      DEPTH_ESTIMATION_INPUT_HEIGHT
+    );
     const depth_estimation_result = await this.depth_estimator.run_inference(depth_estimation_input);
-    const DA_3 = Date.now();
-    const processed_depth_estimation_result = this.depth_estimator.postprocess([depth_estimation_result], 518, 518);
-    const DA_4 = Date.now();
-    console.log(`Depth estimation timings (ms): preprocess ${DA_2 - DA_1}, inference ${DA_3 - DA_2}, postprocess ${DA_4 - DA_3}`);
-    console.log("step 3 done!");
-    const DA_5 = Date.now();
-    const layers = this.depth_estimator.segment_into_layers(target_canvas, processed_depth_estimation_result, 518, 518, num_layers);
-    const DA_6 = Date.now();
-    console.log(`Segmentation timings (ms): ${DA_6 - DA_5}`);
-    console.log("step 4 done!");
+    const processed_depth_estimation_result = this.depth_estimator.postprocess(
+      [depth_estimation_result],
+      DEPTH_ESTIMATION_INPUT_WIDTH,
+      DEPTH_ESTIMATION_INPUT_HEIGHT
+    );
+    const layers = this.depth_estimator.segment_into_layers(
+      target_canvas,
+      processed_depth_estimation_result,
+      DEPTH_ESTIMATION_INPUT_WIDTH,
+      DEPTH_ESTIMATION_INPUT_HEIGHT,
+      num_layers
+    );
     let inpainted_layers = [];
+    target_canvas = resize_html_canvas(target_canvas, INPAINT_INPUT_WIDTH, INPAINT_INPUT_HEIGHT);
     for (let i = num_layers - 1; i >= 0; i--) {
-      console.log("================================");
-      console.log(`Inpainting layer ${num_layers - 1 - i}...`);
       if (i == num_layers - 1) {
         inpainted_layers.push(layers[i]);
       } else {
-        const IP_1 = Date.now();
         const last_inpainted_layer = inpainted_layers[inpainted_layers.length - 1];
-        const inpainter_inputs = this.inpainter.preprocess([target_canvas, last_inpainted_layer, layers[i]], 512, 512);
+        const inpainter_inputs = this.inpainter.preprocess([target_canvas, last_inpainted_layer, layers[i]], INPAINT_INPUT_WIDTH, INPAINT_INPUT_HEIGHT);
         const inverted_mask = this.inpainter.invert_tensor(inpainter_inputs[1]);
-        const IP_2 = Date.now();
         const inpainted_result = await this.inpainter.run_inference([inpainter_inputs[0], inverted_mask]);
-        const IP_3 = Date.now();
-        const processed_inpainted_result = this.inpainter.postprocess([inpainted_result, inpainter_inputs[1], inpainter_inputs[2]], 512, 512);
-        const IP_4 = Date.now();
+        const processed_inpainted_result = this.inpainter.postprocess([inpainted_result, inpainter_inputs[1], inpainter_inputs[2]], INPAINT_INPUT_WIDTH, INPAINT_INPUT_HEIGHT);
         inpainted_layers.push(processed_inpainted_result);
-        console.log(`Inpainting timings (ms): preprocess ${IP_2 - IP_1}, inference ${IP_3 - IP_2}, postprocess ${IP_4 - IP_3}`);
       }
     }
-    console.log("step 5 done!");
     let inpainted_images = [];
-    const parallax_factors = [0.055, 0.065, 0.075, 0.08];
+    const parallax_factors = [0.055, 0.065, 0.075, 0.09];
     for (let i = 0; i < inpainted_layers.length; i++) {
       let image_layer = html_canvas_to_html_image(inpainted_layers[i]);
       inpainted_images.push(this.animation.add_cursor_hover_effect(input_container, image_layer, parallax_factors[i]));
     }
-    console.log("step 6 done!");
     const containerWidth = input_container.clientWidth;
     const containerHeight = input_container.clientHeight;
     input_container.style.position = "relative";
     input_container.removeChild(input_container.firstChild);
-    console.log("step 7 done!");
     for (let i = 0; i < inpainted_images.length; i++) {
       inpainted_images[i].style.zIndex = `${-i}`;
       inpainted_images[i].style.position = "absolute";
@@ -42753,9 +42763,6 @@ var SpatialScene = class {
       inpainted_images[i].style.height = `${canvasHeight}px`;
       input_container.appendChild(inpainted_images[i]);
     }
-    const TOTAL_TIME_1 = Date.now();
-    console.log(`Total processing time (ms): ${TOTAL_TIME_1 - TOTAL_TIME_0}`);
-    console.log("step 8 done!");
   }
 };
 export {
