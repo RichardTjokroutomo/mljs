@@ -73,17 +73,31 @@ export function ort_tensor_to_html_canvas(tensor: ort.Tensor): HTMLCanvasElement
         throw new Error("failed to get 2d context");
     }
     const image_data = ctx.createImageData(width, height);
-    const tensor_data = tensor.data as Float32Array;
-    for (let y = 0; y < height; y++) {
-        for (let x = 0; x < width; x++) {
-            const pixel_idx = (y * width + x) * 4;
-            for (let c = 0; c < 3; c++) {
-                image_data.data[pixel_idx + c] = Math.max(
-                    0,
-                    Math.min(255, Math.round(tensor_data[c * height * width + y * width + x]! * 255)),
-                );
+    const is_float = tensor.type === "float32";
+    if (is_float) {
+        const tensor_data = tensor.data as Float32Array;
+        for (let y = 0; y < height; y++) {
+            for (let x = 0; x < width; x++) {
+                const pixel_idx = (y * width + x) * 4;
+                for (let c = 0; c < 3; c++) {
+                    image_data.data[pixel_idx + c] = Math.max(
+                        0,
+                        Math.min(255, Math.round(tensor_data[c * height * width + y * width + x]! * 255)),
+                    );
+                }
+                image_data.data[pixel_idx + 3] = 255;
             }
-            image_data.data[pixel_idx + 3] = 255;
+        }
+    } else {
+        const tensor_data = tensor.data as Uint8Array;
+        for (let y = 0; y < height; y++) {
+            for (let x = 0; x < width; x++) {
+                const pixel_idx = (y * width + x) * 4;
+                for (let c = 0; c < 3; c++) {
+                    image_data.data[pixel_idx + c] = tensor_data[c * height * width + y * width + x]!;
+                }
+                image_data.data[pixel_idx + 3] = 255;
+            }
         }
     }
     ctx.putImageData(image_data, 0, 0);

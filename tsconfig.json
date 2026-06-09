@@ -44,6 +44,6 @@
     // Extra configs
     "moduleResolution": "nodenext",
     "allowImportingTsExtensions": true,
-    "noEmit": true,
+    "noEmit": true
   }
 }

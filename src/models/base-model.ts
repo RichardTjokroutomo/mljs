@@ -1,5 +1,4 @@
-import * as ort from "onnxruntime-web/all";
-import * as cv from "@techstark/opencv-js";
+import * as ort from "onnxruntime-web";
 
 export interface BaseModel {
     ort_session: ort.InferenceSession | null;

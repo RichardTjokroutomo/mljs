@@ -1,0 +1,36 @@
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body style="display: flex; flex-direction: column; align-items: center;">
+<h2>3D Framework Demo</h2>
+<p id="status">HI!</p>
+<input type="file" accept="image/*" id="image_upload">
+<img id="base_img" style="max-width: 300px; max-height: 300px; margin-top: 8px;">
+<br>
+<button id="process">process!</button>
+<div id="result" style="position: relative; border: 2px solid #555; width: 350px; height: 350px; overflow: hidden;"></div>
+
+<script>
+document.getElementById("image_upload").addEventListener("change", function(e) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = function(ev) {
+        const img = document.createElement("img");
+        img.src = ev.target.result;
+        img.style.maxWidth = "100%";
+        img.style.maxHeight = "100%";
+
+        const div = document.getElementById("result");
+        div.innerHTML = "";
+        div.appendChild(img);
+    };
+    reader.readAsDataURL(file);
+});
+</script>
+
+<script type="module" src="./script.js"></script>
+</body>
+</html>

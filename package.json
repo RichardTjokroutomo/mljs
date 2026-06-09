@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build": "esbuild index.ts --bundle --format=esm --platform=browser --outfile=dist/index.js  --external:fs --external:path",
+    "typecheck": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
@@ -20,9 +21,11 @@
   "homepage": "https://github.com/RichardTjokroutomo/mljs#readme",
   "dependencies": {
     "@techstark/opencv-js": "^4.12.0-release.1",
+    "esbuild": "^0.28.0",
     "onnxruntime-web": "^1.26.0"
   },
   "devDependencies": {
-    "typescript": "^6.0.3"
+    "tsup": "^8.5.1",
+    "typescript": "5.9"
   }
 }

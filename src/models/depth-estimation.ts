@@ -1,5 +1,4 @@
-import * as ort from "onnxruntime-web/all";
-import * as cv from "@techstark/opencv-js";
+import * as ort from "onnxruntime-web";
 import type { BaseModel } from "./base-model.ts";
 
 export class DepthEstimation implements BaseModel {
@@ -16,31 +15,25 @@ export class DepthEstimation implements BaseModel {
             throw new Error("input array is empty, can't preprocess image for depth estimation!");
         }
 
-        // local vars
-        const img_src = cv.imread(input[0]);
-        let img_dst = new cv.Mat();
+        // resize
+        const resized = document.createElement("canvas");
+        resized.width = width;
+        resized.height = height;
+        const ctx = resized.getContext("2d")!;
+        ctx.drawImage(input[0], 0, 0, width, height);
 
-        // populate cv mat
-        cv.cvtColor(img_src, img_dst, cv.COLOR_RGBA2RGB);
-        let d_img = cv.blobFromImage(
-            img_dst,
-            1/255,
-            new cv.Size(width, height),
-            new cv.Scalar(0.485, 0,456, 0.406), // FIXME: this is the mean value from imagenet. is this acceptable?
-            false,
-        );
-        img_dst.delete();
+        // extract RGBA pixel data
+        const image_data = ctx.getImageData(0, 0, width, height);
+        const pixels = image_data.data;
 
-        // create float32 array
-        let img_flat = new Float32Array(3 * width * height);
+        // create float32 array in CHW layout, normalize to [0, 1]
+        const img_flat = new Float32Array(3 * width * height);
         for (let i = 0; i < width * height; i++) {
-            const base = i * 3;
-            const ch_base = i; // spatial index per channel
-            img_flat[0 * width * height + ch_base] = d_img.data[base]     / 255;
-            img_flat[1 * width * height + ch_base] = d_img.data[base + 1] / 255;
-            img_flat[2 * width * height + ch_base] = d_img.data[base + 2] / 255;
+            const base = i * 4;
+            img_flat[0 * width * height + i] = pixels[base]     / 255;
+            img_flat[1 * width * height + i] = pixels[base + 1] / 255;
+            img_flat[2 * width * height + i] = pixels[base + 2] / 255;
         }
-        d_img.delete();
 
         // create ort tensor & return
         return [new ort.Tensor("float32", img_flat, [1, 3, width, height])];
