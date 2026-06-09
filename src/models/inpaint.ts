@@ -40,7 +40,13 @@ export class Inpaint implements BaseModel {
             throw new Error("input_tensors array's length is not 2! Can't perform inference!");
         }
 
-        const feeds = { image: input_tensors[0], mask: input_tensors[1] }; // convention: input image is first element; mask is second.
+        const img_raw = new Float32Array(input_tensors[0].data.length);
+        for (let i = 0; i < input_tensors[0].data.length; i++) {
+            img_raw[i] = input_tensors[0].data[i] as number * 255;
+        }
+        const img_scaled = new ort.Tensor("float32", img_raw, input_tensors[0].dims);
+
+        const feeds = { image: img_scaled, mask: input_tensors[1] }; // convention: input image is first element; mask is second.
         let result = await this.ort_session.run(feeds);
 
         return result["result"];
@@ -92,9 +98,9 @@ export class Inpaint implements BaseModel {
         const img_flat = new Float32Array(3 * HW);
         for (let i = 0; i < HW; i++) {
             const base = i * 4;
-            img_flat[0 * HW + i] = pixels[base];
-            img_flat[1 * HW + i] = pixels[base + 1];
-            img_flat[2 * HW + i] = pixels[base + 2];
+            img_flat[0 * HW + i] = pixels[base] / 255;
+            img_flat[1 * HW + i] = pixels[base + 1] / 255;
+            img_flat[2 * HW + i] = pixels[base + 2] / 255;
         }
 
         return new ort.Tensor("float32", img_flat, [1, 3, width, height]);
