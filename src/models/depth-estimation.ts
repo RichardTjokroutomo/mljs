@@ -1,5 +1,6 @@
 import * as ort from "onnxruntime-web";
 import type { BaseModel } from "./base-model.ts";
+import { threshold } from "@techstark/opencv-js";
 
 export class DepthEstimation implements BaseModel {
     ort_session: ort.InferenceSession | null = null;

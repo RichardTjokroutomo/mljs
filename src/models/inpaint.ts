@@ -24,9 +24,12 @@ export class Inpaint implements BaseModel {
         const processed_input_image = this.preprocess_image(input[0], width, height);
 
         // 2. preprocess mask
-        const processed_mask = this.preprocess_mask(input[1], width, height);
-        const processed_current_layer = this.preprocess_mask(input[2], width, height);
+        let processed_mask = this.preprocess_mask(input[1], width, height);
+        let processed_current_layer = this.preprocess_mask(input[2], width, height);
         // const inverted_mask = this.invert_tensor(processed_mask);
+
+        processed_mask = this.dilate_and_blur_mask(processed_mask);
+        processed_current_layer = this.dilate_and_blur_mask(processed_current_layer);
 
         // return!
         return [processed_input_image, processed_mask, processed_current_layer];
@@ -50,9 +53,18 @@ export class Inpaint implements BaseModel {
     public postprocess(inputs: Array<ort.Tensor>, width: number, height: number): HTMLCanvasElement {
         // convert inputs[0] to canvas
         let input_canvas: HTMLCanvasElement = ort_tensor_to_html_canvas(inputs[0]);
+        input_canvas = resize_canvas_native(input_canvas, width, height); // resize with native canvas method for sharper edges, since the inpainted result is already 512x512
+
+        // const lnk = document.createElement("a");
+        //     lnk.download = `T_BEFORE_postprocessing_canvas.png`;
+        //     lnk.href = input_canvas.toDataURL("image/png");
+        //     lnk.click();
 
         // combine mask 1 & 2
-        const combined_mask: ort.Tensor = this.create_crop_mask(inputs[1], inputs[2]);
+        const combined_mask: ort.Tensor = this.create_crop_mask(inputs[1], inputs[2], width, height);
+        console.log("mask 1 dim: ", inputs[1].dims);
+        console.log("mask 2 dim: ", inputs[2].dims);
+        console.log("combined mask dim: ", combined_mask.dims);
 
         // read pixel data from the inpainted result canvas (512x512)
         const ctx = input_canvas.getContext("2d")!;
@@ -71,6 +83,11 @@ export class Inpaint implements BaseModel {
         }
 
         ctx.putImageData(imageData, 0, 0);
+
+        // const lnk_2 = document.createElement("a");
+        //     lnk_2.download = `T_AFTER_postprocessing_canvas.png`;
+        //     lnk_2.href = input_canvas.toDataURL("image/png");
+        //     lnk_2.click();
         return input_canvas;
 
     }
@@ -88,7 +105,7 @@ export class Inpaint implements BaseModel {
         for (let i: number = 0; i < inpainted_layer.width * inpainted_layer.height; i++) {
             const j = i * 4;
             if (inpainted_pixels[j + 3] > 0  && original_pixels[j+3] > 0) { // if inpainted pixel is not transparent, replace the original pixel with the inpainted pixel
-                if (true) {
+                if (!this.is_at_hole_boundary(inpainted_data, i) || true) {
                     inpainted_pixels[j] = original_pixels[j];
                     inpainted_pixels[j + 1] = original_pixels[j + 1];
                     inpainted_pixels[j + 2] = original_pixels[j + 2];
@@ -104,10 +121,28 @@ export class Inpaint implements BaseModel {
         return inpainted_layer;
     }
 
-    private current_coord_is_near_boundary() {
+    private is_at_hole_boundary(imageData: ImageData, pixelIndex: number, radius: number = 15): boolean {
+        const data = imageData.data;
+        const w = imageData.width;
+        const h = imageData.height;
+        const cx = pixelIndex % w;
+        const cy = Math.floor(pixelIndex / w);
 
+        const x0 = Math.max(0, cx - radius);
+        const x1 = Math.min(w - 1, cx + radius);
+        const y0 = Math.max(0, cy - radius);
+        const y1 = Math.min(h - 1, cy + radius);
+
+        for (let y = y0; y <= y1; y++) {
+            for (let x = x0; x <= x1; x++) {
+                if (data[(y * w + x) * 4 + 3] === 0) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
-    
+
     private preprocess_image(input: HTMLCanvasElement, width: number, height: number): ort.Tensor {
         const HW = width * height;
 
@@ -177,16 +212,15 @@ export class Inpaint implements BaseModel {
         return new ort.Tensor(tensor.type, inverted, tensor.dims);
     }
 
-    private create_crop_mask(mask_a: ort.Tensor, mask_b: ort.Tensor): ort.Tensor {
-        const SZ = 512;
+    private create_crop_mask(mask_a: ort.Tensor, mask_b: ort.Tensor, width: number, height: number): ort.Tensor {
 
         // combine both binary masks (1 if either has content)
-        const combined = new Float32Array(SZ * SZ);
-        for (let i = 0; i < SZ * SZ; i++) {
+        const combined = new Float32Array(width * height);
+        for (let i = 0; i < width * height; i++) {
             combined[i] = (mask_a.data[i] as number > 0 || mask_b.data[i] as number > 0) ? 1 : 0;
         }
 
-        const mat = new cv.Mat(SZ, SZ, cv.CV_8UC1);
+        const mat = new cv.Mat(height, width, cv.CV_8UC1);
         mat.data.set(combined);
 
         // dilate to push the crop boundary outward
@@ -201,13 +235,47 @@ export class Inpaint implements BaseModel {
         cv.GaussianBlur(dilated, blurred, new cv.Size(1, 1), 10);
         dilated.delete();
 
-        const feathered = new Float32Array(SZ * SZ);
-        for (let i = 0; i < SZ * SZ; i++) {
+        const feathered = new Float32Array(width * height);
+        for (let i = 0; i < width * height; i++) {
             feathered[i] = blurred.data[i];
         }
         blurred.delete();
 
-        return new ort.Tensor("float32", feathered, [1, 1, SZ, SZ]);
+        return new ort.Tensor("float32", feathered, [1, 1, width, height]);
     }
-    
+
+    private dilate_and_blur_mask(tensor: ort.Tensor, kernelSize: number = 7, sigma: number = 10): ort.Tensor {
+        const dims = tensor.dims;
+        const H = dims[2];
+        const W = dims[3];
+        const data = tensor.data as Float32Array;
+
+        // convert float32 tensor (values 0 or 255) to CV_8UC1 mat
+        const mat = new cv.Mat(H, W, cv.CV_8UC1);
+        for (let i = 0; i < H * W; i++) {
+            mat.data[i] = data[i];
+        }
+
+        // dilate to expand the white regions outward
+        const kernel = cv.Mat.ones(kernelSize, kernelSize, cv.CV_8U);
+        const dilated = new cv.Mat();
+        cv.dilate(mat, dilated, kernel);
+        kernel.delete();
+        mat.delete();
+
+        // gaussian blur for a smooth falloff at the edges
+        const blurred = new cv.Mat();
+        cv.GaussianBlur(dilated, blurred, new cv.Size(5, 5), sigma);
+        dilated.delete();
+
+        // copy back to float32 tensor (same shape as input)
+        const result = new Float32Array(H * W);
+        for (let i = 0; i < H * W; i++) {
+            result[i] = blurred.data[i];
+        }
+        blurred.delete();
+
+        return new ort.Tensor("float32", result, dims);
+    }
+
 }

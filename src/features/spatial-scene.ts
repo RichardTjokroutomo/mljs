@@ -83,8 +83,14 @@ export class SpatialScene {
             DEPTH_ESTIMATION_INPUT_HEIGHT
         );
 
-        processed_depth_estimation_result = resize_html_canvas(processed_depth_estimation_result, target_img.naturalWidth, target_img.naturalHeight);
+        processed_depth_estimation_result = resize_canvas_native(processed_depth_estimation_result, target_img.naturalWidth, target_img.naturalHeight);
         
+        // TODO: remove this once debugging is complete.
+        const lnk = document.createElement("a");
+        lnk.download = `processed_depth_estimation_result.png`;
+        lnk.href = processed_depth_estimation_result.toDataURL("image/png");
+        lnk.click();
+
         // 4. segment image into layers
         target_canvas = resize_html_canvas(target_canvas, target_img.naturalWidth, target_img.naturalHeight);
         const layers: Array<HTMLCanvasElement> = this.depth_estimator.segment_into_layers(
@@ -154,10 +160,18 @@ export class SpatialScene {
 
                 const layer_i_mask: ort.Tensor = this.inpainter.preprocess_mask(layers[i], target_img.naturalWidth, target_img.naturalHeight);
                 const layer_i_plus_one_mask: ort.Tensor = this.inpainter.preprocess_mask(last_inpainted_layer, target_img.naturalWidth, target_img.naturalHeight);
-                const processed_inpainted_result: HTMLCanvasElement = this.inpainter.postprocess([inpainted_result, inpainter_inputs[1], inpainter_inputs[2]], INPAINT_INPUT_WIDTH, INPAINT_INPUT_HEIGHT);
-                let resized_processed_inpainted_result: HTMLCanvasElement = resize_html_canvas(processed_inpainted_result, target_img.naturalWidth, target_img.naturalHeight);
-                const final_res: HTMLCanvasElement = this.inpainter.combine_inpainted_layer_with_original(resized_processed_inpainted_result, layers[i]);
-                inpainted_layers.push(final_res);
+                const processed_inpainted_result: HTMLCanvasElement = this.inpainter.postprocess(
+                    [inpainted_result, layer_i_plus_one_mask, layer_i_mask], 
+                    target_img.naturalWidth, 
+                    target_img.naturalHeight
+                );
+                // let resized_processed_inpainted_result: HTMLCanvasElement = resize_html_canvas(processed_inpainted_result, target_img.naturalWidth, target_img.naturalHeight);
+                const final_res: HTMLCanvasElement = this.inpainter.combine_inpainted_layer_with_original(processed_inpainted_result, layers[i]);
+                if (i == 0) {
+                    inpainted_layers.push(processed_inpainted_result);
+                } else {
+                    inpainted_layers.push(final_res);
+                }
 
             }
         }
@@ -172,7 +186,8 @@ export class SpatialScene {
 
         // 6. convert each canvas back to image & add effects
         let inpainted_images: Array<HTMLImageElement> = [];
-        const parallax_factors = [0.055, 0.065, 0.075, 0.09]; // TODO: make this user argument.
+        const parallax_factors = [0.055, 0.065, 0.075, 0.08]; // TODO: make this user argument.
+        //  const parallax_factors = [0.065, 0.075, 0.08]; // TODO: make this user argument.
         for (let i: number = 0; i < inpainted_layers.length; i++){
             let image_layer = html_canvas_to_html_image(inpainted_layers[i]);
 

@@ -7,7 +7,7 @@ export function resize_canvas_native(canvas: HTMLCanvasElement, width: number, h
     out.width = width;
     out.height = height;
     const ctx = out.getContext("2d")!;
-    ctx.imageSmoothingEnabled = false; // Match INTER_NEAREST behavior
+    ctx.imageSmoothingEnabled = true; // Match INTER_NEAREST behavior
     ctx.drawImage(canvas, 0, 0, width, height);
     return out;
 }

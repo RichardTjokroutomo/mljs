@@ -18390,6 +18390,7 @@ var as = "1.26.0";
 Object.defineProperty(_e.versions, "web", { value: as, enumerable: true });
 
 // src/models/depth-estimation.ts
+var import_opencv_js = __toESM(require_opencv(), 1);
 var DepthEstimation = class {
   ort_session = null;
   constructor() {
@@ -18510,10 +18511,10 @@ var DepthEstimation = class {
 };
 
 // src/features/spatial-scene.ts
-var import_opencv_js3 = __toESM(require_opencv(), 1);
+var import_opencv_js4 = __toESM(require_opencv(), 1);
 
 // src/models/inpaint.ts
-var import_opencv_js2 = __toESM(require_opencv(), 1);
+var import_opencv_js3 = __toESM(require_opencv(), 1);
 
 // node_modules/onnxruntime-web/dist/ort.all.bundle.min.mjs
 var Q2 = Object.create;
@@ -42500,12 +42501,21 @@ function ort_tensor_to_html_canvas(tensor) {
 }
 
 // src/utils/html_canvas_manipulator.ts
-var import_opencv_js = __toESM(require_opencv(), 1);
-var cv3 = import_opencv_js.default.default ?? import_opencv_js.default;
+var import_opencv_js2 = __toESM(require_opencv(), 1);
+var cv3 = import_opencv_js2.default.default ?? import_opencv_js2.default;
+function resize_canvas_native(canvas, width, height) {
+  const out = document.createElement("canvas");
+  out.width = width;
+  out.height = height;
+  const ctx = out.getContext("2d");
+  ctx.imageSmoothingEnabled = false;
+  ctx.drawImage(canvas, 0, 0, width, height);
+  return out;
+}
 function resize_html_canvas(canvas, width, height) {
   const src = cv3.imread(canvas);
   const dst = new cv3.Mat();
-  cv3.resize(src, dst, new cv3.Size(width, height), 2, 2, cv3.INTER_LANCZOS4);
+  cv3.resize(src, dst, new cv3.Size(width, height), 2, 2, cv3.INTER_NEAREST);
   src.delete();
   const out = document.createElement("canvas");
   out.width = width;
@@ -42516,7 +42526,7 @@ function resize_html_canvas(canvas, width, height) {
 }
 
 // src/models/inpaint.ts
-var cv4 = import_opencv_js2.default.default ?? import_opencv_js2.default;
+var cv4 = import_opencv_js3.default.default ?? import_opencv_js3.default;
 var Inpaint = class {
   ort_session = null;
   constructor() {
@@ -42529,8 +42539,10 @@ var Inpaint = class {
       throw new Error("input array is not 3, can't preprocess image for inpainting!");
     }
     const processed_input_image = this.preprocess_image(input[0], width, height);
-    const processed_mask = this.preprocess_mask(input[1], width, height);
-    const processed_current_layer = this.preprocess_mask(input[2], width, height);
+    let processed_mask = this.preprocess_mask(input[1], width, height);
+    let processed_current_layer = this.preprocess_mask(input[2], width, height);
+    processed_mask = this.dilate_and_blur_mask(processed_mask);
+    processed_current_layer = this.dilate_and_blur_mask(processed_current_layer);
     return [processed_input_image, processed_mask, processed_current_layer];
   }
   async run_inference(input_tensors) {
@@ -42546,7 +42558,11 @@ var Inpaint = class {
   }
   postprocess(inputs, width, height) {
     let input_canvas = ort_tensor_to_html_canvas(inputs[0]);
-    const combined_mask = this.create_crop_mask(inputs[1], inputs[2]);
+    input_canvas = resize_canvas_native(input_canvas, width, height);
+    const combined_mask = this.create_crop_mask(inputs[1], inputs[2], width, height);
+    console.log("mask 1 dim: ", inputs[1].dims);
+    console.log("mask 2 dim: ", inputs[2].dims);
+    console.log("combined mask dim: ", combined_mask.dims);
     const ctx = input_canvas.getContext("2d");
     const imageData = ctx.getImageData(0, 0, width, height);
     const pixels = imageData.data;
@@ -42572,7 +42588,7 @@ var Inpaint = class {
     for (let i = 0; i < inpainted_layer.width * inpainted_layer.height; i++) {
       const j2 = i * 4;
       if (inpainted_pixels[j2 + 3] > 0 && original_pixels[j2 + 3] > 0) {
-        if (true) {
+        if (!this.is_at_hole_boundary(inpainted_data, i) || true) {
           inpainted_pixels[j2] = original_pixels[j2];
           inpainted_pixels[j2 + 1] = original_pixels[j2 + 1];
           inpainted_pixels[j2 + 2] = original_pixels[j2 + 2];
@@ -42586,7 +42602,24 @@ var Inpaint = class {
     inpainted_ctx.putImageData(inpainted_data, 0, 0);
     return inpainted_layer;
   }
-  current_coord_is_near_boundary() {
+  is_at_hole_boundary(imageData, pixelIndex, radius = 15) {
+    const data = imageData.data;
+    const w = imageData.width;
+    const h = imageData.height;
+    const cx2 = pixelIndex % w;
+    const cy2 = Math.floor(pixelIndex / w);
+    const x02 = Math.max(0, cx2 - radius);
+    const x1 = Math.min(w - 1, cx2 + radius);
+    const y02 = Math.max(0, cy2 - radius);
+    const y1 = Math.min(h - 1, cy2 + radius);
+    for (let y = y02; y <= y1; y++) {
+      for (let x = x02; x <= x1; x++) {
+        if (data[(y * w + x) * 4 + 3] === 0) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
   preprocess_image(input, width, height) {
     const HW = width * height;
@@ -42639,13 +42672,12 @@ var Inpaint = class {
     }
     return new je(tensor.type, inverted, tensor.dims);
   }
-  create_crop_mask(mask_a, mask_b) {
-    const SZ = 512;
-    const combined = new Float32Array(SZ * SZ);
-    for (let i = 0; i < SZ * SZ; i++) {
+  create_crop_mask(mask_a, mask_b, width, height) {
+    const combined = new Float32Array(width * height);
+    for (let i = 0; i < width * height; i++) {
       combined[i] = mask_a.data[i] > 0 || mask_b.data[i] > 0 ? 1 : 0;
     }
-    const mat = new cv4.Mat(SZ, SZ, cv4.CV_8UC1);
+    const mat = new cv4.Mat(height, width, cv4.CV_8UC1);
     mat.data.set(combined);
     const kernel = cv4.Mat.ones(7, 7, cv4.CV_8U);
     const dilated = new cv4.Mat();
@@ -42655,12 +42687,36 @@ var Inpaint = class {
     const blurred = new cv4.Mat();
     cv4.GaussianBlur(dilated, blurred, new cv4.Size(1, 1), 10);
     dilated.delete();
-    const feathered = new Float32Array(SZ * SZ);
-    for (let i = 0; i < SZ * SZ; i++) {
+    const feathered = new Float32Array(width * height);
+    for (let i = 0; i < width * height; i++) {
       feathered[i] = blurred.data[i];
     }
     blurred.delete();
-    return new je("float32", feathered, [1, 1, SZ, SZ]);
+    return new je("float32", feathered, [1, 1, width, height]);
+  }
+  dilate_and_blur_mask(tensor, kernelSize = 7, sigma = 10) {
+    const dims = tensor.dims;
+    const H2 = dims[2];
+    const W4 = dims[3];
+    const data = tensor.data;
+    const mat = new cv4.Mat(H2, W4, cv4.CV_8UC1);
+    for (let i = 0; i < H2 * W4; i++) {
+      mat.data[i] = data[i];
+    }
+    const kernel = cv4.Mat.ones(kernelSize, kernelSize, cv4.CV_8U);
+    const dilated = new cv4.Mat();
+    cv4.dilate(mat, dilated, kernel);
+    kernel.delete();
+    mat.delete();
+    const blurred = new cv4.Mat();
+    cv4.GaussianBlur(dilated, blurred, new cv4.Size(5, 5), sigma);
+    dilated.delete();
+    const result = new Float32Array(H2 * W4);
+    for (let i = 0; i < H2 * W4; i++) {
+      result[i] = blurred.data[i];
+    }
+    blurred.delete();
+    return new je("float32", result, dims);
   }
 };
 
@@ -42695,7 +42751,7 @@ var Animation = class {
 };
 
 // src/features/spatial-scene.ts
-var cv5 = import_opencv_js3.default.default ?? import_opencv_js3.default;
+var cv5 = import_opencv_js4.default.default ?? import_opencv_js4.default;
 var SpatialScene = class {
   depth_estimator;
   inpainter;
@@ -42748,6 +42804,10 @@ var SpatialScene = class {
       DEPTH_ESTIMATION_INPUT_HEIGHT
     );
     processed_depth_estimation_result = resize_html_canvas(processed_depth_estimation_result, target_img.naturalWidth, target_img.naturalHeight);
+    const lnk = document.createElement("a");
+    lnk.download = `processed_depth_estimation_result.png`;
+    lnk.href = processed_depth_estimation_result.toDataURL("image/png");
+    lnk.click();
     target_canvas = resize_html_canvas(target_canvas, target_img.naturalWidth, target_img.naturalHeight);
     const layers = this.depth_estimator.segment_into_layers(
       target_canvas_unchanged,
@@ -42768,26 +42828,33 @@ var SpatialScene = class {
         const inpainted_result = await this.inpainter.run_inference([inpainter_inputs[0], inverted_mask]);
         let inpainted_result_canvas = ort_tensor_to_html_canvas(inpainted_result);
         inpainted_result_canvas = resize_html_canvas(inpainted_result_canvas, target_img.naturalWidth, target_img.naturalHeight);
-        const lnk = document.createElement("a");
-        lnk.download = `inpainted_canvas_layer_${i}.png`;
-        lnk.href = inpainted_result_canvas.toDataURL("image/png");
-        lnk.click();
+        const lnk2 = document.createElement("a");
+        lnk2.download = `inpainted_canvas_layer_${i}.png`;
+        lnk2.href = inpainted_result_canvas.toDataURL("image/png");
+        lnk2.click();
         const layer_i_mask = this.inpainter.preprocess_mask(layers[i], target_img.naturalWidth, target_img.naturalHeight);
         const layer_i_plus_one_mask = this.inpainter.preprocess_mask(last_inpainted_layer, target_img.naturalWidth, target_img.naturalHeight);
-        const processed_inpainted_result = this.inpainter.postprocess([inpainted_result, inpainter_inputs[1], inpainter_inputs[2]], INPAINT_INPUT_WIDTH, INPAINT_INPUT_HEIGHT);
-        let resized_processed_inpainted_result = resize_html_canvas(processed_inpainted_result, target_img.naturalWidth, target_img.naturalHeight);
-        const final_res = this.inpainter.combine_inpainted_layer_with_original(resized_processed_inpainted_result, layers[i]);
-        inpainted_layers.push(final_res);
+        const processed_inpainted_result = this.inpainter.postprocess(
+          [inpainted_result, layer_i_plus_one_mask, layer_i_mask],
+          target_img.naturalWidth,
+          target_img.naturalHeight
+        );
+        const final_res = this.inpainter.combine_inpainted_layer_with_original(processed_inpainted_result, layers[i]);
+        if (i == 0) {
+          inpainted_layers.push(processed_inpainted_result);
+        } else {
+          inpainted_layers.push(final_res);
+        }
       }
     }
     for (let i = 0; i < inpainted_layers.length; i++) {
-      const lnk = document.createElement("a");
-      lnk.download = `u_inpainted_${i}.png`;
-      lnk.href = inpainted_layers[i].toDataURL("image/png");
-      lnk.click();
+      const lnk2 = document.createElement("a");
+      lnk2.download = `u_inpainted_${i}.png`;
+      lnk2.href = inpainted_layers[i].toDataURL("image/png");
+      lnk2.click();
     }
     let inpainted_images = [];
-    const parallax_factors = [0.055, 0.065, 0.075, 0.09];
+    const parallax_factors = [0.055, 0.065, 0.075, 0.08];
     for (let i = 0; i < inpainted_layers.length; i++) {
       let image_layer = html_canvas_to_html_image(inpainted_layers[i]);
       inpainted_images.push(this.animation.add_cursor_hover_effect(input_container, image_layer, parallax_factors[i]));
