@@ -18479,6 +18479,8 @@ var DepthEstimation = class {
     const input_data = input_ctx.getImageData(0, 0, width, height);
     const depth_ctx = depth_map.getContext("2d");
     const depth_data = depth_ctx.getImageData(0, 0, width, height);
+    console.log("input canvas height & width: ", input_image.height, input_image.width);
+    console.log("depth map height & width: ", depth_map.height, depth_map.width);
     const layers = [];
     const band_size = 256 / num_layers;
     for (let layer = 0; layer < num_layers; layer++) {
@@ -42524,7 +42526,12 @@ var Inpaint = class {
     if (input_tensors.length != 2) {
       throw new Error("input_tensors array's length is not 2! Can't perform inference!");
     }
-    const feeds = { image: input_tensors[0], mask: input_tensors[1] };
+    const img_raw = new Float32Array(input_tensors[0].data.length);
+    for (let i = 0; i < input_tensors[0].data.length; i++) {
+      img_raw[i] = input_tensors[0].data[i] * 255;
+    }
+    const img_scaled = new je("float32", img_raw, input_tensors[0].dims);
+    const feeds = { image: img_scaled, mask: input_tensors[1] };
     let result = await this.ort_session.run(feeds);
     return result["result"];
   }
@@ -42558,9 +42565,9 @@ var Inpaint = class {
     const img_flat = new Float32Array(3 * HW);
     for (let i = 0; i < HW; i++) {
       const base = i * 4;
-      img_flat[0 * HW + i] = pixels[base];
-      img_flat[1 * HW + i] = pixels[base + 1];
-      img_flat[2 * HW + i] = pixels[base + 2];
+      img_flat[0 * HW + i] = pixels[base] / 255;
+      img_flat[1 * HW + i] = pixels[base + 1] / 255;
+      img_flat[2 * HW + i] = pixels[base + 2] / 255;
     }
     return new je("float32", img_flat, [1, 3, width, height]);
   }
@@ -42708,25 +42715,11 @@ var SpatialScene = class {
     }
     const target_img = input_container.children[0];
     let target_canvas = html_image_to_html_canvas(target_img);
-    target_canvas = resize_html_canvas(target_canvas, DEPTH_ESTIMATION_INPUT_WIDTH, DEPTH_ESTIMATION_INPUT_HEIGHT);
-    const depth_estimation_input = this.depth_estimator.preprocess(
-      [target_canvas],
-      DEPTH_ESTIMATION_INPUT_WIDTH,
-      DEPTH_ESTIMATION_INPUT_HEIGHT
-    );
+    target_canvas = resize_html_canvas(target_canvas, 518, 518);
+    const depth_estimation_input = this.depth_estimator.preprocess([target_canvas], DEPTH_ESTIMATION_INPUT_WIDTH, DEPTH_ESTIMATION_INPUT_HEIGHT);
     const depth_estimation_result = await this.depth_estimator.run_inference(depth_estimation_input);
-    const processed_depth_estimation_result = this.depth_estimator.postprocess(
-      [depth_estimation_result],
-      DEPTH_ESTIMATION_INPUT_WIDTH,
-      DEPTH_ESTIMATION_INPUT_HEIGHT
-    );
-    const layers = this.depth_estimator.segment_into_layers(
-      target_canvas,
-      processed_depth_estimation_result,
-      DEPTH_ESTIMATION_INPUT_WIDTH,
-      DEPTH_ESTIMATION_INPUT_HEIGHT,
-      num_layers
-    );
+    const processed_depth_estimation_result = this.depth_estimator.postprocess([depth_estimation_result], DEPTH_ESTIMATION_INPUT_WIDTH, DEPTH_ESTIMATION_INPUT_HEIGHT);
+    const layers = this.depth_estimator.segment_into_layers(target_canvas, processed_depth_estimation_result, DEPTH_ESTIMATION_INPUT_WIDTH, DEPTH_ESTIMATION_INPUT_HEIGHT, num_layers);
     let inpainted_layers = [];
     target_canvas = resize_html_canvas(target_canvas, INPAINT_INPUT_WIDTH, INPAINT_INPUT_HEIGHT);
     for (let i = num_layers - 1; i >= 0; i--) {
@@ -42734,6 +42727,7 @@ var SpatialScene = class {
         inpainted_layers.push(layers[i]);
       } else {
         const last_inpainted_layer = inpainted_layers[inpainted_layers.length - 1];
+        target_canvas = resize_html_canvas(target_canvas, INPAINT_INPUT_WIDTH, INPAINT_INPUT_HEIGHT);
         const inpainter_inputs = this.inpainter.preprocess([target_canvas, last_inpainted_layer, layers[i]], INPAINT_INPUT_WIDTH, INPAINT_INPUT_HEIGHT);
         const inverted_mask = this.inpainter.invert_tensor(inpainter_inputs[1]);
         const inpainted_result = await this.inpainter.run_inference([inpainter_inputs[0], inverted_mask]);
