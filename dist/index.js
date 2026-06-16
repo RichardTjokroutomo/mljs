@@ -18479,8 +18479,6 @@ var DepthEstimation = class {
     const input_data = input_ctx.getImageData(0, 0, width, height);
     const depth_ctx = depth_map.getContext("2d");
     const depth_data = depth_ctx.getImageData(0, 0, width, height);
-    console.log("input canvas height & width: ", input_image.height, input_image.width);
-    console.log("depth map height & width: ", depth_map.height, depth_map.width);
     const layers = [];
     const band_size = 256 / num_layers;
     for (let layer = 0; layer < num_layers; layer++) {
