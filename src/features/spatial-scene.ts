@@ -1,6 +1,6 @@
 import cvModule from "@techstark/opencv-js";
-import { DepthEstimation } from "../models/depth-estimation.ts";
-import { Inpaint } from "../models/inpaint.ts";
+import { DepthEstimation } from "../models/ort/depth-estimation.ts";
+import { Inpaint } from "../models/ort/inpaint.ts";
 import { Animation } from "../ui/animation.ts";
 import * as ort from "onnxruntime-web/all";
 import {html_image_to_html_canvas, html_canvas_to_html_image, ort_tensor_to_html_canvas} from "../utils/type_converter.ts";

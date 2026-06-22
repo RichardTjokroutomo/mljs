@@ -1,7 +1,7 @@
 import type { BaseModel } from "./base-model.ts";
 import cvModule from "@techstark/opencv-js";
 import * as ort from "onnxruntime-web";
-import { ort_tensor_to_html_canvas } from "../utils/type_converter.ts";
+import { ort_tensor_to_html_canvas } from "../../utils/type_converter.ts";
 
 const cv = (cvModule as any).default ?? cvModule; // Handle both default and named exports from OpenCV.js
 
