@@ -7,7 +7,7 @@ export class Animation {
 
         div_elem.addEventListener("mouseleave", () => {
             image_elem.style.transition = "transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1)";
-            image_elem.style.transform = "translateX(0) translateY(0) scale(0.9)";
+            image_elem.style.transform = "translateX(0) translateY(0) scale(1)";
         });
 
         return image_elem;
@@ -33,6 +33,6 @@ export class Animation {
 
         const translation_x = distance_from_center_x * translation_factor;
         const translation_y = distance_from_center_y* translation_factor;
-        img_elem.style.transform = `translateX(${translation_x}px) translateY(${translation_y}px) scale(0.9)`;
+        img_elem.style.transform = `translateX(${translation_x}px) translateY(${translation_y}px) scale(1.3)`;
     }
 }

@@ -108,25 +108,29 @@ export class SpatialScene {
             inpainted_images.push(this.animation.add_cursor_hover_effect(input_container, image_layer, parallax_factors[i]));
         }
 
+        // 7. Preserve original image's className so layer images inherit it
+        const original_class_name = target_img.className;
+
         // 8. Save container dimensions and ensure position:relative before removing original image
         const containerWidth = input_container.clientWidth;
         const containerHeight = input_container.clientHeight;
         input_container.style.position = "relative";
-        input_container.removeChild(input_container.firstChild as HTMLImageElement);
+        input_container.removeChild(input_container.children[0] as HTMLImageElement);
 
         // 9. put the canvas elements & center their midpoint with the container's midpoint
         for (let i: number = 0; i < inpainted_images.length; i++){
+            inpainted_images[i].className = original_class_name;
             inpainted_images[i].style.zIndex = `${-i}`;
             inpainted_images[i].style.position = "absolute";
             // Use the source canvas dimensions — image.naturalWidth/Height is 0
             // since the Image hasn't loaded asynchronously yet
             const canvasWidth = inpainted_layers[i].width;
             const canvasHeight = inpainted_layers[i].height;
-            inpainted_images[i].style.left = `${(containerWidth - canvasWidth) / 2}px`;
-            inpainted_images[i].style.top = `${(containerHeight - canvasHeight) / 2}px`;
+            inpainted_images[i].style.left = "0";
+            inpainted_images[i].style.top = "0";
             inpainted_images[i].style.transform = "scale(1.1)";
-            inpainted_images[i].style.width = `${canvasWidth}px`;
-            inpainted_images[i].style.height = `${canvasHeight}px`;
+            inpainted_images[i].style.width = "100%";
+            inpainted_images[i].style.height = "100%";
             input_container.appendChild(inpainted_images[i]);
         }
     }
