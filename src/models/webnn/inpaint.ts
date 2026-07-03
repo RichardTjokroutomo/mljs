@@ -23,10 +23,9 @@ export class Inpaint {
     }
 
     public async create_session(device_type: string){
-        // const base_dir: string = "../../../model_binaries/webnn/migan/";
-        let base_dir = "./";
+        const base_dir: string = "../../model_binaries/webnn/migan/";
         this.context = await navigator.ml.createContext({ device_type });
-        this.weights = await WeightsFile.load("../../model_binaries/webnn/migan/migan.weights", "../../model_binaries/webnn/migan/migan.manifest.json");
+        this.weights = await WeightsFile.load(base_dir + "migan.weights", base_dir + "migan.manifest.json");
         this.graph = await buildGraph(this.context, this.weights);
     }
 
@@ -67,7 +66,7 @@ export class Inpaint {
         let normalized_layer: Uint8ClampedArray = new Uint8ClampedArray(4 * wh);
 
         for (let i: number = 0; i < wh; i++){
-            const base = 4 * i;
+            const base: number = 4 * i;
 
             normalized_layer[base + 0] = (inputs[0][0*wh + i] + 1) * 127.5;
             normalized_layer[base + 1] = (inputs[0][1*wh + i] + 1) * 127.5;
@@ -110,7 +109,7 @@ export class Inpaint {
         // create fp32 array in channel first format
         let input_array: Float32Array = new Float32Array(3 * wh);
         for (let i: number = 0; i < wh; i++){
-            const base = i * 4;
+            const base: number = i * 4;
             input_array[0*wh + i] = (pixels[base] / 127.5) - 1;
             input_array[1*wh + i] = (pixels[base + 1] / 127.5) - 1;
             input_array[2*wh + i] = (pixels[base + 2] / 127.5) - 1;

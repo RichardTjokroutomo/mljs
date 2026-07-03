@@ -1,10 +1,12 @@
 import cvModule from "@techstark/opencv-js";
-import { DepthEstimation } from "../../models/ort/depth-estimation.ts";
+import { DepthEstimation } from "../../models/webnn/depth-estimation.ts";
 import { Inpaint } from "../../models/webnn/inpaint.ts";
 import { Animation } from "../../ui/animation.ts";
 import * as ort from "onnxruntime-web/all";
 import {html_image_to_html_canvas, html_canvas_to_html_image, ort_tensor_to_html_canvas} from "../../utils/type_converter.ts";
 import { resize_html_canvas } from "../../utils/html_canvas_manipulator.ts";
+
+import { download_canvas } from "../../utils/debug.ts";
 
 const cv = (cvModule as any).default ?? cvModule; // Handle both default and named exports from OpenCV.js
 
@@ -40,7 +42,7 @@ export class SpatialScene {
         }
 
         // create sessions
-        await this.depth_estimator.create_session(depth_estimation_uint8_array, depth_estimator_options);
+        await this.depth_estimator.create_session("gpu");
         await this.inpainter.create_session("gpu");
     }
 
@@ -67,9 +69,9 @@ export class SpatialScene {
         target_canvas = resize_html_canvas(target_canvas, 518, 518);
 
         // 3. perform depth estimation
-        const depth_estimation_input: Array<ort.Tensor> = this.depth_estimator.preprocess([target_canvas], DEPTH_ESTIMATION_INPUT_WIDTH, DEPTH_ESTIMATION_INPUT_HEIGHT);
-        const depth_estimation_result: ort.Tensor = await this.depth_estimator.run_inference(depth_estimation_input);
-        const processed_depth_estimation_result: HTMLCanvasElement = this.depth_estimator.postprocess([depth_estimation_result], DEPTH_ESTIMATION_INPUT_WIDTH, DEPTH_ESTIMATION_INPUT_HEIGHT); // TODO: dim should be the original dim
+        const depth_estimation_input: Float32Array = this.depth_estimator.preprocess(target_canvas, DEPTH_ESTIMATION_INPUT_WIDTH, DEPTH_ESTIMATION_INPUT_HEIGHT);
+        const depth_estimation_result: Float32Array = await this.depth_estimator.run_inference(depth_estimation_input);
+        const processed_depth_estimation_result: HTMLCanvasElement = this.depth_estimator.postprocess(depth_estimation_result, DEPTH_ESTIMATION_INPUT_WIDTH, DEPTH_ESTIMATION_INPUT_HEIGHT); // TODO: dim should be the original dim
 
         // 4. segment image into layers
         const layers: Array<HTMLCanvasElement> = this.depth_estimator.segment_into_layers(target_canvas, processed_depth_estimation_result, DEPTH_ESTIMATION_INPUT_WIDTH, DEPTH_ESTIMATION_INPUT_HEIGHT, num_layers); // TODO: dim should be the original dim
@@ -90,7 +92,6 @@ export class SpatialScene {
                 
                 const processed_inpainted_result: HTMLCanvasElement = this.inpainter.postprocess([inpainted_result, inpainter_inputs[1]], INPAINT_INPUT_WIDTH, INPAINT_INPUT_HEIGHT);
                 inpainted_layers.push(processed_inpainted_result);
-
             }
         }
 

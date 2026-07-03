@@ -12,6 +12,6 @@ await spatial_scene.initialize_sessions("../../model_binaries/depth_anything_v2_
 console.log("Sessions initialized!");
 
 document.getElementById("process").addEventListener("click", () => {
-    console.log("===============================")
+    console.log("===============================");
     spatial_scene.convert_single_image(document.getElementById("result"), 4);
 });
