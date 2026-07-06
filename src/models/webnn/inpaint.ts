@@ -56,11 +56,18 @@ export class Inpaint {
         const combined_array: Float32Array = this.merge_inputs(input_array, mask_array, width, height);
         const combined_mask: Float32Array = this.merge_masks(current_layer_array, mask_array);
 
-        return [combined_array, combined_mask];
+        return [combined_array, combined_mask, mask_array];
     }
 
     public postprocess(inputs: Array<Float32Array>, width: number = this.width, height: number = this.height): HTMLCanvasElement {
         const wh: number = width * height;
+
+        // combine inpainted area & original
+        for (let i: number = 0; i < wh; i++){
+            inputs[0][0*wh + i] = inputs[2][0*wh + i]*inputs[3][i] + inputs[0][0*wh + i]*(1 - inputs[3][i]);
+            inputs[0][1*wh + i] = inputs[2][1*wh + i]*inputs[3][i] + inputs[0][1*wh + i]*(1 - inputs[3][i]);
+            inputs[0][2*wh + i] = inputs[2][2*wh + i]*inputs[3][i] + inputs[0][2*wh + i]*(1 - inputs[3][i]);
+        }
 
         // normalize inpainted layer & apply mask
         let normalized_layer: Uint8ClampedArray = new Uint8ClampedArray(4 * wh);
@@ -92,7 +99,7 @@ export class Inpaint {
         return canvas;
     }
 
-    private preprocess_input(input: HTMLCanvasElement, width: number, height: number): Float32Array {
+    public preprocess_input(input: HTMLCanvasElement, width: number, height: number): Float32Array {
         const wh: number = width * height;
 
         // resize

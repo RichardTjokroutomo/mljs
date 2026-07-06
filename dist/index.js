@@ -12429,10 +12429,15 @@ var Inpaint = class {
     const current_layer_array = this.preprocess_mask(inputs[2], width, height);
     const combined_array = this.merge_inputs(input_array, mask_array, width, height);
     const combined_mask = this.merge_masks(current_layer_array, mask_array);
-    return [combined_array, combined_mask];
+    return [combined_array, combined_mask, mask_array];
   }
   postprocess(inputs, width = this.width, height = this.height) {
     const wh2 = width * height;
+    for (let i = 0; i < wh2; i++) {
+      inputs[0][0 * wh2 + i] = inputs[2][0 * wh2 + i] * inputs[3][i] + inputs[0][0 * wh2 + i] * (1 - inputs[3][i]);
+      inputs[0][1 * wh2 + i] = inputs[2][1 * wh2 + i] * inputs[3][i] + inputs[0][1 * wh2 + i] * (1 - inputs[3][i]);
+      inputs[0][2 * wh2 + i] = inputs[2][2 * wh2 + i] * inputs[3][i] + inputs[0][2 * wh2 + i] * (1 - inputs[3][i]);
+    }
     let normalized_layer = new Uint8ClampedArray(4 * wh2);
     for (let i = 0; i < wh2; i++) {
       const base = 4 * i;
@@ -36507,17 +36512,6 @@ function resize_html_canvas(canvas, width, height) {
 // src/utils/debug.ts
 var import_opencv_js2 = __toESM(require_opencv(), 1);
 var cv4 = import_opencv_js2.default.default ?? import_opencv_js2.default;
-function trigger_download(canvas, filename) {
-  const link = document.createElement("a");
-  link.download = filename;
-  link.href = canvas.toDataURL("image/png");
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-}
-function download_canvas(canvas, filename) {
-  trigger_download(canvas, filename);
-}
 
 // src/features/webnn/webnn-spatial-scene.ts
 var cv5 = import_opencv_js3.default.default ?? import_opencv_js3.default;
@@ -36546,7 +36540,6 @@ var SpatialScene = class {
   }
   // TODO: for now, client JS will call this code. but in the future, make this private and declare a wrapper function.
   async convert_single_image(input_container, num_layers) {
-    const t02 = Date.now();
     const DEPTH_ESTIMATION_INPUT_WIDTH = 518;
     const DEPTH_ESTIMATION_INPUT_HEIGHT = 518;
     const INPAINT_INPUT_WIDTH = 512;
@@ -36558,13 +36551,13 @@ var SpatialScene = class {
     const target_img = input_container.children[0];
     let target_canvas = html_image_to_html_canvas(target_img);
     target_canvas = resize_html_canvas(target_canvas, 518, 518);
+    let inpainted_target_array = this.inpainter.preprocess_input(target_canvas, INPAINT_INPUT_WIDTH, INPAINT_INPUT_HEIGHT);
     const depth_estimation_input = this.depth_estimator.preprocess(target_canvas, DEPTH_ESTIMATION_INPUT_WIDTH, DEPTH_ESTIMATION_INPUT_HEIGHT);
     const depth_estimation_result = await this.depth_estimator.run_inference(depth_estimation_input);
     const processed_depth_estimation_result = this.depth_estimator.postprocess(depth_estimation_result, DEPTH_ESTIMATION_INPUT_WIDTH, DEPTH_ESTIMATION_INPUT_HEIGHT);
     const layers = this.depth_estimator.segment_into_layers(target_canvas, processed_depth_estimation_result, DEPTH_ESTIMATION_INPUT_WIDTH, DEPTH_ESTIMATION_INPUT_HEIGHT, num_layers);
     let inpainted_layers = [];
     target_canvas = resize_html_canvas(target_canvas, INPAINT_INPUT_WIDTH, INPAINT_INPUT_HEIGHT);
-    download_canvas(target_canvas, "z_base_img.png");
     for (let i = num_layers - 1; i >= 0; i--) {
       if (i == num_layers - 1) {
         inpainted_layers.push(layers[i]);
@@ -36573,9 +36566,8 @@ var SpatialScene = class {
         target_canvas = resize_html_canvas(target_canvas, INPAINT_INPUT_WIDTH, INPAINT_INPUT_HEIGHT);
         const inpainter_inputs = this.inpainter.preprocess([target_canvas, last_inpainted_layer, layers[i]], INPAINT_INPUT_WIDTH, INPAINT_INPUT_HEIGHT);
         const inpainted_result = await this.inpainter.run_inference(inpainter_inputs[0]);
-        const processed_inpainted_result = this.inpainter.postprocess([inpainted_result, inpainter_inputs[1]], INPAINT_INPUT_WIDTH, INPAINT_INPUT_HEIGHT);
+        const processed_inpainted_result = this.inpainter.postprocess([inpainted_result, inpainter_inputs[1], inpainted_target_array, inpainter_inputs[2]], INPAINT_INPUT_WIDTH, INPAINT_INPUT_HEIGHT);
         inpainted_layers.push(processed_inpainted_result);
-        download_canvas(processed_inpainted_result, `z_layer_${i}.png`);
       }
     }
     let inpainted_images = [];
@@ -36600,8 +36592,6 @@ var SpatialScene = class {
       inpainted_images[i].style.height = `${canvasHeight}px`;
       input_container.appendChild(inpainted_images[i]);
     }
-    const t1 = Date.now();
-    console.log(`total time taken: ${t1 - t02}ms`);
   }
 };
 export {

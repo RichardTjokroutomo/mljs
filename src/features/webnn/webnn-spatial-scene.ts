@@ -67,6 +67,7 @@ export class SpatialScene {
         // 2. convert image to canvas
         let target_canvas: HTMLCanvasElement = html_image_to_html_canvas(target_img);
         target_canvas = resize_html_canvas(target_canvas, 518, 518);
+        let inpainted_target_array: Float32Array = this.inpainter.preprocess_input(target_canvas, INPAINT_INPUT_WIDTH, INPAINT_INPUT_HEIGHT);
 
         // 3. perform depth estimation
         const depth_estimation_input: Float32Array = this.depth_estimator.preprocess(target_canvas, DEPTH_ESTIMATION_INPUT_WIDTH, DEPTH_ESTIMATION_INPUT_HEIGHT);
@@ -86,11 +87,12 @@ export class SpatialScene {
                 const last_inpainted_layer: HTMLCanvasElement = inpainted_layers[inpainted_layers.length - 1];
                 
                 target_canvas = resize_html_canvas(target_canvas, INPAINT_INPUT_WIDTH, INPAINT_INPUT_HEIGHT);
+                // [combined input + mask, combined mask (layer i + previous layers), mask]
                 const inpainter_inputs: Array<Float32Array> = this.inpainter.preprocess([target_canvas, last_inpainted_layer, layers[i]], INPAINT_INPUT_WIDTH, INPAINT_INPUT_HEIGHT);
 
                 const inpainted_result: Float32Array = await this.inpainter.run_inference(inpainter_inputs[0]);
                 
-                const processed_inpainted_result: HTMLCanvasElement = this.inpainter.postprocess([inpainted_result, inpainter_inputs[1]], INPAINT_INPUT_WIDTH, INPAINT_INPUT_HEIGHT);
+                const processed_inpainted_result: HTMLCanvasElement = this.inpainter.postprocess([inpainted_result, inpainter_inputs[1], inpainted_target_array, inpainter_inputs[2]], INPAINT_INPUT_WIDTH, INPAINT_INPUT_HEIGHT);
                 inpainted_layers.push(processed_inpainted_result);
             }
         }
