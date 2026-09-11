@@ -36339,17 +36339,6 @@ function html_image_to_html_canvas(image) {
 
 // src/utils/debug.ts
 var cv3 = import_opencv_js.default.default ?? import_opencv_js.default;
-function trigger_download(canvas, filename) {
-  const link = document.createElement("a");
-  link.download = filename;
-  link.href = canvas.toDataURL("image/png");
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-}
-function download_canvas(canvas, filename) {
-  trigger_download(canvas, filename);
-}
 
 // src/models/webnn/inpaint.ts
 var cv4 = import_opencv_js2.default.default ?? import_opencv_js2.default;
@@ -36463,7 +36452,7 @@ var Inpaint = class {
       cv4.dilate(mat, dilated, kernel);
       kernel.delete();
       for (let i = 0; i < wh2; i++) {
-        new_arr[i] = dilated[i];
+        new_arr[i] = dilated.data[i];
       }
     } else {
       for (let i = 0; i < wh2; i++) {
@@ -36473,9 +36462,9 @@ var Inpaint = class {
     let res = new Float32Array(wh2);
     for (let i = 0; i < wh2; i++) {
       if (new_arr[i] === 255) {
-        res[i] = 1;
-      } else {
         res[i] = 0;
+      } else {
+        res[i] = 1;
       }
     }
     return res;
@@ -36609,7 +36598,6 @@ var SpatialScene = class {
         const inpainted_result = await this.inpainter.run_inference(inpainter_inputs[0]);
         const processed_inpainted_result = this.inpainter.postprocess([inpainted_result, inpainter_inputs[1], inpainted_target_array, inpainter_inputs[2]], INPAINT_INPUT_WIDTH, INPAINT_INPUT_HEIGHT);
         inpainted_layers.push(processed_inpainted_result);
-        download_canvas(processed_inpainted_result, `z_res_layer_${i}.png`);
       }
     }
     let inpainted_images = [];

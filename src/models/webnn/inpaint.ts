@@ -166,7 +166,7 @@ export class Inpaint {
             // mat.delete();
             
             for (let i: number = 0; i < wh; i++){
-                new_arr[i] = dilated[i];
+                new_arr[i] = dilated.data[i];
             }
             
         } else {

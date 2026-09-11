@@ -69,7 +69,7 @@ export class SpatialScene {
         target_canvas = resize_html_canvas(target_canvas, 518, 518);
         let inpainted_target_array: Float32Array = this.inpainter.preprocess_input(target_canvas, INPAINT_INPUT_WIDTH, INPAINT_INPUT_HEIGHT);
 
-        // 3. perform depth estimation
+        // 3. perform depth estimation (OK)
         const depth_estimation_input: Float32Array = this.depth_estimator.preprocess(target_canvas, DEPTH_ESTIMATION_INPUT_WIDTH, DEPTH_ESTIMATION_INPUT_HEIGHT);
         const depth_estimation_result: Float32Array = await this.depth_estimator.run_inference(depth_estimation_input);
         const processed_depth_estimation_result: HTMLCanvasElement = this.depth_estimator.postprocess(depth_estimation_result, DEPTH_ESTIMATION_INPUT_WIDTH, DEPTH_ESTIMATION_INPUT_HEIGHT); // TODO: dim should be the original dim
@@ -95,7 +95,7 @@ export class SpatialScene {
                 
                 const processed_inpainted_result: HTMLCanvasElement = this.inpainter.postprocess([inpainted_result, inpainter_inputs[1], inpainted_target_array, inpainter_inputs[2]], INPAINT_INPUT_WIDTH, INPAINT_INPUT_HEIGHT);
                 inpainted_layers.push(processed_inpainted_result);
-                download_canvas(processed_inpainted_result, `z_res_layer_${i}.png`);
+                // download_canvas(processed_inpainted_result, `z_res_layer_${i}.png`);
             }
         }
 
