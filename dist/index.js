@@ -48,11 +48,11 @@ var require_opencv = __commonJS({
         root.cv = factory();
       }
     })(exports2, function() {
-      var cv6 = (function() {
+      var cv7 = (function() {
         var _scriptDir = typeof document !== "undefined" && document.currentScript ? document.currentScript.src : void 0;
-        return (function(cv7) {
-          cv7 = cv7 || {};
-          var Module2 = typeof cv7 !== "undefined" ? cv7 : {};
+        return (function(cv8) {
+          cv8 = cv8 || {};
+          var Module2 = typeof cv8 !== "undefined" ? cv8 : {};
           var moduleOverrides = {};
           var key;
           for (key in Module2) {
@@ -7523,8 +7523,8 @@ var require_opencv = __commonJS({
           if (typeof Module2.FS === "undefined" && typeof FS !== "undefined") {
             Module2.FS = FS;
           }
-          if (typeof cv7 === "undefined") {
-            var cv7 = Module2;
+          if (typeof cv8 === "undefined") {
+            var cv8 = Module2;
           }
           Module2["imread"] = function(imageSource) {
             var img = null;
@@ -7548,7 +7548,7 @@ var require_opencv = __commonJS({
               throw new Error("Please input the valid canvas or img id.");
             }
             var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            return cv7.matFromImageData(imgData);
+            return cv8.matFromImageData(imgData);
           };
           Module2["imshow"] = function(canvasSource, mat) {
             var canvas = null;
@@ -7560,22 +7560,22 @@ var require_opencv = __commonJS({
             if (!(canvas instanceof HTMLCanvasElement)) {
               throw new Error("Please input the valid canvas element or id.");
             }
-            if (!(mat instanceof cv7.Mat)) {
+            if (!(mat instanceof cv8.Mat)) {
               throw new Error("Please input the valid cv.Mat instance.");
             }
-            var img = new cv7.Mat();
+            var img = new cv8.Mat();
             var depth = mat.type() % 8;
-            var scale = depth <= cv7.CV_8S ? 1 : depth <= cv7.CV_32S ? 1 / 256 : 255;
-            var shift = depth === cv7.CV_8S || depth === cv7.CV_16S ? 128 : 0;
-            mat.convertTo(img, cv7.CV_8U, scale, shift);
+            var scale = depth <= cv8.CV_8S ? 1 : depth <= cv8.CV_32S ? 1 / 256 : 255;
+            var shift = depth === cv8.CV_8S || depth === cv8.CV_16S ? 128 : 0;
+            mat.convertTo(img, cv8.CV_8U, scale, shift);
             switch (img.type()) {
-              case cv7.CV_8UC1:
-                cv7.cvtColor(img, img, cv7.COLOR_GRAY2RGBA);
+              case cv8.CV_8UC1:
+                cv8.cvtColor(img, img, cv8.COLOR_GRAY2RGBA);
                 break;
-              case cv7.CV_8UC3:
-                cv7.cvtColor(img, img, cv7.COLOR_RGB2RGBA);
+              case cv8.CV_8UC3:
+                cv8.cvtColor(img, img, cv8.COLOR_RGB2RGBA);
                 break;
-              case cv7.CV_8UC4:
+              case cv8.CV_8UC4:
                 break;
               default:
                 throw new Error("Bad number of channels (Source image must have 1, 3 or 4 channels)");
@@ -7604,10 +7604,10 @@ var require_opencv = __commonJS({
             var ctx = canvas.getContext("2d");
             this.video = video;
             this.read = function(frame) {
-              if (!(frame instanceof cv7.Mat)) {
+              if (!(frame instanceof cv8.Mat)) {
                 throw new Error("Please input the valid cv.Mat instance.");
               }
-              if (frame.type() !== cv7.CV_8UC4) {
+              if (frame.type() !== cv8.CV_8UC4) {
                 throw new Error("Bad type of input mat: the type should be cv.CV_8UC4.");
               }
               if (frame.cols !== video.width || frame.rows !== video.height) {
@@ -7772,61 +7772,61 @@ var require_opencv = __commonJS({
           }
           Module2["TermCriteria"] = TermCriteria;
           Module2["matFromArray"] = function(rows, cols, type, array) {
-            var mat = new cv7.Mat(rows, cols, type);
+            var mat = new cv8.Mat(rows, cols, type);
             switch (type) {
-              case cv7.CV_8U:
-              case cv7.CV_8UC1:
-              case cv7.CV_8UC2:
-              case cv7.CV_8UC3:
-              case cv7.CV_8UC4: {
+              case cv8.CV_8U:
+              case cv8.CV_8UC1:
+              case cv8.CV_8UC2:
+              case cv8.CV_8UC3:
+              case cv8.CV_8UC4: {
                 mat.data.set(array);
                 break;
               }
-              case cv7.CV_8S:
-              case cv7.CV_8SC1:
-              case cv7.CV_8SC2:
-              case cv7.CV_8SC3:
-              case cv7.CV_8SC4: {
+              case cv8.CV_8S:
+              case cv8.CV_8SC1:
+              case cv8.CV_8SC2:
+              case cv8.CV_8SC3:
+              case cv8.CV_8SC4: {
                 mat.data8S.set(array);
                 break;
               }
-              case cv7.CV_16U:
-              case cv7.CV_16UC1:
-              case cv7.CV_16UC2:
-              case cv7.CV_16UC3:
-              case cv7.CV_16UC4: {
+              case cv8.CV_16U:
+              case cv8.CV_16UC1:
+              case cv8.CV_16UC2:
+              case cv8.CV_16UC3:
+              case cv8.CV_16UC4: {
                 mat.data16U.set(array);
                 break;
               }
-              case cv7.CV_16S:
-              case cv7.CV_16SC1:
-              case cv7.CV_16SC2:
-              case cv7.CV_16SC3:
-              case cv7.CV_16SC4: {
+              case cv8.CV_16S:
+              case cv8.CV_16SC1:
+              case cv8.CV_16SC2:
+              case cv8.CV_16SC3:
+              case cv8.CV_16SC4: {
                 mat.data16S.set(array);
                 break;
               }
-              case cv7.CV_32S:
-              case cv7.CV_32SC1:
-              case cv7.CV_32SC2:
-              case cv7.CV_32SC3:
-              case cv7.CV_32SC4: {
+              case cv8.CV_32S:
+              case cv8.CV_32SC1:
+              case cv8.CV_32SC2:
+              case cv8.CV_32SC3:
+              case cv8.CV_32SC4: {
                 mat.data32S.set(array);
                 break;
               }
-              case cv7.CV_32F:
-              case cv7.CV_32FC1:
-              case cv7.CV_32FC2:
-              case cv7.CV_32FC3:
-              case cv7.CV_32FC4: {
+              case cv8.CV_32F:
+              case cv8.CV_32FC1:
+              case cv8.CV_32FC2:
+              case cv8.CV_32FC3:
+              case cv8.CV_32FC4: {
                 mat.data32F.set(array);
                 break;
               }
-              case cv7.CV_64F:
-              case cv7.CV_64FC1:
-              case cv7.CV_64FC2:
-              case cv7.CV_64FC3:
-              case cv7.CV_64FC4: {
+              case cv8.CV_64F:
+              case cv8.CV_64FC1:
+              case cv8.CV_64FC2:
+              case cv8.CV_64FC3:
+              case cv8.CV_64FC4: {
                 mat.data64F.set(array);
                 break;
               }
@@ -7837,30 +7837,30 @@ var require_opencv = __commonJS({
             return mat;
           };
           Module2["matFromImageData"] = function(imageData) {
-            var mat = new cv7.Mat(imageData.height, imageData.width, cv7.CV_8UC4);
+            var mat = new cv8.Mat(imageData.height, imageData.width, cv8.CV_8UC4);
             mat.data.set(imageData.data);
             return mat;
           };
-          return cv7;
+          return cv8;
         });
       })();
       if (typeof exports2 === "object" && typeof module2 === "object")
-        module2.exports = cv6;
+        module2.exports = cv7;
       else if (typeof define === "function" && define["amd"])
         define([], function() {
-          return cv6;
+          return cv7;
         });
       else if (typeof exports2 === "object")
-        exports2["cv"] = cv6;
+        exports2["cv"] = cv7;
       if (typeof Module === "undefined")
         var Module = {};
-      return cv6(Module);
+      return cv7(Module);
     });
   }
 });
 
 // src/features/webnn/webnn-spatial-scene.ts
-var import_opencv_js3 = __toESM(require_opencv(), 1);
+var import_opencv_js4 = __toESM(require_opencv(), 1);
 
 // model_binaries/webnn/depth-anything-v2/depth_anything_v2_quantized.js
 var WeightsFile = class _WeightsFile {
@@ -12392,166 +12392,7 @@ async function buildGraph2(context, weights) {
 }
 
 // src/models/webnn/inpaint.ts
-var Inpaint = class {
-  graph = null;
-  context = null;
-  weights = null;
-  width;
-  height;
-  constructor() {
-    if (!navigator.ml) throw new Error("WebNN not supported!");
-    this.width = 512;
-    this.height = 512;
-  }
-  async create_session(device_type) {
-    const base_dir = "../../model_binaries/webnn/migan/";
-    this.context = await navigator.ml.createContext({ device_type });
-    this.weights = await WeightsFile2.load(base_dir + "migan.weights", base_dir + "migan.manifest.json");
-    this.graph = await buildGraph2(this.context, this.weights);
-  }
-  async run_inference(inputs) {
-    const input_webnn_tensor = await this.context.createTensor({ dataType: "float32", shape: [1, 4, this.width, this.height], writable: true });
-    const output_webnn_tensor = await this.context.createTensor({ dataType: "float32", shape: [1, 3, this.width, this.height], readable: true });
-    this.context.writeTensor(input_webnn_tensor, inputs);
-    const input_tensors = {
-      "serving_default_args_0": input_webnn_tensor
-    };
-    const output_tensors = {
-      "serving_default_output_0_output": output_webnn_tensor
-    };
-    this.context.dispatch(this.graph.graph, input_tensors, output_tensors);
-    const result = new Float32Array(await this.context.readTensor(output_webnn_tensor));
-    return result;
-  }
-  preprocess(inputs, width = this.width, height = this.height) {
-    const input_array = this.preprocess_input(inputs[0], width, height);
-    const mask_array = this.preprocess_mask(inputs[1], width, height);
-    const current_layer_array = this.preprocess_mask(inputs[2], width, height);
-    const combined_array = this.merge_inputs(input_array, mask_array, width, height);
-    const combined_mask = this.merge_masks(current_layer_array, mask_array);
-    return [combined_array, combined_mask, mask_array];
-  }
-  postprocess(inputs, width = this.width, height = this.height) {
-    const wh2 = width * height;
-    for (let i = 0; i < wh2; i++) {
-      inputs[0][0 * wh2 + i] = inputs[2][0 * wh2 + i] * inputs[3][i] + inputs[0][0 * wh2 + i] * (1 - inputs[3][i]);
-      inputs[0][1 * wh2 + i] = inputs[2][1 * wh2 + i] * inputs[3][i] + inputs[0][1 * wh2 + i] * (1 - inputs[3][i]);
-      inputs[0][2 * wh2 + i] = inputs[2][2 * wh2 + i] * inputs[3][i] + inputs[0][2 * wh2 + i] * (1 - inputs[3][i]);
-    }
-    let normalized_layer = new Uint8ClampedArray(4 * wh2);
-    for (let i = 0; i < wh2; i++) {
-      const base = 4 * i;
-      normalized_layer[base + 0] = (inputs[0][0 * wh2 + i] + 1) * 127.5;
-      normalized_layer[base + 1] = (inputs[0][1 * wh2 + i] + 1) * 127.5;
-      normalized_layer[base + 2] = (inputs[0][2 * wh2 + i] + 1) * 127.5;
-      if (inputs[1][i] === 0) {
-        normalized_layer[base + 3] = 255;
-      } else {
-        normalized_layer[base + 3] = 0;
-      }
-    }
-    const image_data = new ImageData(normalized_layer, width, height);
-    const canvas = document.createElement("canvas");
-    canvas.width = width;
-    canvas.height = height;
-    const ctx = canvas.getContext("2d");
-    ctx.putImageData(image_data, 0, 0);
-    return canvas;
-  }
-  preprocess_input(input, width, height) {
-    const wh2 = width * height;
-    const resized_canvas = document.createElement("canvas");
-    resized_canvas.width = width;
-    resized_canvas.height = height;
-    const ctx = resized_canvas.getContext("2d");
-    ctx.drawImage(input, 0, 0, width, height);
-    const image_data = ctx.getImageData(0, 0, width, height);
-    const pixels = image_data.data;
-    let input_array = new Float32Array(3 * wh2);
-    for (let i = 0; i < wh2; i++) {
-      const base = i * 4;
-      input_array[0 * wh2 + i] = pixels[base] / 127.5 - 1;
-      input_array[1 * wh2 + i] = pixels[base + 1] / 127.5 - 1;
-      input_array[2 * wh2 + i] = pixels[base + 2] / 127.5 - 1;
-    }
-    return input_array;
-  }
-  preprocess_mask(mask, width, height) {
-    const wh2 = width * height;
-    const resized_canvas = document.createElement("canvas");
-    resized_canvas.width = width;
-    resized_canvas.height = height;
-    const ctx = resized_canvas.getContext("2d");
-    ctx.drawImage(mask, 0, 0, width, height);
-    const mask_data = ctx.getImageData(0, 0, width, height);
-    const pixels = mask_data.data;
-    let mask_array = new Float32Array(wh2);
-    for (let i = 0; i < wh2; i++) {
-      if (pixels[i * 4 + 3] === 0) {
-        mask_array[i] = 1;
-      } else {
-        mask_array[i] = 0;
-      }
-    }
-    return mask_array;
-  }
-  merge_inputs(input_array, mask_array, width, height) {
-    const wh2 = width * height;
-    let combined_array = new Float32Array(4 * wh2);
-    for (let i = 0; i < wh2; i++) {
-      combined_array[i] = mask_array[i] - 0.5;
-    }
-    for (let channel = 0; channel < 3; channel++) {
-      for (let i = 0; i < wh2; i++) {
-        combined_array[(channel + 1) * wh2 + i] = input_array[channel * wh2 + i] * mask_array[i];
-      }
-    }
-    return combined_array;
-  }
-  // TODO: try to merge this function with merge_inputs() in the future
-  merge_masks(mask_a, mask_b) {
-    if (mask_a.length != mask_b.length) throw new Error("Cannot merge mask layers as their dimension(s) is(are) different!");
-    let combined_mask = new Float32Array(mask_a.length);
-    for (let i = 0; i < mask_a.length; i++) {
-      if (mask_a[i] === 0 || mask_b[i] === 0) {
-        combined_mask[i] = 0;
-      } else {
-        combined_mask[i] = 1;
-      }
-    }
-    return combined_mask;
-  }
-};
-
-// src/ui/animation.ts
-var Animation = class {
-  add_cursor_hover_effect(div_elem, image_elem, translation_factor) {
-    div_elem.addEventListener("mousemove", (event) => {
-      image_elem.style.transition = "none";
-      this.updateParallax(div_elem, image_elem, event.clientX, event.clientY, translation_factor);
-    });
-    div_elem.addEventListener("mouseleave", () => {
-      image_elem.style.transition = "transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1)";
-      image_elem.style.transform = "translateX(0) translateY(0) scale(0.9)";
-    });
-    return image_elem;
-  }
-  add_gyroscope_effect() {
-  }
-  add_rubber_banding_effect() {
-  }
-  updateParallax(div_elem, img_elem, cursor_x, cursor_y, translation_factor) {
-    if (!div_elem) return;
-    const div_elem_rect = div_elem.getBoundingClientRect();
-    const x_center = div_elem_rect.left + div_elem_rect.width / 2;
-    const distance_from_center_x = cursor_x - x_center;
-    const y_center = div_elem_rect.top + div_elem_rect.height / 2;
-    const distance_from_center_y = cursor_y - y_center;
-    const translation_x = distance_from_center_x * translation_factor;
-    const translation_y = distance_from_center_y * translation_factor;
-    img_elem.style.transform = `translateX(${translation_x}px) translateY(${translation_y}px) scale(0.9)`;
-  }
-};
+var import_opencv_js2 = __toESM(require_opencv(), 1);
 
 // node_modules/onnxruntime-web/dist/ort.all.bundle.min.mjs
 var Q2 = Object.create;
@@ -36474,6 +36315,9 @@ var sK = Ls;
 }
 Object.defineProperty(ce.versions, "web", { value: mf, enumerable: true });
 
+// src/utils/debug.ts
+var import_opencv_js = __toESM(require_opencv(), 1);
+
 // src/utils/type_converter.ts
 var cv2 = __toESM(require_opencv(), 1);
 function html_canvas_to_html_image(canvas) {
@@ -36493,28 +36337,225 @@ function html_image_to_html_canvas(image) {
   return canvas;
 }
 
-// src/utils/html_canvas_manipulator.ts
-var import_opencv_js = __toESM(require_opencv(), 1);
+// src/utils/debug.ts
 var cv3 = import_opencv_js.default.default ?? import_opencv_js.default;
+function trigger_download(canvas, filename) {
+  const link = document.createElement("a");
+  link.download = filename;
+  link.href = canvas.toDataURL("image/png");
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+function download_canvas(canvas, filename) {
+  trigger_download(canvas, filename);
+}
+
+// src/models/webnn/inpaint.ts
+var cv4 = import_opencv_js2.default.default ?? import_opencv_js2.default;
+var Inpaint = class {
+  graph = null;
+  context = null;
+  weights = null;
+  width;
+  height;
+  constructor() {
+    if (!navigator.ml) throw new Error("WebNN not supported!");
+    this.width = 512;
+    this.height = 512;
+  }
+  async create_session(device_type) {
+    const base_dir = "../../model_binaries/webnn/migan/";
+    this.context = await navigator.ml.createContext({ device_type });
+    this.weights = await WeightsFile2.load(base_dir + "migan.weights", base_dir + "migan.manifest.json");
+    this.graph = await buildGraph2(this.context, this.weights);
+  }
+  async run_inference(inputs) {
+    const input_webnn_tensor = await this.context.createTensor({ dataType: "float32", shape: [1, 4, this.width, this.height], writable: true });
+    const output_webnn_tensor = await this.context.createTensor({ dataType: "float32", shape: [1, 3, this.width, this.height], readable: true });
+    this.context.writeTensor(input_webnn_tensor, inputs);
+    const input_tensors = {
+      "serving_default_args_0": input_webnn_tensor
+    };
+    const output_tensors = {
+      "serving_default_output_0_output": output_webnn_tensor
+    };
+    this.context.dispatch(this.graph.graph, input_tensors, output_tensors);
+    const result = new Float32Array(await this.context.readTensor(output_webnn_tensor));
+    return result;
+  }
+  preprocess(inputs, width = this.width, height = this.height) {
+    const input_array = this.preprocess_input(inputs[0], width, height);
+    const mask_array = this.preprocess_mask(inputs[1], width, height, true);
+    const current_layer_array = this.preprocess_mask(inputs[2], width, height, false);
+    const combined_array = this.merge_inputs(input_array, mask_array, width, height);
+    const combined_mask = this.merge_masks(current_layer_array, mask_array);
+    return [combined_array, combined_mask, mask_array];
+  }
+  postprocess(inputs, width = this.width, height = this.height) {
+    const wh2 = width * height;
+    for (let i = 0; i < wh2; i++) {
+      inputs[0][0 * wh2 + i] = inputs[2][0 * wh2 + i] * inputs[3][i] + inputs[0][0 * wh2 + i] * (1 - inputs[3][i]);
+      inputs[0][1 * wh2 + i] = inputs[2][1 * wh2 + i] * inputs[3][i] + inputs[0][1 * wh2 + i] * (1 - inputs[3][i]);
+      inputs[0][2 * wh2 + i] = inputs[2][2 * wh2 + i] * inputs[3][i] + inputs[0][2 * wh2 + i] * (1 - inputs[3][i]);
+    }
+    let normalized_layer = new Uint8ClampedArray(4 * wh2);
+    for (let i = 0; i < wh2; i++) {
+      const base = 4 * i;
+      normalized_layer[base + 0] = (inputs[0][0 * wh2 + i] + 1) * 127.5;
+      normalized_layer[base + 1] = (inputs[0][1 * wh2 + i] + 1) * 127.5;
+      normalized_layer[base + 2] = (inputs[0][2 * wh2 + i] + 1) * 127.5;
+      if (inputs[1][i] === 0) {
+        normalized_layer[base + 3] = 255;
+      } else {
+        normalized_layer[base + 3] = 0;
+      }
+    }
+    const image_data = new ImageData(normalized_layer, width, height);
+    const canvas = document.createElement("canvas");
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext("2d");
+    ctx.putImageData(image_data, 0, 0);
+    return canvas;
+  }
+  preprocess_input(input, width, height) {
+    const wh2 = width * height;
+    const resized_canvas = document.createElement("canvas");
+    resized_canvas.width = width;
+    resized_canvas.height = height;
+    const ctx = resized_canvas.getContext("2d");
+    ctx.drawImage(input, 0, 0, width, height);
+    const image_data = ctx.getImageData(0, 0, width, height);
+    const pixels = image_data.data;
+    let input_array = new Float32Array(3 * wh2);
+    for (let i = 0; i < wh2; i++) {
+      const base = i * 4;
+      input_array[0 * wh2 + i] = pixels[base] / 127.5 - 1;
+      input_array[1 * wh2 + i] = pixels[base + 1] / 127.5 - 1;
+      input_array[2 * wh2 + i] = pixels[base + 2] / 127.5 - 1;
+    }
+    return input_array;
+  }
+  preprocess_mask(mask, width, height, dilate) {
+    const wh2 = width * height;
+    const resized_canvas = document.createElement("canvas");
+    resized_canvas.width = width;
+    resized_canvas.height = height;
+    const ctx = resized_canvas.getContext("2d");
+    ctx.drawImage(mask, 0, 0, width, height);
+    const mask_data = ctx.getImageData(0, 0, width, height);
+    const pixels = mask_data.data;
+    let mask_array = new Uint8Array(wh2);
+    for (let i = 0; i < wh2; i++) {
+      if (pixels[i * 4 + 3] === 0) {
+        mask_array[i] = 0;
+      } else {
+        mask_array[i] = 255;
+      }
+    }
+    let new_arr = new Uint8Array(wh2);
+    if (dilate) {
+      const mat = new cv4.Mat(width, height, cv4.CV_8U);
+      mat.data.set(mask_array);
+      const kernel = cv4.Mat.ones(5, 5, cv4.CV_8U);
+      const dilated = new cv4.Mat();
+      cv4.dilate(mat, dilated, kernel);
+      kernel.delete();
+      for (let i = 0; i < wh2; i++) {
+        new_arr[i] = dilated[i];
+      }
+    } else {
+      for (let i = 0; i < wh2; i++) {
+        new_arr[i] = mask_array[i];
+      }
+    }
+    let res = new Float32Array(wh2);
+    for (let i = 0; i < wh2; i++) {
+      if (new_arr[i] === 255) {
+        res[i] = 1;
+      } else {
+        res[i] = 0;
+      }
+    }
+    return res;
+  }
+  merge_inputs(input_array, mask_array, width, height) {
+    const wh2 = width * height;
+    let combined_array = new Float32Array(4 * wh2);
+    for (let i = 0; i < wh2; i++) {
+      combined_array[i] = mask_array[i] - 0.5;
+    }
+    for (let channel = 0; channel < 3; channel++) {
+      for (let i = 0; i < wh2; i++) {
+        combined_array[(channel + 1) * wh2 + i] = input_array[channel * wh2 + i] * mask_array[i];
+      }
+    }
+    return combined_array;
+  }
+  // TODO: try to merge this function with merge_inputs() in the future
+  merge_masks(mask_a, mask_b) {
+    if (mask_a.length != mask_b.length) throw new Error("Cannot merge mask layers as their dimension(s) is(are) different!");
+    let combined_mask = new Float32Array(mask_a.length);
+    for (let i = 0; i < mask_a.length; i++) {
+      if (mask_a[i] === 0 || mask_b[i] === 0) {
+        combined_mask[i] = 0;
+      } else {
+        combined_mask[i] = 1;
+      }
+    }
+    return combined_mask;
+  }
+};
+
+// src/ui/animation.ts
+var Animation = class {
+  add_cursor_hover_effect(div_elem, image_elem, translation_factor) {
+    div_elem.addEventListener("mousemove", (event) => {
+      image_elem.style.transition = "none";
+      this.updateParallax(div_elem, image_elem, event.clientX, event.clientY, translation_factor);
+    });
+    div_elem.addEventListener("mouseleave", () => {
+      image_elem.style.transition = "transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1)";
+      image_elem.style.transform = "translateX(0) translateY(0) scale(0.9)";
+    });
+    return image_elem;
+  }
+  add_gyroscope_effect() {
+  }
+  add_rubber_banding_effect() {
+  }
+  updateParallax(div_elem, img_elem, cursor_x, cursor_y, translation_factor) {
+    if (!div_elem) return;
+    const div_elem_rect = div_elem.getBoundingClientRect();
+    const x_center = div_elem_rect.left + div_elem_rect.width / 2;
+    const distance_from_center_x = cursor_x - x_center;
+    const y_center = div_elem_rect.top + div_elem_rect.height / 2;
+    const distance_from_center_y = cursor_y - y_center;
+    const translation_x = distance_from_center_x * translation_factor;
+    const translation_y = distance_from_center_y * translation_factor;
+    img_elem.style.transform = `translateX(${translation_x}px) translateY(${translation_y}px) scale(0.9)`;
+  }
+};
+
+// src/utils/html_canvas_manipulator.ts
+var import_opencv_js3 = __toESM(require_opencv(), 1);
+var cv5 = import_opencv_js3.default.default ?? import_opencv_js3.default;
 function resize_html_canvas(canvas, width, height) {
-  const src = cv3.imread(canvas);
-  const dst = new cv3.Mat();
-  cv3.resize(src, dst, new cv3.Size(width, height), 0, 0, cv3.INTER_LINEAR);
+  const src = cv5.imread(canvas);
+  const dst = new cv5.Mat();
+  cv5.resize(src, dst, new cv5.Size(width, height), 0, 0, cv5.INTER_LINEAR);
   src.delete();
   const out = document.createElement("canvas");
   out.width = width;
   out.height = height;
-  cv3.imshow(out, dst);
+  cv5.imshow(out, dst);
   dst.delete();
   return out;
 }
 
-// src/utils/debug.ts
-var import_opencv_js2 = __toESM(require_opencv(), 1);
-var cv4 = import_opencv_js2.default.default ?? import_opencv_js2.default;
-
 // src/features/webnn/webnn-spatial-scene.ts
-var cv5 = import_opencv_js3.default.default ?? import_opencv_js3.default;
+var cv6 = import_opencv_js4.default.default ?? import_opencv_js4.default;
 var SpatialScene = class {
   depth_estimator;
   inpainter;
@@ -36568,6 +36609,7 @@ var SpatialScene = class {
         const inpainted_result = await this.inpainter.run_inference(inpainter_inputs[0]);
         const processed_inpainted_result = this.inpainter.postprocess([inpainted_result, inpainter_inputs[1], inpainted_target_array, inpainter_inputs[2]], INPAINT_INPUT_WIDTH, INPAINT_INPUT_HEIGHT);
         inpainted_layers.push(processed_inpainted_result);
+        download_canvas(processed_inpainted_result, `z_res_layer_${i}.png`);
       }
     }
     let inpainted_images = [];

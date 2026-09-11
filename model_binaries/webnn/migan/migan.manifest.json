@@ -1,0 +1,1607 @@
+{
+  "format": "wg-weights-manifest",
+  "version": 1,
+  "endianness": "little",
+  "tensors": {
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b512/torch.nn.modules.conv.Conv2d_torgb;": {
+      "dataType": "float32",
+      "shape": [
+        3
+      ],
+      "byteOffset": 8,
+      "byteLength": 12
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b512/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        64
+      ],
+      "byteOffset": 20,
+      "byteLength": 256
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b512/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        128
+      ],
+      "byteOffset": 276,
+      "byteLength": 512
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b256/torch.nn.modules.conv.Conv2d_torgb;": {
+      "dataType": "float32",
+      "shape": [
+        3
+      ],
+      "byteOffset": 788,
+      "byteLength": 12
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b256/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        128
+      ],
+      "byteOffset": 800,
+      "byteLength": 512
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b256/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        256
+      ],
+      "byteOffset": 1312,
+      "byteLength": 1024
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b128/torch.nn.modules.conv.Conv2d_torgb;": {
+      "dataType": "float32",
+      "shape": [
+        3
+      ],
+      "byteOffset": 2336,
+      "byteLength": 12
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b128/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        256
+      ],
+      "byteOffset": 2348,
+      "byteLength": 1024
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b128/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        512
+      ],
+      "byteOffset": 3372,
+      "byteLength": 2048
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b64/torch.nn.modules.conv.Conv2d_torgb;": {
+      "dataType": "float32",
+      "shape": [
+        3
+      ],
+      "byteOffset": 5420,
+      "byteLength": 12
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b64/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        512
+      ],
+      "byteOffset": 5432,
+      "byteLength": 2048
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b64/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        512
+      ],
+      "byteOffset": 7480,
+      "byteLength": 2048
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b32/torch.nn.modules.conv.Conv2d_torgb;": {
+      "dataType": "float32",
+      "shape": [
+        3
+      ],
+      "byteOffset": 9528,
+      "byteLength": 12
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b32/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        512
+      ],
+      "byteOffset": 9540,
+      "byteLength": 2048
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b32/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        512
+      ],
+      "byteOffset": 11588,
+      "byteLength": 2048
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b16/torch.nn.modules.conv.Conv2d_torgb;": {
+      "dataType": "float32",
+      "shape": [
+        3
+      ],
+      "byteOffset": 13636,
+      "byteLength": 12
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b16/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        512
+      ],
+      "byteOffset": 13648,
+      "byteLength": 2048
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b16/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        512
+      ],
+      "byteOffset": 15696,
+      "byteLength": 2048
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b8/torch.nn.modules.conv.Conv2d_torgb;": {
+      "dataType": "float32",
+      "shape": [
+        3
+      ],
+      "byteOffset": 17744,
+      "byteLength": 12
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b8/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        512
+      ],
+      "byteOffset": 17756,
+      "byteLength": 2048
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b8/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        512
+      ],
+      "byteOffset": 19804,
+      "byteLength": 2048
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlockFirst_b4/torch.nn.modules.conv.Conv2d_torgb;": {
+      "dataType": "float32",
+      "shape": [
+        3
+      ],
+      "byteOffset": 21852,
+      "byteLength": 12
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlockFirst_b4/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        512
+      ],
+      "byteOffset": 21864,
+      "byteLength": 2048
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlockFirst_b4/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        512
+      ],
+      "byteOffset": 23912,
+      "byteLength": 2048
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b4/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        512
+      ],
+      "byteOffset": 25960,
+      "byteLength": 2048
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b4/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        512
+      ],
+      "byteOffset": 28008,
+      "byteLength": 2048
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b8/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        512
+      ],
+      "byteOffset": 30056,
+      "byteLength": 2048
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b8/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        512
+      ],
+      "byteOffset": 32104,
+      "byteLength": 2048
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b16/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        512
+      ],
+      "byteOffset": 34152,
+      "byteLength": 2048
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b16/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        512
+      ],
+      "byteOffset": 36200,
+      "byteLength": 2048
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b32/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        512
+      ],
+      "byteOffset": 38248,
+      "byteLength": 2048
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b32/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        512
+      ],
+      "byteOffset": 40296,
+      "byteLength": 2048
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b64/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        512
+      ],
+      "byteOffset": 42344,
+      "byteLength": 2048
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b64/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        512
+      ],
+      "byteOffset": 44392,
+      "byteLength": 2048
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b128/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        256
+      ],
+      "byteOffset": 46440,
+      "byteLength": 1024
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b128/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        256
+      ],
+      "byteOffset": 47464,
+      "byteLength": 1024
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b256/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        128
+      ],
+      "byteOffset": 48488,
+      "byteLength": 512
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b256/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        128
+      ],
+      "byteOffset": 49000,
+      "byteLength": 512
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b512/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        64
+      ],
+      "byteOffset": 49512,
+      "byteLength": 256
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b512/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        64
+      ],
+      "byteOffset": 49768,
+      "byteLength": 256
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b512/torch.nn.modules.conv.Conv2d_fromrgb;": {
+      "dataType": "float32",
+      "shape": [
+        64
+      ],
+      "byteOffset": 50024,
+      "byteLength": 256
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b512/lib.model_zoo.migan_inference.SeparableConv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        512,
+        512,
+        1
+      ],
+      "byteOffset": 50280,
+      "byteLength": 1048576
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b512/lib.model_zoo.migan_inference.SeparableConv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        512,
+        512,
+        1
+      ],
+      "byteOffset": 1098856,
+      "byteLength": 1048576
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b256/lib.model_zoo.migan_inference.SeparableConv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        256,
+        256,
+        1
+      ],
+      "byteOffset": 2147432,
+      "byteLength": 262144
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b256/lib.model_zoo.migan_inference.SeparableConv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        256,
+        256,
+        1
+      ],
+      "byteOffset": 2409576,
+      "byteLength": 262144
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b128/lib.model_zoo.migan_inference.SeparableConv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        128,
+        128,
+        1
+      ],
+      "byteOffset": 2671720,
+      "byteLength": 65536
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b128/lib.model_zoo.migan_inference.SeparableConv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        128,
+        128,
+        1
+      ],
+      "byteOffset": 2737256,
+      "byteLength": 65536
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b64/lib.model_zoo.migan_inference.SeparableConv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        64,
+        64,
+        1
+      ],
+      "byteOffset": 2802792,
+      "byteLength": 16384
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b64/lib.model_zoo.migan_inference.SeparableConv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        64,
+        64,
+        1
+      ],
+      "byteOffset": 2819176,
+      "byteLength": 16384
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b32/lib.model_zoo.migan_inference.SeparableConv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        32,
+        32,
+        1
+      ],
+      "byteOffset": 2835560,
+      "byteLength": 4096
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b32/lib.model_zoo.migan_inference.SeparableConv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        32,
+        32,
+        1
+      ],
+      "byteOffset": 2839656,
+      "byteLength": 4096
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b16/lib.model_zoo.migan_inference.SeparableConv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        16,
+        16,
+        1
+      ],
+      "byteOffset": 2843752,
+      "byteLength": 1024
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b16/lib.model_zoo.migan_inference.SeparableConv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        16,
+        16,
+        1
+      ],
+      "byteOffset": 2844776,
+      "byteLength": 1024
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b8/lib.model_zoo.migan_inference.SeparableConv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        8,
+        8,
+        1
+      ],
+      "byteOffset": 2845800,
+      "byteLength": 256
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b8/lib.model_zoo.migan_inference.SeparableConv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        8,
+        8,
+        1
+      ],
+      "byteOffset": 2846056,
+      "byteLength": 256
+    },
+    "arith.constant": {
+      "dataType": "int32",
+      "shape": [
+        4,
+        2
+      ],
+      "byteOffset": 2846312,
+      "byteLength": 32
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b512/torch.nn.modules.conv.Conv2d_torgb;1": {
+      "dataType": "float32",
+      "shape": [
+        3,
+        1,
+        1,
+        64
+      ],
+      "byteOffset": 2846344,
+      "byteLength": 768
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b512/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        64,
+        1,
+        1,
+        64
+      ],
+      "byteOffset": 2847112,
+      "byteLength": 16384
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b512/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        64
+      ],
+      "byteOffset": 2863496,
+      "byteLength": 2304
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b512/lib.model_zoo.migan_inference.SeparableConv2d_conv1/lib.model_zoo.migan_inference.Upsample2d_upsample/torch.nn.modules.conv.Conv2d_filter;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        4,
+        4,
+        64
+      ],
+      "byteOffset": 2865800,
+      "byteLength": 4096
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b512/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        64,
+        1,
+        1,
+        128
+      ],
+      "byteOffset": 2869896,
+      "byteLength": 32768
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b512/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        128
+      ],
+      "byteOffset": 2902664,
+      "byteLength": 4608
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b256/torch.nn.modules.conv.Conv2d_torgb;1": {
+      "dataType": "float32",
+      "shape": [
+        3,
+        1,
+        1,
+        128
+      ],
+      "byteOffset": 2907272,
+      "byteLength": 1536
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b256/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        128,
+        1,
+        1,
+        128
+      ],
+      "byteOffset": 2908808,
+      "byteLength": 65536
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b256/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        128
+      ],
+      "byteOffset": 2974344,
+      "byteLength": 4608
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b256/lib.model_zoo.migan_inference.SeparableConv2d_conv1/lib.model_zoo.migan_inference.Upsample2d_upsample/torch.nn.modules.conv.Conv2d_filter;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        4,
+        4,
+        128
+      ],
+      "byteOffset": 2978952,
+      "byteLength": 8192
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b256/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        128,
+        1,
+        1,
+        256
+      ],
+      "byteOffset": 2987144,
+      "byteLength": 131072
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b256/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        256
+      ],
+      "byteOffset": 3118216,
+      "byteLength": 9216
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b128/torch.nn.modules.conv.Conv2d_torgb;1": {
+      "dataType": "float32",
+      "shape": [
+        3,
+        1,
+        1,
+        256
+      ],
+      "byteOffset": 3127432,
+      "byteLength": 3072
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b128/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        256,
+        1,
+        1,
+        256
+      ],
+      "byteOffset": 3130504,
+      "byteLength": 262144
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b128/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        256
+      ],
+      "byteOffset": 3392648,
+      "byteLength": 9216
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b128/lib.model_zoo.migan_inference.SeparableConv2d_conv1/lib.model_zoo.migan_inference.Upsample2d_upsample/torch.nn.modules.conv.Conv2d_filter;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        4,
+        4,
+        256
+      ],
+      "byteOffset": 3401864,
+      "byteLength": 16384
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b128/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        256,
+        1,
+        1,
+        512
+      ],
+      "byteOffset": 3418248,
+      "byteLength": 524288
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b128/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        512
+      ],
+      "byteOffset": 3942536,
+      "byteLength": 18432
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b64/torch.nn.modules.conv.Conv2d_torgb;1": {
+      "dataType": "float32",
+      "shape": [
+        3,
+        1,
+        1,
+        512
+      ],
+      "byteOffset": 3960968,
+      "byteLength": 6144
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b64/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        512,
+        1,
+        1,
+        512
+      ],
+      "byteOffset": 3967112,
+      "byteLength": 1048576
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b64/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        512
+      ],
+      "byteOffset": 5015688,
+      "byteLength": 18432
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b64/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        512,
+        1,
+        1,
+        512
+      ],
+      "byteOffset": 5034120,
+      "byteLength": 1048576
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b64/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        512
+      ],
+      "byteOffset": 6082696,
+      "byteLength": 18432
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b32/torch.nn.modules.conv.Conv2d_torgb;1": {
+      "dataType": "float32",
+      "shape": [
+        3,
+        1,
+        1,
+        512
+      ],
+      "byteOffset": 6101128,
+      "byteLength": 6144
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b32/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        512,
+        1,
+        1,
+        512
+      ],
+      "byteOffset": 6107272,
+      "byteLength": 1048576
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b32/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        512
+      ],
+      "byteOffset": 7155848,
+      "byteLength": 18432
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b32/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        512,
+        1,
+        1,
+        512
+      ],
+      "byteOffset": 7174280,
+      "byteLength": 1048576
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b32/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        512
+      ],
+      "byteOffset": 8222856,
+      "byteLength": 18432
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b16/torch.nn.modules.conv.Conv2d_torgb;1": {
+      "dataType": "float32",
+      "shape": [
+        3,
+        1,
+        1,
+        512
+      ],
+      "byteOffset": 8241288,
+      "byteLength": 6144
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b16/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        512,
+        1,
+        1,
+        512
+      ],
+      "byteOffset": 8247432,
+      "byteLength": 1048576
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b16/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        512
+      ],
+      "byteOffset": 9296008,
+      "byteLength": 18432
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b16/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        512,
+        1,
+        1,
+        512
+      ],
+      "byteOffset": 9314440,
+      "byteLength": 1048576
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b16/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        512
+      ],
+      "byteOffset": 10363016,
+      "byteLength": 18432
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b8/torch.nn.modules.conv.Conv2d_torgb;1": {
+      "dataType": "float32",
+      "shape": [
+        3,
+        1,
+        1,
+        512
+      ],
+      "byteOffset": 10381448,
+      "byteLength": 6144
+    },
+    "arith.constant1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        4,
+        4,
+        3
+      ],
+      "byteOffset": 10387592,
+      "byteLength": 192
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b8/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        512,
+        1,
+        1,
+        512
+      ],
+      "byteOffset": 10387784,
+      "byteLength": 1048576
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b8/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        512
+      ],
+      "byteOffset": 11436360,
+      "byteLength": 18432
+    },
+    "arith.constant2": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        4,
+        4,
+        512
+      ],
+      "byteOffset": 11454792,
+      "byteLength": 32768
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b8/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        512,
+        1,
+        1,
+        512
+      ],
+      "byteOffset": 11487560,
+      "byteLength": 1048576
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b8/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        512
+      ],
+      "byteOffset": 12536136,
+      "byteLength": 18432
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlockFirst_b4/torch.nn.modules.conv.Conv2d_torgb;1": {
+      "dataType": "float32",
+      "shape": [
+        3,
+        1,
+        1,
+        512
+      ],
+      "byteOffset": 12554568,
+      "byteLength": 6144
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlockFirst_b4/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        512,
+        1,
+        1,
+        512
+      ],
+      "byteOffset": 12560712,
+      "byteLength": 1048576
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlockFirst_b4/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        512
+      ],
+      "byteOffset": 13609288,
+      "byteLength": 18432
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlockFirst_b4/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        512,
+        1,
+        1,
+        512
+      ],
+      "byteOffset": 13627720,
+      "byteLength": 1048576
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlockFirst_b4/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        512
+      ],
+      "byteOffset": 14676296,
+      "byteLength": 18432
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b4/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        512,
+        1,
+        1,
+        512
+      ],
+      "byteOffset": 14694728,
+      "byteLength": 1048576
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b4/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        512
+      ],
+      "byteOffset": 15743304,
+      "byteLength": 18432
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b4/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        512,
+        1,
+        1,
+        512
+      ],
+      "byteOffset": 15761736,
+      "byteLength": 1048576
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b4/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        512
+      ],
+      "byteOffset": 16810312,
+      "byteLength": 18432
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b8/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        512,
+        1,
+        1,
+        512
+      ],
+      "byteOffset": 16828744,
+      "byteLength": 1048576
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b8/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        512
+      ],
+      "byteOffset": 17877320,
+      "byteLength": 18432
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b8/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        512,
+        1,
+        1,
+        512
+      ],
+      "byteOffset": 17895752,
+      "byteLength": 1048576
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b8/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        512
+      ],
+      "byteOffset": 18944328,
+      "byteLength": 18432
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b16/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        512,
+        1,
+        1,
+        512
+      ],
+      "byteOffset": 18962760,
+      "byteLength": 1048576
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b16/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        512
+      ],
+      "byteOffset": 20011336,
+      "byteLength": 18432
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b16/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        512,
+        1,
+        1,
+        512
+      ],
+      "byteOffset": 20029768,
+      "byteLength": 1048576
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b16/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        512
+      ],
+      "byteOffset": 21078344,
+      "byteLength": 18432
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b32/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        512,
+        1,
+        1,
+        512
+      ],
+      "byteOffset": 21096776,
+      "byteLength": 1048576
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b32/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        512
+      ],
+      "byteOffset": 22145352,
+      "byteLength": 18432
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b32/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        512,
+        1,
+        1,
+        512
+      ],
+      "byteOffset": 22163784,
+      "byteLength": 1048576
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b32/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        512
+      ],
+      "byteOffset": 23212360,
+      "byteLength": 18432
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b64/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        512,
+        1,
+        1,
+        512
+      ],
+      "byteOffset": 23230792,
+      "byteLength": 1048576
+    },
+    "arith.constant3": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        4,
+        4,
+        512
+      ],
+      "byteOffset": 24279368,
+      "byteLength": 32768
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b64/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        512
+      ],
+      "byteOffset": 24312136,
+      "byteLength": 18432
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b64/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        512,
+        1,
+        1,
+        512
+      ],
+      "byteOffset": 24330568,
+      "byteLength": 1048576
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b64/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        512
+      ],
+      "byteOffset": 25379144,
+      "byteLength": 18432
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b128/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        512,
+        1,
+        1,
+        256
+      ],
+      "byteOffset": 25397576,
+      "byteLength": 524288
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b128/lib.model_zoo.migan_inference.SeparableConv2d_conv2/lib.model_zoo.migan_inference.Downsample2d_downsample/torch.nn.modules.conv.Conv2d_filter;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        4,
+        4,
+        256
+      ],
+      "byteOffset": 25921864,
+      "byteLength": 16384
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b128/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        256
+      ],
+      "byteOffset": 25938248,
+      "byteLength": 9216
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b128/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        256,
+        1,
+        1,
+        256
+      ],
+      "byteOffset": 25947464,
+      "byteLength": 262144
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b128/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        256
+      ],
+      "byteOffset": 26209608,
+      "byteLength": 9216
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b256/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        256,
+        1,
+        1,
+        128
+      ],
+      "byteOffset": 26218824,
+      "byteLength": 131072
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b256/lib.model_zoo.migan_inference.SeparableConv2d_conv2/lib.model_zoo.migan_inference.Downsample2d_downsample/torch.nn.modules.conv.Conv2d_filter;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        4,
+        4,
+        128
+      ],
+      "byteOffset": 26349896,
+      "byteLength": 8192
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b256/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        128
+      ],
+      "byteOffset": 26358088,
+      "byteLength": 4608
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b256/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        128,
+        1,
+        1,
+        128
+      ],
+      "byteOffset": 26362696,
+      "byteLength": 65536
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b256/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        128
+      ],
+      "byteOffset": 26428232,
+      "byteLength": 4608
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b512/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        128,
+        1,
+        1,
+        64
+      ],
+      "byteOffset": 26432840,
+      "byteLength": 32768
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b512/lib.model_zoo.migan_inference.SeparableConv2d_conv2/lib.model_zoo.migan_inference.Downsample2d_downsample/torch.nn.modules.conv.Conv2d_filter;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        4,
+        4,
+        64
+      ],
+      "byteOffset": 26465608,
+      "byteLength": 4096
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b512/lib.model_zoo.migan_inference.SeparableConv2d_conv2/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        64
+      ],
+      "byteOffset": 26469704,
+      "byteLength": 2304
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b512/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        64,
+        1,
+        1,
+        64
+      ],
+      "byteOffset": 26472008,
+      "byteLength": 16384
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b512/lib.model_zoo.migan_inference.SeparableConv2d_conv1/torch.nn.modules.conv.Conv2d_conv1;1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        3,
+        3,
+        64
+      ],
+      "byteOffset": 26488392,
+      "byteLength": 2304
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Encoder_encoder/lib.model_zoo.migan_inference.EncoderBlock_b512/torch.nn.modules.conv.Conv2d_fromrgb;1": {
+      "dataType": "float32",
+      "shape": [
+        64,
+        1,
+        1,
+        4
+      ],
+      "byteOffset": 26490696,
+      "byteLength": 1024
+    },
+    "arith.constant4": {
+      "dataType": "float32",
+      "shape": [
+        3
+      ],
+      "byteOffset": 26491720,
+      "byteLength": 12
+    },
+    "arith.constant5": {
+      "dataType": "float32",
+      "shape": [
+        512
+      ],
+      "byteOffset": 26491732,
+      "byteLength": 2048
+    },
+    "arith.constant6": {
+      "dataType": "float32",
+      "shape": [
+        256
+      ],
+      "byteOffset": 26493780,
+      "byteLength": 1024
+    },
+    "arith.constant7": {
+      "dataType": "float32",
+      "shape": [
+        128
+      ],
+      "byteOffset": 26494804,
+      "byteLength": 512
+    },
+    "arith.constant8": {
+      "dataType": "float32",
+      "shape": [
+        64
+      ],
+      "byteOffset": 26495316,
+      "byteLength": 256
+    },
+    "arith.constant9": {
+      "dataType": "int32",
+      "shape": [
+        2
+      ],
+      "byteOffset": 26495572,
+      "byteLength": 8
+    },
+    "arith.constant10": {
+      "dataType": "int32",
+      "shape": [
+        2
+      ],
+      "byteOffset": 26495580,
+      "byteLength": 8
+    },
+    "arith.constant11": {
+      "dataType": "int32",
+      "shape": [
+        2
+      ],
+      "byteOffset": 26495588,
+      "byteLength": 8
+    },
+    "arith.constant12": {
+      "dataType": "int32",
+      "shape": [
+        2
+      ],
+      "byteOffset": 26495596,
+      "byteLength": 8
+    },
+    "arith.constant13": {
+      "dataType": "int32",
+      "shape": [
+        2
+      ],
+      "byteOffset": 26495604,
+      "byteLength": 8
+    },
+    "arith.constant14": {
+      "dataType": "int32",
+      "shape": [
+        2
+      ],
+      "byteOffset": 26495612,
+      "byteLength": 8
+    },
+    "arith.constant15": {
+      "dataType": "int32",
+      "shape": [
+        4
+      ],
+      "byteOffset": 26495620,
+      "byteLength": 16
+    },
+    "arith.constant16": {
+      "dataType": "int32",
+      "shape": [
+        2
+      ],
+      "byteOffset": 26495636,
+      "byteLength": 8
+    },
+    "arith.constant17": {
+      "dataType": "int32",
+      "shape": [
+        4
+      ],
+      "byteOffset": 26495644,
+      "byteLength": 16
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b512/lib.model_zoo.migan_inference.SeparableConv2d_conv1/lib.model_zoo.migan_inference.Upsample2d_upsample;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        512,
+        512,
+        1
+      ],
+      "byteOffset": 26495660,
+      "byteLength": 1048576
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b256/lib.model_zoo.migan_inference.SeparableConv2d_conv1/lib.model_zoo.migan_inference.Upsample2d_upsample;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        256,
+        256,
+        1
+      ],
+      "byteOffset": 27544236,
+      "byteLength": 262144
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b128/lib.model_zoo.migan_inference.SeparableConv2d_conv1/lib.model_zoo.migan_inference.Upsample2d_upsample;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        128,
+        128,
+        1
+      ],
+      "byteOffset": 27806380,
+      "byteLength": 65536
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b64/lib.model_zoo.migan_inference.SeparableConv2d_conv1/lib.model_zoo.migan_inference.Upsample2d_upsample;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        64,
+        64,
+        1
+      ],
+      "byteOffset": 27871916,
+      "byteLength": 16384
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b32/lib.model_zoo.migan_inference.SeparableConv2d_conv1/lib.model_zoo.migan_inference.Upsample2d_upsample;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        32,
+        32,
+        1
+      ],
+      "byteOffset": 27888300,
+      "byteLength": 4096
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b16/lib.model_zoo.migan_inference.SeparableConv2d_conv1/lib.model_zoo.migan_inference.Upsample2d_upsample;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        16,
+        16,
+        1
+      ],
+      "byteOffset": 27892396,
+      "byteLength": 1024
+    },
+    "lib.model_zoo.migan_inference.Generator/lib.model_zoo.migan_inference.Synthesis_synthesis/lib.model_zoo.migan_inference.SynthesisBlock_b8/lib.model_zoo.migan_inference.SeparableConv2d_conv1/lib.model_zoo.migan_inference.Upsample2d_upsample;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        8,
+        8,
+        1
+      ],
+      "byteOffset": 27893420,
+      "byteLength": 256
+    },
+    "arith.constant18": {
+      "dataType": "float32",
+      "shape": [],
+      "byteOffset": 27893676,
+      "byteLength": 4
+    },
+    "arith.constant19": {
+      "dataType": "float32",
+      "shape": [],
+      "byteOffset": 27893680,
+      "byteLength": 4
+    },
+    "arith.constant20": {
+      "dataType": "float32",
+      "shape": [],
+      "byteOffset": 27893684,
+      "byteLength": 4
+    }
+  }
+}

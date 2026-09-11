@@ -1,0 +1,2352 @@
+{
+  "format": "wg-weights-manifest",
+  "version": 1,
+  "endianness": "little",
+  "tensors": {
+    "arith.constant": {
+      "dataType": "float32",
+      "shape": [],
+      "byteOffset": 8,
+      "byteLength": 4
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_0/depth_anything_v2.dinov2_layers.attention.MemEffAttention_attn;": {
+      "dataType": "float32",
+      "shape": [],
+      "byteOffset": 12,
+      "byteLength": 4
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_0/depth_anything_v2.dinov2_layers.layer_scale.LayerScale_ls1;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        1,
+        384
+      ],
+      "byteOffset": 16,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_0/depth_anything_v2.dinov2_layers.layer_scale.LayerScale_ls2;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        1,
+        384
+      ],
+      "byteOffset": 1552,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_1/depth_anything_v2.dinov2_layers.layer_scale.LayerScale_ls1;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        1,
+        384
+      ],
+      "byteOffset": 3088,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_1/depth_anything_v2.dinov2_layers.layer_scale.LayerScale_ls2;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        1,
+        384
+      ],
+      "byteOffset": 4624,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_2/depth_anything_v2.dinov2_layers.layer_scale.LayerScale_ls1;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        1,
+        384
+      ],
+      "byteOffset": 6160,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_2/depth_anything_v2.dinov2_layers.layer_scale.LayerScale_ls2;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        1,
+        384
+      ],
+      "byteOffset": 7696,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_3/depth_anything_v2.dinov2_layers.layer_scale.LayerScale_ls1;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        1,
+        384
+      ],
+      "byteOffset": 9232,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_3/depth_anything_v2.dinov2_layers.layer_scale.LayerScale_ls2;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        1,
+        384
+      ],
+      "byteOffset": 10768,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_4/depth_anything_v2.dinov2_layers.layer_scale.LayerScale_ls1;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        1,
+        384
+      ],
+      "byteOffset": 12304,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_4/depth_anything_v2.dinov2_layers.layer_scale.LayerScale_ls2;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        1,
+        384
+      ],
+      "byteOffset": 13840,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_5/depth_anything_v2.dinov2_layers.layer_scale.LayerScale_ls1;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        1,
+        384
+      ],
+      "byteOffset": 15376,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_5/depth_anything_v2.dinov2_layers.layer_scale.LayerScale_ls2;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        1,
+        384
+      ],
+      "byteOffset": 16912,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_6/depth_anything_v2.dinov2_layers.layer_scale.LayerScale_ls1;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        1,
+        384
+      ],
+      "byteOffset": 18448,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_6/depth_anything_v2.dinov2_layers.layer_scale.LayerScale_ls2;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        1,
+        384
+      ],
+      "byteOffset": 19984,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_7/depth_anything_v2.dinov2_layers.layer_scale.LayerScale_ls1;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        1,
+        384
+      ],
+      "byteOffset": 21520,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_7/depth_anything_v2.dinov2_layers.layer_scale.LayerScale_ls2;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        1,
+        384
+      ],
+      "byteOffset": 23056,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_8/depth_anything_v2.dinov2_layers.layer_scale.LayerScale_ls1;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        1,
+        384
+      ],
+      "byteOffset": 24592,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_8/depth_anything_v2.dinov2_layers.layer_scale.LayerScale_ls2;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        1,
+        384
+      ],
+      "byteOffset": 26128,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_9/depth_anything_v2.dinov2_layers.layer_scale.LayerScale_ls1;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        1,
+        384
+      ],
+      "byteOffset": 27664,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_9/depth_anything_v2.dinov2_layers.layer_scale.LayerScale_ls2;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        1,
+        384
+      ],
+      "byteOffset": 29200,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_10/depth_anything_v2.dinov2_layers.layer_scale.LayerScale_ls1;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        1,
+        384
+      ],
+      "byteOffset": 30736,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_10/depth_anything_v2.dinov2_layers.layer_scale.LayerScale_ls2;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        1,
+        384
+      ],
+      "byteOffset": 32272,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_11/depth_anything_v2.dinov2_layers.layer_scale.LayerScale_ls1;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        1,
+        384
+      ],
+      "byteOffset": 33808,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_11/depth_anything_v2.dinov2_layers.layer_scale.LayerScale_ls2;": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        1,
+        384
+      ],
+      "byteOffset": 35344,
+      "byteLength": 1536
+    },
+    "arith.constant1": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        1370,
+        384
+      ],
+      "byteOffset": 36880,
+      "byteLength": 2104320
+    },
+    "arith.constant2": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2141200,
+      "byteLength": 1536
+    },
+    "arith.constant3": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2142736,
+      "byteLength": 1536
+    },
+    "arith.constant4": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2144272,
+      "byteLength": 1536
+    },
+    "arith.constant5": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2145808,
+      "byteLength": 1536
+    },
+    "arith.constant6": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2147344,
+      "byteLength": 1536
+    },
+    "arith.constant7": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2148880,
+      "byteLength": 1536
+    },
+    "arith.constant8": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2150416,
+      "byteLength": 1536
+    },
+    "arith.constant9": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2151952,
+      "byteLength": 1536
+    },
+    "arith.constant10": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2153488,
+      "byteLength": 1536
+    },
+    "arith.constant11": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2155024,
+      "byteLength": 1536
+    },
+    "arith.constant12": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2156560,
+      "byteLength": 1536
+    },
+    "arith.constant13": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2158096,
+      "byteLength": 1536
+    },
+    "arith.constant14": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2159632,
+      "byteLength": 1536
+    },
+    "arith.constant15": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2161168,
+      "byteLength": 1536
+    },
+    "arith.constant16": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2162704,
+      "byteLength": 1536
+    },
+    "arith.constant17": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2164240,
+      "byteLength": 1536
+    },
+    "arith.constant18": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2165776,
+      "byteLength": 1536
+    },
+    "arith.constant19": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2167312,
+      "byteLength": 1536
+    },
+    "arith.constant20": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2168848,
+      "byteLength": 1536
+    },
+    "arith.constant21": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2170384,
+      "byteLength": 1536
+    },
+    "arith.constant22": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2171920,
+      "byteLength": 1536
+    },
+    "arith.constant23": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2173456,
+      "byteLength": 1536
+    },
+    "arith.constant24": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2174992,
+      "byteLength": 1536
+    },
+    "arith.constant25": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2176528,
+      "byteLength": 1536
+    },
+    "arith.constant26": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2178064,
+      "byteLength": 1536
+    },
+    "arith.constant27": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2179600,
+      "byteLength": 1536
+    },
+    "arith.constant28": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2181136,
+      "byteLength": 1536
+    },
+    "arith.constant29": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2182672,
+      "byteLength": 1536
+    },
+    "arith.constant30": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2184208,
+      "byteLength": 1536
+    },
+    "arith.constant31": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2185744,
+      "byteLength": 1536
+    },
+    "arith.constant32": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2187280,
+      "byteLength": 1536
+    },
+    "arith.constant33": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2188816,
+      "byteLength": 1536
+    },
+    "arith.constant34": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2190352,
+      "byteLength": 1536
+    },
+    "arith.constant35": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2191888,
+      "byteLength": 1536
+    },
+    "arith.constant36": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2193424,
+      "byteLength": 1536
+    },
+    "arith.constant37": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2194960,
+      "byteLength": 1536
+    },
+    "arith.constant38": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2196496,
+      "byteLength": 1536
+    },
+    "arith.constant39": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2198032,
+      "byteLength": 1536
+    },
+    "arith.constant40": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2199568,
+      "byteLength": 1536
+    },
+    "arith.constant41": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2201104,
+      "byteLength": 1536
+    },
+    "arith.constant42": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2202640,
+      "byteLength": 1536
+    },
+    "arith.constant43": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2204176,
+      "byteLength": 1536
+    },
+    "arith.constant44": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2205712,
+      "byteLength": 1536
+    },
+    "arith.constant45": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2207248,
+      "byteLength": 1536
+    },
+    "arith.constant46": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2208784,
+      "byteLength": 1536
+    },
+    "arith.constant47": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2210320,
+      "byteLength": 1536
+    },
+    "arith.constant48": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2211856,
+      "byteLength": 1536
+    },
+    "arith.constant49": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2213392,
+      "byteLength": 1536
+    },
+    "arith.constant50": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2214928,
+      "byteLength": 1536
+    },
+    "arith.constant51": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2216464,
+      "byteLength": 1536
+    },
+    "arith.constant52": {
+      "dataType": "float32",
+      "shape": [],
+      "byteOffset": 2218000,
+      "byteLength": 4
+    },
+    "arith.constant53": {
+      "dataType": "int32",
+      "shape": [
+        2
+      ],
+      "byteOffset": 2218004,
+      "byteLength": 8
+    },
+    "arith.constant54": {
+      "dataType": "float32",
+      "shape": [
+        1,
+        1,
+        384
+      ],
+      "byteOffset": 2218012,
+      "byteLength": 1536
+    },
+    "arith.constant55": {
+      "dataType": "int32",
+      "shape": [
+        4
+      ],
+      "byteOffset": 2219548,
+      "byteLength": 16
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet4;": {
+      "dataType": "int32",
+      "shape": [
+        2
+      ],
+      "byteOffset": 2219564,
+      "byteLength": 8
+    },
+    "arith.constant56": {
+      "dataType": "int32",
+      "shape": [
+        4
+      ],
+      "byteOffset": 2219572,
+      "byteLength": 16
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet3;": {
+      "dataType": "int32",
+      "shape": [
+        2
+      ],
+      "byteOffset": 2219588,
+      "byteLength": 8
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet2;": {
+      "dataType": "int32",
+      "shape": [
+        2
+      ],
+      "byteOffset": 2219596,
+      "byteLength": 8
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet1;": {
+      "dataType": "int32",
+      "shape": [
+        2
+      ],
+      "byteOffset": 2219604,
+      "byteLength": 8
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head;": {
+      "dataType": "int32",
+      "shape": [
+        2
+      ],
+      "byteOffset": 2219612,
+      "byteLength": 8
+    },
+    "arith.constant57": {
+      "dataType": "int32",
+      "shape": [
+        3
+      ],
+      "byteOffset": 2219620,
+      "byteLength": 12
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/torch.nn.modules.conv.ConvTranspose2d_0;": {
+      "dataType": "int32",
+      "shape": [
+        4
+      ],
+      "byteOffset": 2219632,
+      "byteLength": 16
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/torch.nn.modules.conv.ConvTranspose2d_1;": {
+      "dataType": "int32",
+      "shape": [
+        4
+      ],
+      "byteOffset": 2219648,
+      "byteLength": 16
+    },
+    "arith.constant58": {
+      "dataType": "float32",
+      "shape": [
+        64
+      ],
+      "byteOffset": 2219664,
+      "byteLength": 256
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.patch_embed.PatchEmbed_patch_embed;": {
+      "dataType": "int32",
+      "shape": [
+        3
+      ],
+      "byteOffset": 2219920,
+      "byteLength": 12
+    },
+    "arith.constant59": {
+      "dataType": "int32",
+      "shape": [
+        3
+      ],
+      "byteOffset": 2219932,
+      "byteLength": 12
+    },
+    "arith.constant60": {
+      "dataType": "int32",
+      "shape": [
+        2
+      ],
+      "byteOffset": 2219944,
+      "byteLength": 8
+    },
+    "arith.constant61": {
+      "dataType": "int32",
+      "shape": [
+        5
+      ],
+      "byteOffset": 2219952,
+      "byteLength": 20
+    },
+    "arith.constant62": {
+      "dataType": "int32",
+      "shape": [
+        5
+      ],
+      "byteOffset": 2219972,
+      "byteLength": 20
+    },
+    "arith.constant63": {
+      "dataType": "int32",
+      "shape": [
+        4
+      ],
+      "byteOffset": 2219992,
+      "byteLength": 16
+    },
+    "arith.constant64": {
+      "dataType": "int32",
+      "shape": [
+        4
+      ],
+      "byteOffset": 2220008,
+      "byteLength": 16
+    },
+    "arith.constant65": {
+      "dataType": "int32",
+      "shape": [
+        3
+      ],
+      "byteOffset": 2220024,
+      "byteLength": 12
+    },
+    "arith.constant66": {
+      "dataType": "int32",
+      "shape": [
+        3
+      ],
+      "byteOffset": 2220036,
+      "byteLength": 12
+    },
+    "arith.constant67": {
+      "dataType": "int32",
+      "shape": [
+        4
+      ],
+      "byteOffset": 2220048,
+      "byteLength": 16
+    },
+    "arith.constant68": {
+      "dataType": "int32",
+      "shape": [
+        3
+      ],
+      "byteOffset": 2220064,
+      "byteLength": 12
+    },
+    "arith.constant69": {
+      "dataType": "int32",
+      "shape": [
+        4
+      ],
+      "byteOffset": 2220076,
+      "byteLength": 16
+    },
+    "arith.constant70": {
+      "dataType": "int32",
+      "shape": [
+        4
+      ],
+      "byteOffset": 2220092,
+      "byteLength": 16
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/torch.nn.modules.container.Sequential_output_conv2/torch.nn.modules.activation.ReLU_3;;depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/torch.nn.modules.container.Sequential_output_conv2/torch.nn.modules.conv.Conv2d_2;": {
+      "dataType": "float32",
+      "shape": [
+        1
+      ],
+      "byteOffset": 2220108,
+      "byteLength": 4
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/torch.nn.modules.container.Sequential_output_conv2/torch.nn.modules.activation.ReLU_1;;depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/torch.nn.modules.container.Sequential_output_conv2/torch.nn.modules.conv.Conv2d_0;": {
+      "dataType": "float32",
+      "shape": [
+        32
+      ],
+      "byteOffset": 2220112,
+      "byteLength": 128
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/torch.nn.modules.conv.Conv2d_output_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        32
+      ],
+      "byteOffset": 2220240,
+      "byteLength": 128
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet1/torch.nn.modules.conv.Conv2d_out_conv;": {
+      "dataType": "float32",
+      "shape": [
+        64
+      ],
+      "byteOffset": 2220368,
+      "byteLength": 256
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet1/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit2/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        64
+      ],
+      "byteOffset": 2220624,
+      "byteLength": 256
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet1/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit2/torch.nn.modules.activation.ReLU_activation;;depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet1/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit1/torch.nn.modules.activation.ReLU_activation;;depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet1/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit2/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        64
+      ],
+      "byteOffset": 2220880,
+      "byteLength": 256
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet1/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit1/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        64
+      ],
+      "byteOffset": 2221136,
+      "byteLength": 256
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet1/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit1/torch.nn.modules.activation.ReLU_activation;;depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet1/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit1/torch.nn.modules.activation.ReLU_activation;;depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet1/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit1/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        64
+      ],
+      "byteOffset": 2221392,
+      "byteLength": 256
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet2/torch.nn.modules.conv.Conv2d_out_conv;": {
+      "dataType": "float32",
+      "shape": [
+        64
+      ],
+      "byteOffset": 2221648,
+      "byteLength": 256
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet2/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit2/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        64
+      ],
+      "byteOffset": 2221904,
+      "byteLength": 256
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet2/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit2/torch.nn.modules.activation.ReLU_activation;;depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet2/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit1/torch.nn.modules.activation.ReLU_activation;;depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet2/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit2/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        64
+      ],
+      "byteOffset": 2222160,
+      "byteLength": 256
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet2/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit1/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        64
+      ],
+      "byteOffset": 2222416,
+      "byteLength": 256
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet2/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit1/torch.nn.modules.activation.ReLU_activation;;depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet2/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit1/torch.nn.modules.activation.ReLU_activation;;depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet2/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit1/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        64
+      ],
+      "byteOffset": 2222672,
+      "byteLength": 256
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet3/torch.nn.modules.conv.Conv2d_out_conv;": {
+      "dataType": "float32",
+      "shape": [
+        64
+      ],
+      "byteOffset": 2222928,
+      "byteLength": 256
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet3/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit2/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        64
+      ],
+      "byteOffset": 2223184,
+      "byteLength": 256
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet3/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit2/torch.nn.modules.activation.ReLU_activation;;depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet3/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit1/torch.nn.modules.activation.ReLU_activation;;depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet3/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit2/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        64
+      ],
+      "byteOffset": 2223440,
+      "byteLength": 256
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet3/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit1/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        64
+      ],
+      "byteOffset": 2223696,
+      "byteLength": 256
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet3/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit1/torch.nn.modules.activation.ReLU_activation;;depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet3/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit1/torch.nn.modules.activation.ReLU_activation;;depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet3/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit1/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        64
+      ],
+      "byteOffset": 2223952,
+      "byteLength": 256
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet4/torch.nn.modules.conv.Conv2d_out_conv;": {
+      "dataType": "float32",
+      "shape": [
+        64
+      ],
+      "byteOffset": 2224208,
+      "byteLength": 256
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet4/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit2/torch.nn.modules.conv.Conv2d_conv2;": {
+      "dataType": "float32",
+      "shape": [
+        64
+      ],
+      "byteOffset": 2224464,
+      "byteLength": 256
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet4/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit2/torch.nn.modules.activation.ReLU_activation;;depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet4/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit2/torch.nn.modules.activation.ReLU_activation;;depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet4/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit2/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "float32",
+      "shape": [
+        64
+      ],
+      "byteOffset": 2224720,
+      "byteLength": 256
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/torch.nn.modules.conv.Conv2d_3;": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2224976,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/torch.nn.modules.conv.Conv2d_3;1": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2226512,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/torch.nn.modules.conv.Conv2d_2;": {
+      "dataType": "float32",
+      "shape": [
+        192
+      ],
+      "byteOffset": 2228048,
+      "byteLength": 768
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/torch.nn.modules.conv.ConvTranspose2d_1;1": {
+      "dataType": "float32",
+      "shape": [
+        96
+      ],
+      "byteOffset": 2228816,
+      "byteLength": 384
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/torch.nn.modules.conv.Conv2d_1;": {
+      "dataType": "float32",
+      "shape": [
+        96
+      ],
+      "byteOffset": 2229200,
+      "byteLength": 384
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/torch.nn.modules.conv.ConvTranspose2d_0;1": {
+      "dataType": "float32",
+      "shape": [
+        48
+      ],
+      "byteOffset": 2229584,
+      "byteLength": 192
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/torch.nn.modules.conv.Conv2d_0;": {
+      "dataType": "float32",
+      "shape": [
+        48
+      ],
+      "byteOffset": 2229776,
+      "byteLength": 192
+    },
+    "arith.constant71": {
+      "dataType": "int32",
+      "shape": [
+        3
+      ],
+      "byteOffset": 2229968,
+      "byteLength": 12
+    },
+    "arith.constant72": {
+      "dataType": "int32",
+      "shape": [
+        3
+      ],
+      "byteOffset": 2229980,
+      "byteLength": 12
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_11/depth_anything_v2.dinov2_layers.mlp.Mlp_mlp/torch.nn.modules.linear.Linear_fc2;": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2229992,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_11/depth_anything_v2.dinov2_layers.mlp.Mlp_mlp/torch.nn.modules.linear.Linear_fc1;": {
+      "dataType": "float32",
+      "shape": [
+        1536
+      ],
+      "byteOffset": 2231528,
+      "byteLength": 6144
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_11/depth_anything_v2.dinov2_layers.attention.MemEffAttention_attn/torch.nn.modules.linear.Linear_proj;": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2237672,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_11/depth_anything_v2.dinov2_layers.attention.MemEffAttention_attn/torch.nn.modules.linear.Linear_qkv;": {
+      "dataType": "float32",
+      "shape": [
+        1152
+      ],
+      "byteOffset": 2239208,
+      "byteLength": 4608
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_10/depth_anything_v2.dinov2_layers.mlp.Mlp_mlp/torch.nn.modules.linear.Linear_fc2;": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2243816,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_10/depth_anything_v2.dinov2_layers.mlp.Mlp_mlp/torch.nn.modules.linear.Linear_fc1;": {
+      "dataType": "float32",
+      "shape": [
+        1536
+      ],
+      "byteOffset": 2245352,
+      "byteLength": 6144
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_10/depth_anything_v2.dinov2_layers.attention.MemEffAttention_attn/torch.nn.modules.linear.Linear_proj;": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2251496,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_10/depth_anything_v2.dinov2_layers.attention.MemEffAttention_attn/torch.nn.modules.linear.Linear_qkv;": {
+      "dataType": "float32",
+      "shape": [
+        1152
+      ],
+      "byteOffset": 2253032,
+      "byteLength": 4608
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_9/depth_anything_v2.dinov2_layers.mlp.Mlp_mlp/torch.nn.modules.linear.Linear_fc2;": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2257640,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_9/depth_anything_v2.dinov2_layers.mlp.Mlp_mlp/torch.nn.modules.linear.Linear_fc1;": {
+      "dataType": "float32",
+      "shape": [
+        1536
+      ],
+      "byteOffset": 2259176,
+      "byteLength": 6144
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_9/depth_anything_v2.dinov2_layers.attention.MemEffAttention_attn/torch.nn.modules.linear.Linear_proj;": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2265320,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_9/depth_anything_v2.dinov2_layers.attention.MemEffAttention_attn/torch.nn.modules.linear.Linear_qkv;": {
+      "dataType": "float32",
+      "shape": [
+        1152
+      ],
+      "byteOffset": 2266856,
+      "byteLength": 4608
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_8/depth_anything_v2.dinov2_layers.mlp.Mlp_mlp/torch.nn.modules.linear.Linear_fc2;": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2271464,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_8/depth_anything_v2.dinov2_layers.mlp.Mlp_mlp/torch.nn.modules.linear.Linear_fc1;": {
+      "dataType": "float32",
+      "shape": [
+        1536
+      ],
+      "byteOffset": 2273000,
+      "byteLength": 6144
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_8/depth_anything_v2.dinov2_layers.attention.MemEffAttention_attn/torch.nn.modules.linear.Linear_proj;": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2279144,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_8/depth_anything_v2.dinov2_layers.attention.MemEffAttention_attn/torch.nn.modules.linear.Linear_qkv;": {
+      "dataType": "float32",
+      "shape": [
+        1152
+      ],
+      "byteOffset": 2280680,
+      "byteLength": 4608
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_7/depth_anything_v2.dinov2_layers.mlp.Mlp_mlp/torch.nn.modules.linear.Linear_fc2;": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2285288,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_7/depth_anything_v2.dinov2_layers.mlp.Mlp_mlp/torch.nn.modules.linear.Linear_fc1;": {
+      "dataType": "float32",
+      "shape": [
+        1536
+      ],
+      "byteOffset": 2286824,
+      "byteLength": 6144
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_7/depth_anything_v2.dinov2_layers.attention.MemEffAttention_attn/torch.nn.modules.linear.Linear_proj;": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2292968,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_7/depth_anything_v2.dinov2_layers.attention.MemEffAttention_attn/torch.nn.modules.linear.Linear_qkv;": {
+      "dataType": "float32",
+      "shape": [
+        1152
+      ],
+      "byteOffset": 2294504,
+      "byteLength": 4608
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_6/depth_anything_v2.dinov2_layers.mlp.Mlp_mlp/torch.nn.modules.linear.Linear_fc2;": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2299112,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_6/depth_anything_v2.dinov2_layers.mlp.Mlp_mlp/torch.nn.modules.linear.Linear_fc1;": {
+      "dataType": "float32",
+      "shape": [
+        1536
+      ],
+      "byteOffset": 2300648,
+      "byteLength": 6144
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_6/depth_anything_v2.dinov2_layers.attention.MemEffAttention_attn/torch.nn.modules.linear.Linear_proj;": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2306792,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_6/depth_anything_v2.dinov2_layers.attention.MemEffAttention_attn/torch.nn.modules.linear.Linear_qkv;": {
+      "dataType": "float32",
+      "shape": [
+        1152
+      ],
+      "byteOffset": 2308328,
+      "byteLength": 4608
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_5/depth_anything_v2.dinov2_layers.mlp.Mlp_mlp/torch.nn.modules.linear.Linear_fc2;": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2312936,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_5/depth_anything_v2.dinov2_layers.mlp.Mlp_mlp/torch.nn.modules.linear.Linear_fc1;": {
+      "dataType": "float32",
+      "shape": [
+        1536
+      ],
+      "byteOffset": 2314472,
+      "byteLength": 6144
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_5/depth_anything_v2.dinov2_layers.attention.MemEffAttention_attn/torch.nn.modules.linear.Linear_proj;": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2320616,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_5/depth_anything_v2.dinov2_layers.attention.MemEffAttention_attn/torch.nn.modules.linear.Linear_qkv;": {
+      "dataType": "float32",
+      "shape": [
+        1152
+      ],
+      "byteOffset": 2322152,
+      "byteLength": 4608
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_4/depth_anything_v2.dinov2_layers.mlp.Mlp_mlp/torch.nn.modules.linear.Linear_fc2;": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2326760,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_4/depth_anything_v2.dinov2_layers.mlp.Mlp_mlp/torch.nn.modules.linear.Linear_fc1;": {
+      "dataType": "float32",
+      "shape": [
+        1536
+      ],
+      "byteOffset": 2328296,
+      "byteLength": 6144
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_4/depth_anything_v2.dinov2_layers.attention.MemEffAttention_attn/torch.nn.modules.linear.Linear_proj;": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2334440,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_4/depth_anything_v2.dinov2_layers.attention.MemEffAttention_attn/torch.nn.modules.linear.Linear_qkv;": {
+      "dataType": "float32",
+      "shape": [
+        1152
+      ],
+      "byteOffset": 2335976,
+      "byteLength": 4608
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_3/depth_anything_v2.dinov2_layers.mlp.Mlp_mlp/torch.nn.modules.linear.Linear_fc2;": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2340584,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_3/depth_anything_v2.dinov2_layers.mlp.Mlp_mlp/torch.nn.modules.linear.Linear_fc1;": {
+      "dataType": "float32",
+      "shape": [
+        1536
+      ],
+      "byteOffset": 2342120,
+      "byteLength": 6144
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_3/depth_anything_v2.dinov2_layers.attention.MemEffAttention_attn/torch.nn.modules.linear.Linear_proj;": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2348264,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_3/depth_anything_v2.dinov2_layers.attention.MemEffAttention_attn/torch.nn.modules.linear.Linear_qkv;": {
+      "dataType": "float32",
+      "shape": [
+        1152
+      ],
+      "byteOffset": 2349800,
+      "byteLength": 4608
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_2/depth_anything_v2.dinov2_layers.mlp.Mlp_mlp/torch.nn.modules.linear.Linear_fc2;": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2354408,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_2/depth_anything_v2.dinov2_layers.mlp.Mlp_mlp/torch.nn.modules.linear.Linear_fc1;": {
+      "dataType": "float32",
+      "shape": [
+        1536
+      ],
+      "byteOffset": 2355944,
+      "byteLength": 6144
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_2/depth_anything_v2.dinov2_layers.attention.MemEffAttention_attn/torch.nn.modules.linear.Linear_proj;": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2362088,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_2/depth_anything_v2.dinov2_layers.attention.MemEffAttention_attn/torch.nn.modules.linear.Linear_qkv;": {
+      "dataType": "float32",
+      "shape": [
+        1152
+      ],
+      "byteOffset": 2363624,
+      "byteLength": 4608
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_1/depth_anything_v2.dinov2_layers.mlp.Mlp_mlp/torch.nn.modules.linear.Linear_fc2;": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2368232,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_1/depth_anything_v2.dinov2_layers.mlp.Mlp_mlp/torch.nn.modules.linear.Linear_fc1;": {
+      "dataType": "float32",
+      "shape": [
+        1536
+      ],
+      "byteOffset": 2369768,
+      "byteLength": 6144
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_1/depth_anything_v2.dinov2_layers.attention.MemEffAttention_attn/torch.nn.modules.linear.Linear_proj;": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2375912,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_1/depth_anything_v2.dinov2_layers.attention.MemEffAttention_attn/torch.nn.modules.linear.Linear_qkv;": {
+      "dataType": "float32",
+      "shape": [
+        1152
+      ],
+      "byteOffset": 2377448,
+      "byteLength": 4608
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_0/depth_anything_v2.dinov2_layers.mlp.Mlp_mlp/torch.nn.modules.linear.Linear_fc2;": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2382056,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_0/depth_anything_v2.dinov2_layers.mlp.Mlp_mlp/torch.nn.modules.linear.Linear_fc1;": {
+      "dataType": "float32",
+      "shape": [
+        1536
+      ],
+      "byteOffset": 2383592,
+      "byteLength": 6144
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_0/depth_anything_v2.dinov2_layers.attention.MemEffAttention_attn/torch.nn.modules.linear.Linear_proj;": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2389736,
+      "byteLength": 1536
+    },
+    "arith.constant73": {
+      "dataType": "int32",
+      "shape": [
+        5
+      ],
+      "byteOffset": 2391272,
+      "byteLength": 20
+    },
+    "arith.constant74": {
+      "dataType": "int32",
+      "shape": [
+        5
+      ],
+      "byteOffset": 2391292,
+      "byteLength": 20
+    },
+    "arith.constant75": {
+      "dataType": "int32",
+      "shape": [
+        5
+      ],
+      "byteOffset": 2391312,
+      "byteLength": 20
+    },
+    "arith.constant76": {
+      "dataType": "int32",
+      "shape": [
+        5
+      ],
+      "byteOffset": 2391332,
+      "byteLength": 20
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.block.NestedTensorBlock_0/depth_anything_v2.dinov2_layers.attention.MemEffAttention_attn/torch.nn.modules.linear.Linear_qkv;": {
+      "dataType": "float32",
+      "shape": [
+        1152
+      ],
+      "byteOffset": 2391352,
+      "byteLength": 4608
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.patch_embed.PatchEmbed_patch_embed/torch.nn.modules.conv.Conv2d_proj;": {
+      "dataType": "float32",
+      "shape": [
+        384
+      ],
+      "byteOffset": 2395960,
+      "byteLength": 1536
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2;": {
+      "dataType": "int32",
+      "shape": [
+        3
+      ],
+      "byteOffset": 2397496,
+      "byteLength": 12
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/torch.nn.modules.conv.ConvTranspose2d_1;2": {
+      "dataType": "int8",
+      "shape": [
+        96,
+        2,
+        2,
+        96
+      ],
+      "byteOffset": 2397508,
+      "byteLength": 36864
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/torch.nn.modules.conv.ConvTranspose2d_0;2": {
+      "dataType": "int8",
+      "shape": [
+        48,
+        4,
+        4,
+        48
+      ],
+      "byteOffset": 2434372,
+      "byteLength": 36864
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;": {
+      "dataType": "int8",
+      "shape": [
+        1152,
+        384
+      ],
+      "byteOffset": 2471236,
+      "byteLength": 442368
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;1": {
+      "dataType": "int8",
+      "shape": [
+        384,
+        384
+      ],
+      "byteOffset": 2913604,
+      "byteLength": 147456
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;2": {
+      "dataType": "int8",
+      "shape": [
+        1536,
+        384
+      ],
+      "byteOffset": 3061060,
+      "byteLength": 589824
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;3": {
+      "dataType": "int8",
+      "shape": [
+        384,
+        1536
+      ],
+      "byteOffset": 3650884,
+      "byteLength": 589824
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;4": {
+      "dataType": "int8",
+      "shape": [
+        1152,
+        384
+      ],
+      "byteOffset": 4240708,
+      "byteLength": 442368
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;5": {
+      "dataType": "int8",
+      "shape": [
+        384,
+        384
+      ],
+      "byteOffset": 4683076,
+      "byteLength": 147456
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;6": {
+      "dataType": "int8",
+      "shape": [
+        1536,
+        384
+      ],
+      "byteOffset": 4830532,
+      "byteLength": 589824
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;7": {
+      "dataType": "int8",
+      "shape": [
+        384,
+        1536
+      ],
+      "byteOffset": 5420356,
+      "byteLength": 589824
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;8": {
+      "dataType": "int8",
+      "shape": [
+        1152,
+        384
+      ],
+      "byteOffset": 6010180,
+      "byteLength": 442368
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;9": {
+      "dataType": "int8",
+      "shape": [
+        384,
+        384
+      ],
+      "byteOffset": 6452548,
+      "byteLength": 147456
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;10": {
+      "dataType": "int8",
+      "shape": [
+        1536,
+        384
+      ],
+      "byteOffset": 6600004,
+      "byteLength": 589824
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;11": {
+      "dataType": "int8",
+      "shape": [
+        384,
+        1536
+      ],
+      "byteOffset": 7189828,
+      "byteLength": 589824
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;12": {
+      "dataType": "int8",
+      "shape": [
+        1152,
+        384
+      ],
+      "byteOffset": 7779652,
+      "byteLength": 442368
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;13": {
+      "dataType": "int8",
+      "shape": [
+        384,
+        384
+      ],
+      "byteOffset": 8222020,
+      "byteLength": 147456
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;14": {
+      "dataType": "int8",
+      "shape": [
+        1536,
+        384
+      ],
+      "byteOffset": 8369476,
+      "byteLength": 589824
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;15": {
+      "dataType": "int8",
+      "shape": [
+        384,
+        1536
+      ],
+      "byteOffset": 8959300,
+      "byteLength": 589824
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;16": {
+      "dataType": "int8",
+      "shape": [
+        1152,
+        384
+      ],
+      "byteOffset": 9549124,
+      "byteLength": 442368
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;17": {
+      "dataType": "int8",
+      "shape": [
+        384,
+        384
+      ],
+      "byteOffset": 9991492,
+      "byteLength": 147456
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;18": {
+      "dataType": "int8",
+      "shape": [
+        1536,
+        384
+      ],
+      "byteOffset": 10138948,
+      "byteLength": 589824
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;19": {
+      "dataType": "int8",
+      "shape": [
+        384,
+        1536
+      ],
+      "byteOffset": 10728772,
+      "byteLength": 589824
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;20": {
+      "dataType": "int8",
+      "shape": [
+        1152,
+        384
+      ],
+      "byteOffset": 11318596,
+      "byteLength": 442368
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;21": {
+      "dataType": "int8",
+      "shape": [
+        384,
+        384
+      ],
+      "byteOffset": 11760964,
+      "byteLength": 147456
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;22": {
+      "dataType": "int8",
+      "shape": [
+        1536,
+        384
+      ],
+      "byteOffset": 11908420,
+      "byteLength": 589824
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;23": {
+      "dataType": "int8",
+      "shape": [
+        384,
+        1536
+      ],
+      "byteOffset": 12498244,
+      "byteLength": 589824
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;24": {
+      "dataType": "int8",
+      "shape": [
+        1152,
+        384
+      ],
+      "byteOffset": 13088068,
+      "byteLength": 442368
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;25": {
+      "dataType": "int8",
+      "shape": [
+        384,
+        384
+      ],
+      "byteOffset": 13530436,
+      "byteLength": 147456
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;26": {
+      "dataType": "int8",
+      "shape": [
+        1536,
+        384
+      ],
+      "byteOffset": 13677892,
+      "byteLength": 589824
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;27": {
+      "dataType": "int8",
+      "shape": [
+        384,
+        1536
+      ],
+      "byteOffset": 14267716,
+      "byteLength": 589824
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;28": {
+      "dataType": "int8",
+      "shape": [
+        1152,
+        384
+      ],
+      "byteOffset": 14857540,
+      "byteLength": 442368
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;29": {
+      "dataType": "int8",
+      "shape": [
+        384,
+        384
+      ],
+      "byteOffset": 15299908,
+      "byteLength": 147456
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;30": {
+      "dataType": "int8",
+      "shape": [
+        1536,
+        384
+      ],
+      "byteOffset": 15447364,
+      "byteLength": 589824
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;31": {
+      "dataType": "int8",
+      "shape": [
+        384,
+        1536
+      ],
+      "byteOffset": 16037188,
+      "byteLength": 589824
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;32": {
+      "dataType": "int8",
+      "shape": [
+        1152,
+        384
+      ],
+      "byteOffset": 16627012,
+      "byteLength": 442368
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;33": {
+      "dataType": "int8",
+      "shape": [
+        384,
+        384
+      ],
+      "byteOffset": 17069380,
+      "byteLength": 147456
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;34": {
+      "dataType": "int8",
+      "shape": [
+        1536,
+        384
+      ],
+      "byteOffset": 17216836,
+      "byteLength": 589824
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;35": {
+      "dataType": "int8",
+      "shape": [
+        384,
+        1536
+      ],
+      "byteOffset": 17806660,
+      "byteLength": 589824
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;36": {
+      "dataType": "int8",
+      "shape": [
+        1152,
+        384
+      ],
+      "byteOffset": 18396484,
+      "byteLength": 442368
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;37": {
+      "dataType": "int8",
+      "shape": [
+        384,
+        384
+      ],
+      "byteOffset": 18838852,
+      "byteLength": 147456
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;38": {
+      "dataType": "int8",
+      "shape": [
+        1536,
+        384
+      ],
+      "byteOffset": 18986308,
+      "byteLength": 589824
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;39": {
+      "dataType": "int8",
+      "shape": [
+        384,
+        1536
+      ],
+      "byteOffset": 19576132,
+      "byteLength": 589824
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;40": {
+      "dataType": "int8",
+      "shape": [
+        1152,
+        384
+      ],
+      "byteOffset": 20165956,
+      "byteLength": 442368
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;41": {
+      "dataType": "int8",
+      "shape": [
+        384,
+        384
+      ],
+      "byteOffset": 20608324,
+      "byteLength": 147456
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;42": {
+      "dataType": "int8",
+      "shape": [
+        1536,
+        384
+      ],
+      "byteOffset": 20755780,
+      "byteLength": 589824
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;43": {
+      "dataType": "int8",
+      "shape": [
+        384,
+        1536
+      ],
+      "byteOffset": 21345604,
+      "byteLength": 589824
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;44": {
+      "dataType": "int8",
+      "shape": [
+        1152,
+        384
+      ],
+      "byteOffset": 21935428,
+      "byteLength": 442368
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;45": {
+      "dataType": "int8",
+      "shape": [
+        384,
+        384
+      ],
+      "byteOffset": 22377796,
+      "byteLength": 147456
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;46": {
+      "dataType": "int8",
+      "shape": [
+        1536,
+        384
+      ],
+      "byteOffset": 22525252,
+      "byteLength": 589824
+    },
+    "torch.export._trace._non_strict_export.<locals>._tuplify_outputs.<locals>._aot_export_non_strict.<locals>.Wrapper;47": {
+      "dataType": "int8",
+      "shape": [
+        384,
+        1536
+      ],
+      "byteOffset": 23115076,
+      "byteLength": 589824
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dinov2_layers.patch_embed.PatchEmbed_patch_embed/torch.nn.modules.conv.Conv2d_proj;2": {
+      "dataType": "int8",
+      "shape": [
+        384,
+        14,
+        14,
+        3
+      ],
+      "byteOffset": 23704900,
+      "byteLength": 225792
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/torch.nn.modules.conv.Conv2d_0;2": {
+      "dataType": "int8",
+      "shape": [
+        48,
+        1,
+        1,
+        384
+      ],
+      "byteOffset": 23930692,
+      "byteLength": 18432
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/torch.nn.modules.conv.Conv2d_1;2": {
+      "dataType": "int8",
+      "shape": [
+        96,
+        1,
+        1,
+        384
+      ],
+      "byteOffset": 23949124,
+      "byteLength": 36864
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/torch.nn.modules.conv.Conv2d_2;2": {
+      "dataType": "int8",
+      "shape": [
+        192,
+        1,
+        1,
+        384
+      ],
+      "byteOffset": 23985988,
+      "byteLength": 73728
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/torch.nn.modules.conv.Conv2d_3;3": {
+      "dataType": "int8",
+      "shape": [
+        384,
+        1,
+        1,
+        384
+      ],
+      "byteOffset": 24059716,
+      "byteLength": 147456
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/torch.nn.modules.conv.Conv2d_3;5": {
+      "dataType": "int8",
+      "shape": [
+        384,
+        3,
+        3,
+        384
+      ],
+      "byteOffset": 24207172,
+      "byteLength": 1327104
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/torch.nn.modules.conv.Conv2d_layer1_rn;": {
+      "dataType": "int8",
+      "shape": [
+        64,
+        3,
+        3,
+        48
+      ],
+      "byteOffset": 25534276,
+      "byteLength": 27648
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/torch.nn.modules.conv.Conv2d_layer2_rn;": {
+      "dataType": "int8",
+      "shape": [
+        64,
+        3,
+        3,
+        96
+      ],
+      "byteOffset": 25561924,
+      "byteLength": 55296
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/torch.nn.modules.conv.Conv2d_layer3_rn;": {
+      "dataType": "int8",
+      "shape": [
+        64,
+        3,
+        3,
+        192
+      ],
+      "byteOffset": 25617220,
+      "byteLength": 110592
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/torch.nn.modules.conv.Conv2d_layer4_rn;": {
+      "dataType": "int8",
+      "shape": [
+        64,
+        3,
+        3,
+        384
+      ],
+      "byteOffset": 25727812,
+      "byteLength": 221184
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet4/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit2/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "int8",
+      "shape": [
+        64,
+        3,
+        3,
+        64
+      ],
+      "byteOffset": 25948996,
+      "byteLength": 36864
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet4/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit2/torch.nn.modules.conv.Conv2d_conv2;1": {
+      "dataType": "int8",
+      "shape": [
+        64,
+        3,
+        3,
+        64
+      ],
+      "byteOffset": 25985860,
+      "byteLength": 36864
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet4/torch.nn.modules.conv.Conv2d_out_conv;1": {
+      "dataType": "int8",
+      "shape": [
+        64,
+        1,
+        1,
+        64
+      ],
+      "byteOffset": 26022724,
+      "byteLength": 4096
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet3/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit1/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "int8",
+      "shape": [
+        64,
+        3,
+        3,
+        64
+      ],
+      "byteOffset": 26026820,
+      "byteLength": 36864
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet3/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit1/torch.nn.modules.conv.Conv2d_conv2;1": {
+      "dataType": "int8",
+      "shape": [
+        64,
+        3,
+        3,
+        64
+      ],
+      "byteOffset": 26063684,
+      "byteLength": 36864
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet3/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit2/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "int8",
+      "shape": [
+        64,
+        3,
+        3,
+        64
+      ],
+      "byteOffset": 26100548,
+      "byteLength": 36864
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet3/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit2/torch.nn.modules.conv.Conv2d_conv2;1": {
+      "dataType": "int8",
+      "shape": [
+        64,
+        3,
+        3,
+        64
+      ],
+      "byteOffset": 26137412,
+      "byteLength": 36864
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet3/torch.nn.modules.conv.Conv2d_out_conv;1": {
+      "dataType": "int8",
+      "shape": [
+        64,
+        1,
+        1,
+        64
+      ],
+      "byteOffset": 26174276,
+      "byteLength": 4096
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet2/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit1/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "int8",
+      "shape": [
+        64,
+        3,
+        3,
+        64
+      ],
+      "byteOffset": 26178372,
+      "byteLength": 36864
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet2/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit1/torch.nn.modules.conv.Conv2d_conv2;1": {
+      "dataType": "int8",
+      "shape": [
+        64,
+        3,
+        3,
+        64
+      ],
+      "byteOffset": 26215236,
+      "byteLength": 36864
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet2/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit2/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "int8",
+      "shape": [
+        64,
+        3,
+        3,
+        64
+      ],
+      "byteOffset": 26252100,
+      "byteLength": 36864
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet2/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit2/torch.nn.modules.conv.Conv2d_conv2;1": {
+      "dataType": "int8",
+      "shape": [
+        64,
+        3,
+        3,
+        64
+      ],
+      "byteOffset": 26288964,
+      "byteLength": 36864
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet2/torch.nn.modules.conv.Conv2d_out_conv;1": {
+      "dataType": "int8",
+      "shape": [
+        64,
+        1,
+        1,
+        64
+      ],
+      "byteOffset": 26325828,
+      "byteLength": 4096
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet1/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit1/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "int8",
+      "shape": [
+        64,
+        3,
+        3,
+        64
+      ],
+      "byteOffset": 26329924,
+      "byteLength": 36864
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet1/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit1/torch.nn.modules.conv.Conv2d_conv2;1": {
+      "dataType": "int8",
+      "shape": [
+        64,
+        3,
+        3,
+        64
+      ],
+      "byteOffset": 26366788,
+      "byteLength": 36864
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet1/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit2/torch.nn.modules.conv.Conv2d_conv1;": {
+      "dataType": "int8",
+      "shape": [
+        64,
+        3,
+        3,
+        64
+      ],
+      "byteOffset": 26403652,
+      "byteLength": 36864
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet1/depth_anything_v2.util.blocks.ResidualConvUnit_resConfUnit2/torch.nn.modules.conv.Conv2d_conv2;1": {
+      "dataType": "int8",
+      "shape": [
+        64,
+        3,
+        3,
+        64
+      ],
+      "byteOffset": 26440516,
+      "byteLength": 36864
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/depth_anything_v2.util.blocks.FeatureFusionBlock_refinenet1/torch.nn.modules.conv.Conv2d_out_conv;1": {
+      "dataType": "int8",
+      "shape": [
+        64,
+        1,
+        1,
+        64
+      ],
+      "byteOffset": 26477380,
+      "byteLength": 4096
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/torch.nn.modules.conv.Conv2d_output_conv1;1": {
+      "dataType": "int8",
+      "shape": [
+        32,
+        3,
+        3,
+        64
+      ],
+      "byteOffset": 26481476,
+      "byteLength": 18432
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/torch.nn.modules.container.Sequential_output_conv2/torch.nn.modules.conv.Conv2d_0;": {
+      "dataType": "int8",
+      "shape": [
+        32,
+        3,
+        3,
+        32
+      ],
+      "byteOffset": 26499908,
+      "byteLength": 9216
+    },
+    "depth_anything_v2.dpt.DepthAnythingV2/depth_anything_v2.dpt.DPTHead_depth_head/torch.nn.modules.container.Sequential_output_conv2/torch.nn.modules.conv.Conv2d_2;": {
+      "dataType": "int8",
+      "shape": [
+        1,
+        1,
+        1,
+        32
+      ],
+      "byteOffset": 26509124,
+      "byteLength": 32
+    }
+  }
+}

@@ -83,6 +83,7 @@ export class SpatialScene {
         for (let i: number = num_layers-1; i >= 0; i--){
             if (i == num_layers-1){
                 inpainted_layers.push(layers[i]);
+                // download_canvas(layers[i], "z_first.png");
             } else {
                 const last_inpainted_layer: HTMLCanvasElement = inpainted_layers[inpainted_layers.length - 1];
                 
@@ -94,6 +95,7 @@ export class SpatialScene {
                 
                 const processed_inpainted_result: HTMLCanvasElement = this.inpainter.postprocess([inpainted_result, inpainter_inputs[1], inpainted_target_array, inpainter_inputs[2]], INPAINT_INPUT_WIDTH, INPAINT_INPUT_HEIGHT);
                 inpainted_layers.push(processed_inpainted_result);
+                download_canvas(processed_inpainted_result, `z_res_layer_${i}.png`);
             }
         }
 

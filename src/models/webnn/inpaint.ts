@@ -8,6 +8,10 @@
 */
 
 import { WeightsFile, buildGraph } from "../../../model_binaries/webnn/migan/migan.js";
+import cvModule from "@techstark/opencv-js";
+import { download_cv_mat, download_array, download_canvas } from "../../utils/debug.ts";
+
+const cv = (cvModule as any).default ?? cvModule; // Handle both default and named exports from OpenCV.js
 
 export class Inpaint {
     graph: any | null = null;
@@ -50,8 +54,8 @@ export class Inpaint {
 
     public preprocess(inputs: Array<HTMLCanvasElement>, width: number = this.width, height: number = this.height): Array<Float32Array> {
         const input_array: Float32Array = this.preprocess_input(inputs[0], width, height);
-        const mask_array: Float32Array = this.preprocess_mask(inputs[1], width, height);
-        const current_layer_array: Float32Array = this.preprocess_mask(inputs[2], width, height);
+        const mask_array: Float32Array = this.preprocess_mask(inputs[1], width, height, true);
+        const current_layer_array: Float32Array = this.preprocess_mask(inputs[2], width, height, false);
 
         const combined_array: Float32Array = this.merge_inputs(input_array, mask_array, width, height);
         const combined_mask: Float32Array = this.merge_masks(current_layer_array, mask_array);
@@ -125,7 +129,7 @@ export class Inpaint {
         return input_array;
     }
 
-    private preprocess_mask(mask: HTMLCanvasElement, width: number, height: number): Float32Array {
+    private preprocess_mask(mask: HTMLCanvasElement, width: number, height: number, dilate: boolean): Float32Array {
         const wh: number = width * height;
 
         // resize
@@ -140,16 +144,48 @@ export class Inpaint {
         const pixels: ImageDataArray = mask_data.data;
 
         // create fp32 array. If alpha == 0, then 1. (transparent means keep)
-        let mask_array: Float32Array = new Float32Array(wh);
+        let mask_array: Uint8Array = new Uint8Array(wh);
         for (let i: number = 0; i < wh; i++){
             if (pixels[i*4 + 3] === 0){
-                mask_array[i] = 1;
-            } else {
                 mask_array[i] = 0;
+            } else {
+                mask_array[i] = 255;
             }
         }
 
-        return mask_array;
+        // dilate if needed
+        let new_arr: Uint8Array = new Uint8Array(wh);
+        if (dilate){
+            const mat = new cv.Mat(width, height, cv.CV_8U);
+            mat.data.set(mask_array);
+
+            const kernel = cv.Mat.ones(5, 5, cv.CV_8U);
+            const dilated = new cv.Mat();
+            cv.dilate(mat, dilated, kernel);
+            kernel.delete();
+            // mat.delete();
+            
+            for (let i: number = 0; i < wh; i++){
+                new_arr[i] = dilated[i];
+            }
+            
+        } else {
+            for (let i: number = 0; i < wh; i++){
+                new_arr[i] = mask_array[i];
+            }
+        }
+
+        // normalize & invert
+        let res: Float32Array = new Float32Array(wh);
+        for (let i: number = 0; i < wh; i++){
+            if (new_arr[i] === 255){
+                res[i] = 0;
+            } else {
+                res[i] = 1;
+            }
+        }
+
+        return res;
     }
 
     private merge_inputs(input_array: Float32Array, mask_array: Float32Array, width: number, height: number): Float32Array {
