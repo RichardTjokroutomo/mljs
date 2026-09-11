@@ -36473,9 +36473,9 @@ var Inpaint = class {
     let res = new Float32Array(wh2);
     for (let i = 0; i < wh2; i++) {
       if (new_arr[i] === 255) {
-        res[i] = 1;
-      } else {
         res[i] = 0;
+      } else {
+        res[i] = 1;
       }
     }
     return res;

@@ -7,7 +7,7 @@ let spatial_scene = new mljs.SpatialScene();
 
 console.log("SpatialScene initialized:", spatial_scene);
 
-await spatial_scene.initialize_sessions("../../model_binaries/depth_anything_v2_vits_quantized.onnx", "../../model_binaries/migan_processed.onnx");
+await spatial_scene.initialize_sessions("../../model_binaries/webnn/depth-anything-v2/depth_anything_v2_quantized.js", "../../model_binaries/webnn/migan/migan.js");
 
 console.log("Sessions initialized!");
 
